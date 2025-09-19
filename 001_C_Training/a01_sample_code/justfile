@@ -43,6 +43,9 @@ macos_fmt_flags := ". -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.cc'  -o -ina
 # fast fmt(fd-find)
 fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+clang_format+" -style=file -i {} \\;"
 
+# fast fmt(fd-find)
+macos_fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+macos_clang_format+" -style=file -i {} \\;"
+
 # (C)gcc compile(LinuxOS)
 [linux]
 r:
@@ -150,8 +153,14 @@ fmt:
 	find {{macos_fmt_flags}}
 
 # (fast).clang-format fmt(cargo install fd-find)
+[linux]
 fm:
 	fd {{fm_flags}}
+
+# (fast).clang-format fmt(cargo install fd-find)
+[macos]
+fm:
+	fd {{macos_fm_flags}}
 
 # clang LLVM emit-file
 ll:
