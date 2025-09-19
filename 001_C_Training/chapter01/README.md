@@ -28,5 +28,5 @@
 |`%x`|hexadecimal|
 |`%c`|character|
 |`%s`|character string|
-|`%o`|itself|
+|`%%`|itself|
 
