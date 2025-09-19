@@ -1,3 +1,23 @@
+# build(c23)
+
+```bash
+$ gcc --std=c23 src/main.c
+
+$ ls
+a.out*  README.md  src/
+
+$ ./a.out
+Decimal: 1000000
+Hex:     DEADBEEF
+Binary:  172 (0b1010'1100)
+Octal:   123456
+```
+
+
+# ebook
+
+- 고해상도 C eBooks
+  - https://colorcomputerarchive.com/repo/Documents/Books/The%20C%20Programming%20Language%20%28Kernighan%20Ritchie%29.pdf
 - https://www.cc4e.com/book/chap01.md
 
 # C provides several other data types besides `int` and `float`, including:
