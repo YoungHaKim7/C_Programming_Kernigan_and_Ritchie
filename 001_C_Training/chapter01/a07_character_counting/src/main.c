@@ -4,12 +4,14 @@ int main(void)
 {
     printf("Type some text (Ctrl+D to end):\n");
 
-    int c;
+    long nc;
 
-    c = getchar();
-    while (c != EOF) {
-        putchar(c);
-        c = getchar();
+    nc = 0;
+
+    while (getchar() != EOF) {
+
+        ++nc;
+        printf("%ld\n", nc);
     }
 
     printf("\nDone!\n");
