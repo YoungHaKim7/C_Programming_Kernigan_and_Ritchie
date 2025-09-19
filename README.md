@@ -8,7 +8,9 @@
 <hr />
 
 # C_Programming_Kernigan_and_Ritchie
-https://www.cc4e.com/
+- eBook(C)
+  - https://colorcomputerarchive.com/repo/Documents/Books/The%20C%20Programming%20Language%20%28Kernighan%20Ritchie%29.pdf
+- https://www.cc4e.com/
 
 # Dr. Chuck reads C Programming (the classic book by Kernigan and Ritchie)
 freeCodeCamp.org
