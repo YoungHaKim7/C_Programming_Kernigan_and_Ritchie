@@ -44,7 +44,7 @@ int main(void)
 
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
-            printf("%5d ", matrix[i][j]);
+            printf("%3d ", matrix[i][j]);
         }
         putchar('\n');
     }
