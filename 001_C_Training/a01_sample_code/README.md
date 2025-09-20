@@ -8,7 +8,12 @@ Octal:   123456
 
 2D array (matrix)
 Matrix (3x4):
+
   1   2   3   4
  10  20  30  40
 100 200 300 400
+
+Matrix (2x3):
+ 0  0  0
+ 0  1  2
 ```

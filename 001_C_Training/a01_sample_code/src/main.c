@@ -41,10 +41,33 @@ int main(void)
     // clang-format on
 
     printf("Matrix (%dx%d):\n", ROWS, COLS);
+    printf("\n");
 
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
             printf("%3d ", matrix[i][j]);
+        }
+        putchar('\n');
+    }
+
+    // make matrix init
+    int rows = 2, cols = 3;
+    int matrix02[rows][cols]; // VLA in C23
+
+    printf("\n");
+    printf("Matrix (%dx%d):\n", rows, cols);
+
+    // Fill with i*j
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            matrix02[i][j] = i * j;
+        }
+    }
+
+    // Print
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%2d ", matrix02[i][j]);
         }
         putchar('\n');
     }
