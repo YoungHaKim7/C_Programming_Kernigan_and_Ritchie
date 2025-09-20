@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+#define ROWS 3
+#define COLS 4
+
 int main(void)
 {
     // Decimal with separators
@@ -18,6 +21,29 @@ int main(void)
     printf("Hex:     %X\n", hex);
     printf("Binary:  %d (0b1010'1100)\n", bin);
     printf("Octal:   %o\n", oct);
+
+    printf("\n");
+    printf("2D array (matrix)\n");
+
+
+    // 2D array (matrix) with digit separators for readability
+    // clang-format off
+    int matrix[ROWS][COLS] = {
+        { 1,     2,     3,     4 },
+        { 10,   20,   30,   40 },
+        { 100, 200, 300, 400 }
+    };
+    // clang-format on
+
+
+    printf("Matrix (%dx%d):\n", ROWS, COLS);
+
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            printf("%5d ", matrix[i][j]);
+        }
+        putchar('\n');
+    }
 
     return 0;
 }
