@@ -5,22 +5,23 @@
 
 int main(void)
 {
+
     // Decimal with separators
-    int dec = 1 '000' 000; // 1000000
+    // clang-format off
+    int dec = 1'000'000; // 1000000
 
     // Hexadecimal with separators
     // 0xDEADBEEF
     int hex = 0xDEAD'BEEF;
 
-        // Binary (not built-in, but GCC/Clang extensions allow 0b…)
-        // 0b10101100
-        int bin
-        = 0b1010'1100;
+    // Binary (not built-in, but GCC/Clang extensions allow 0b…)
+    // 0b10101100
+    int bin = 0b1010'1100;
 
-        // Octal with separators
-        // same as 0123456
-        int oct
-        = 0 '123' 456;
+    // Octal with separators
+    // same as 0123456
+    int oct = 0'123'456;
+    // clang-format on
 
     printf("Decimal: %d\n", dec);
     printf("Hex:     %X\n", hex);
