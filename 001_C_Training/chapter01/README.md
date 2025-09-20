@@ -1,4 +1,8 @@
-# build(c23)
+# link
+
+<hr />
+
+# build(c23)[|🔝|](#link)
 
 ```bash
 $ gcc --std=c23 src/main.c
@@ -14,13 +18,13 @@ Octal:   123456
 ```
 
 
-# ebook
+# ebook[|🔝|](#link)
 
 - 고해상도 C eBooks
   - https://colorcomputerarchive.com/repo/Documents/Books/The%20C%20Programming%20Language%20%28Kernighan%20Ritchie%29.pdf
 - https://www.cc4e.com/book/chap01.md
 
-# C provides several other data types besides `int` and `float`, including:
+# C provides several other data types besides `int` and `float`, including:[|🔝|](#link)
 
 |||
 |-|-|
@@ -50,3 +54,8 @@ Octal:   123456
 |`%s`|character string|
 |`%%`|itself|
 
+
+<hr />
+
+# printf, fprintf, sprintf, snprintf, printf_s, fprintf_s, sprintf_s, snprintf_s[|🔝|](#link)
+- https://en.cppreference.com/w/c/io/fprintf.html
