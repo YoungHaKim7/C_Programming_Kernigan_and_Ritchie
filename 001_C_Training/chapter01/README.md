@@ -29,7 +29,7 @@ Octal:   123456
 |long|long integer|
 |double|double-precison floating point|
 
-- outout
+- print output
 
 |||
 |-|-|
