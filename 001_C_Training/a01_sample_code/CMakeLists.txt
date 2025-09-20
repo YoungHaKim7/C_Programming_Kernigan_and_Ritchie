@@ -8,6 +8,8 @@ project(${ProjectId} LANGUAGES C)
 # set(CMAKE_C_COMPILER "/opt/gcc-15/bin/gcc")
 # Force GCC 15(macOS)
 set(CMAKE_C_COMPILER "/opt/homebrew/opt/gcc@15/bin/gcc-15")
+# Force Clang 20(LinuxOS)
+# set(CMAKE_C_COMPILER "/usr/bin/clang-20")
 # Force Clang 20(macOS)
 # set(CMAKE_CXX_COMPILER "/opt/homebrew/opt/llvm/bin/clang")
 
