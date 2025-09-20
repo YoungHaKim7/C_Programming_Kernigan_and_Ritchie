@@ -16,4 +16,10 @@ Matrix (3x4):
 Matrix (2x3):
  0  0  0
  0  1  2
+
+Struct Example
+Student ID: 101
+Score: 85
+Grade: B
+Good job!
 ```

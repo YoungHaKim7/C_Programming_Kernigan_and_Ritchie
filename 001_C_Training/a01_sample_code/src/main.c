@@ -3,6 +3,12 @@
 #define ROWS 3
 #define COLS 4
 
+// Define a struct for a student
+struct Student {
+    int id;
+    int score;
+};
+
 int main(void)
 {
 
@@ -70,6 +76,42 @@ int main(void)
             printf("%2d ", matrix02[i][j]);
         }
         putchar('\n');
+    }
+
+    printf("\n");
+    printf("Struct Example \n");
+
+    struct Student s = { .id = 101, .score = 85 };
+
+    printf("Student ID: %d\n", s.id);
+    printf("Score: %d\n", s.score);
+
+    // if statement
+    if (s.score >= 90) {
+        printf("Grade: A\n");
+    } else if (s.score >= 80) {
+        printf("Grade: B\n");
+    } else if (s.score >= 70) {
+        printf("Grade: C\n");
+    } else {
+        printf("Grade: F\n");
+    }
+
+    // switch-case (check grade group by tens place)
+    switch (s.score / 10) {
+    case 10: // 100
+    case 9:
+        printf("Excellent!\n");
+        break;
+    case 8:
+        printf("Good job!\n");
+        break;
+    case 7:
+        printf("Fair.\n");
+        break;
+    default:
+        printf("Needs improvement.\n");
+        break;
     }
 
     return 0;
