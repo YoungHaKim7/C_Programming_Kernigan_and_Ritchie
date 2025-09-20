@@ -6,16 +6,18 @@
 int main(void)
 {
     // Decimal with separators
-    int dec = 1'000'000; // 1000000
+    int dec = 1 '000' 000; // 1000000
 
     // Hexadecimal with separators
     int hex = 0xDEAD'BEEF; // 0xDEADBEEF
 
-    // Binary (not built-in, but GCC/Clang extensions allow 0b…)
-    int bin = 0b1010'1100; // 0b10101100
+        // Binary (not built-in, but GCC/Clang extensions allow 0b…)
+        int bin
+        = 0b1010'1100; // 0b10101100
 
-    // Octal with separators
-    int oct = 0'123'456; // same as 0123456
+        // Octal with separators
+        int oct
+        = 0 '123' 456; // same as 0123456
 
     printf("Decimal: %d\n", dec);
     printf("Hex:     %X\n", hex);
@@ -25,7 +27,6 @@ int main(void)
     printf("\n");
     printf("2D array (matrix)\n");
 
-
     // 2D array (matrix) with digit separators for readability
     // clang-format off
     int matrix[ROWS][COLS] = {
@@ -34,7 +35,6 @@ int main(void)
         { 100, 200, 300, 400 }
     };
     // clang-format on
-
 
     printf("Matrix (%dx%d):\n", ROWS, COLS);
 
