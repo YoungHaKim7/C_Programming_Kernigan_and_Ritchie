@@ -9,15 +9,18 @@ int main(void)
     int dec = 1 '000' 000; // 1000000
 
     // Hexadecimal with separators
-    int hex = 0xDEAD'BEEF; // 0xDEADBEEF
+    // 0xDEADBEEF
+    int hex = 0xDEAD'BEEF;
 
         // Binary (not built-in, but GCC/Clang extensions allow 0b…)
+        // 0b10101100
         int bin
-        = 0b1010'1100; // 0b10101100
+        = 0b1010'1100;
 
         // Octal with separators
+        // same as 0123456
         int oct
-        = 0 '123' 456; // same as 0123456
+        = 0 '123' 456;
 
     printf("Decimal: %d\n", dec);
     printf("Hex:     %X\n", hex);
