@@ -43,7 +43,6 @@ add_compile_options(
 # Main executable with mandelbrot sources
 add_executable(${ProjectId}
     src/main.c
-    src/merge_sort.c
     # src/mandelbrot.c
 )
 
