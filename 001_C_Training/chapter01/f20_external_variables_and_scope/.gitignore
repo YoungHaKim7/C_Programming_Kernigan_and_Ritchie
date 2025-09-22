@@ -1,13 +1,13 @@
+# General(macOS)
+.DS_Store
+
 # build files
 target
 build
-justfile
-
-# General
-.DS_Store
 
 # clangd
 .cache
+
 
 # Prerequisites
 *.d
@@ -64,4 +64,3 @@ dkms.conf
 
 # debug information files
 *.dwo
-
