@@ -24,6 +24,29 @@ Octal:   123456
   - https://colorcomputerarchive.com/repo/Documents/Books/The%20C%20Programming%20Language%20%28Kernighan%20Ritchie%29.pdf
 - https://www.cc4e.com/book/chap01.md
 
+# 러스트 개발자를 위한 C언어 기초 (1)
+- 개고생하면서 배우는 C언어(c23)
+  - 교제 - Brian W. Kernighan & Dennis M. Ritchie
+  - C Programming Language
+- 목차
+```
+chapter 01 A Tutorial Introduction
+                1.1 Getting Started
+                1.2 Variables and Arithmetic Expressions
+                1.3 The for statement
+                1.4 Symbolic Constants
+                1.5 Character Input and Output
+                1.5.1 File Copying
+                1.5.2 Character Counting
+                1.5.3 Line Counting
+                1.5.4 Word Counting
+                1.6 Arrays.
+                1.7 Functions
+                1.8 Arguments - Call by Value.
+                1.9 Character Arrays
+                1.10 External Variables and Scope
+```
+
 # C provides several other data types besides `int` and `float`, including:[|🔝|](#link)
 
 |||
