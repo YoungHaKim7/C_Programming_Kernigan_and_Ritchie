@@ -4,6 +4,7 @@ int main(void)
 {
     printf("Type some text (Ctrl+D to end):\n");
 
+    // f64 (rust)
     double nc;
 
     for (nc = 0; getchar() != EOF; ++nc) {

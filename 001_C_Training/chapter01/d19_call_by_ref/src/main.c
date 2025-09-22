@@ -20,6 +20,7 @@ int power_ref(int *pbase, int *pn) {
 int main(void) {
     int base = 2, n = 4;
 
+    // & reference  메모리 주소를 읽기 전용 보겠다.   vs deref  메모리 주소에 값을 직접 넣겠다.
     int result = power_ref(&base, &n);
 
     printf("Result: %d\n", result);

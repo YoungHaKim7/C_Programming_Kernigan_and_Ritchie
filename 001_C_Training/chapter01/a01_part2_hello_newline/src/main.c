@@ -2,7 +2,9 @@
 
 int main()
 {
-    printf("hello, ");
+    printf("\xahello, ");
     printf("world");
-    printf("\n");
+    // escape letters 
+    printf("\xa\xa");
+    printf("world\xa");
 }

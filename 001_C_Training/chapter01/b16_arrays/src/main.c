@@ -5,7 +5,9 @@ int main()
     printf("Type some text (Ctrl+D to end):\n");
 
     int c, i, nwhite, nother;
+    // C array [10]   10개의 변수 생김 int ndigit = [null ; 10]
     int ndigit[10];
+
     nwhite = nother = 0;
     for (i = 0; i < 10; ++i)
         ndigit[i] = 0;

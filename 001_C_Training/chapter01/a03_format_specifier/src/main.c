@@ -18,10 +18,14 @@ int main(void) {
     int c23_num_bi = 0b1111'1111; // binary literal with separators (C23)
     int c23_bi = 10;
 
+    // decimal 10진수
     printf("Decimal: %d\n", num);
+    // octal 8진수
     printf("Octal (%%o): %o\n", num);
+    // %% 내 자신을 print
     printf("Octal with leading 0 (%%#o): %#o\n", num);
 
+    // p pointer type  (메모 리주소를 출력)  %p
 
     printf("\nc23 binary (0b1111'1111): %d", c23_num_bi);
 
