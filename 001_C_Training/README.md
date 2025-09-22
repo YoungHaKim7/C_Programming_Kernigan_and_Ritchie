@@ -9,3 +9,6 @@
 
 # Code snippets for C/C++ for VS Code
 - https://github.com/one-harsh/vscode-cpp-snippets
+
+# fprint
+- https://en.cppreference.com/w/c/io/fprintf
