@@ -18,3 +18,6 @@ numeric value is just 0.
   - 문자 상수 '\\0'은 값이 0인 문자, 즉 널 문자를 나타냅니다. '\\0'
 어떤 표현의 성격을 강조하기 위해 종종 0 대신에 쓰이지만
 숫자 값은 단지 0입니다.
+
+# `sizeof` operator
+- https://en.cppreference.com/w/c/language/sizeof.html
