@@ -2,4 +2,4 @@
 
 |||||
 |-|-|-|-|
-|\a|alert(bell)<br />character|\\|backslash|
+|`\a`|alert(bell)<br />character|`\\`|backslash|
