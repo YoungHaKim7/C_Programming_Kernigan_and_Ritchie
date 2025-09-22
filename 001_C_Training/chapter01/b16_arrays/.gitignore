@@ -2,3 +2,4 @@ target
 build
 justfile
 CMakeLists.txt
+.cache
