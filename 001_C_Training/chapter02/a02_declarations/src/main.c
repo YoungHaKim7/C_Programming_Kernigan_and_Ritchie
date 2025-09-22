@@ -23,9 +23,9 @@ int main(void)
     const double e = 2.71828182845905;
 
     /* Arrays */
-    char line[MAXLINE];   /* character buffer */
-    int numbers[5] = {1, 2, 3, 4, 5};
-    float grades[3] = {90.5, 85.0, 78.5};
+    char line[MAXLINE]; /* character buffer */
+    int numbers[5] = { 1, 2, 3, 4, 5 };
+    float grades[3] = { 90.5, 85.0, 78.5 };
 
     /* Enum */
     enum boolean { NO, YES };
@@ -36,7 +36,7 @@ int main(void)
         int x;
         int y;
     };
-    struct Point p1 = {10, 20};
+    struct Point p1 = { 10, 20 };
 
     /* Union */
     union Data {
@@ -53,7 +53,8 @@ int main(void)
         printf("  t=%d\n", t);
     }
 
-    printf("\nCount=%d, Unsigned=%u, Long=%ld, Short=%d\n", count, ucount, big, small);
+    printf("\nCount=%d, Unsigned=%u, Long=%ld, Short=%d\n", count, ucount, big,
+        small);
 
     printf("\nCharacters: c='%c', esc='%c', newline='\\n'\n", c, esc);
 
@@ -82,4 +83,3 @@ int main(void)
 
     return 0;
 }
-
