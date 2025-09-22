@@ -8,6 +8,7 @@
   - [온라인으로 디버깅 된다. 완전 굿 굿 https://www.onlinegdb.com/online_c++_debugger](https://www.onlinegdb.com/online_c++_debugger)
 - Assembly 분석
   - [Compiler (Assembly 분석하기 좋다__https://godbolt.org/)](https://godbolt.org/)
+    - 옵션에 `--std=c23` 넣어주면 됨. 최신 컴파일러 선택
 
 - [코딩-C 개고생하면서 배우는C언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mauKnkqP6Vah7cgcvfJZg-f&si=5yZeK967zvIWUN03)
 
