@@ -5,6 +5,10 @@
 target
 build
 
+# clangd
+.cache
+
+
 # Prerequisites
 *.d
 
