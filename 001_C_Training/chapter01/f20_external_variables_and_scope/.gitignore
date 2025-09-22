@@ -4,6 +4,8 @@
 # build files
 target
 build
+CMakeLists.txt
+justfile
 
 # clangd
 .cache
