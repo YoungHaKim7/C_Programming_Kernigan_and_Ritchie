@@ -40,7 +40,7 @@ add_compile_options(
     # -std=c23
 )
 
-# Main executable with mandelbrot sources
+# Main executable with C sources
 add_executable(${ProjectId}
     src/main.c
     src/getline02.c
