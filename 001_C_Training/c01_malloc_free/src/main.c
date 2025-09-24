@@ -7,6 +7,11 @@ int main(void)
     *ptr = 42;
     printf("ptr : %p", &ptr);
     free(ptr);
-    // error
     return 0;
+    
+    // error
+    // int* ptr = malloc(sizeof(int));
+    // printf("ptr : %p", &ptr);
+    // free(ptr);
+    // *ptr = 42;
 }
