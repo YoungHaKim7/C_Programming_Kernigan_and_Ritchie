@@ -1,25 +1,6 @@
-# Result
+# When to allocate memory in C?
+- https://stackoverflow.com/questions/5043856/when-to-allocate-memory-in-c?rq=3
 
-```bash
-Decimal: 1000000
-Hex:     DEADBEEF
-Binary:  172 (0b1010'1100)
-Octal:   123456
+- C when to allocate and free memory - before function call, after function call...etc
+  - https://stackoverflow.com/questions/2998167/c-when-to-allocate-and-free-memory-before-function-call-after-function-call
 
-2D array (matrix)
-Matrix (3x4):
-
-  1   2   3   4
- 10  20  30  40
-100 200 300 400
-
-Matrix (2x3):
- 0  0  0
- 0  1  2
-
-Struct Example
-Student ID: 101
-Score: 85
-Grade: B
-Good job!
-```
