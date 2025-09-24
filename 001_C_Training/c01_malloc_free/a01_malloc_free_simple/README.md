@@ -23,6 +23,11 @@ return 0;
 
 
 ```bash
+$ /usr/bin/clang-20 -g -fsanitize=address -fno-omit-frame-pointer -c ./src/main.c
+$ /usr/bin/clang-20 -g -fsanitize=address *.o
+$ mv a.out *.o ./target
+$ ./target/a.out
+
 =================================================================
 ==1466==ERROR: AddressSanitizer: heap-use-after-free on address 0x7c02a31e0010 at pc 0x7fe2a439f728 bp 0x7fffc5ecc350 sp 0x7fffc5ecc348
 WRITE of size 4 at 0x7c02a31e0010 thread T0
