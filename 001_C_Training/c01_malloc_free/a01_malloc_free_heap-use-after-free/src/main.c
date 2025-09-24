@@ -10,7 +10,7 @@ int main(void)
     // free(ptr);
     // return 0;
 
-    // error code
+    // error code(ERROR: AddressSanitizer: heap-use-after-free)
     int* ptr = malloc(sizeof(int));
     printf("ptr : %p", &ptr);
     free(ptr);
