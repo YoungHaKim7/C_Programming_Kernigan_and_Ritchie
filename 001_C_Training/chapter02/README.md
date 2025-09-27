@@ -1,5 +1,8 @@
-# 목차) Chapter 2 - Types, Operators and Expressions
+# link
 
+<hr />
+
+# 목차) Chapter 2 - Types, Operators and Expressions
 
 ```
 Chapter 2 - Types, Operators and Expressions
@@ -165,7 +168,9 @@ int main(void) {
 }
 ```
 
-
+# C Operator Precedence
+- The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in descending precedence.
+  - https://en.cppreference.com/w/c/language/operator_precedence.html
 
 # `sizeof` operator
 - https://en.cppreference.com/w/c/language/sizeof.html
