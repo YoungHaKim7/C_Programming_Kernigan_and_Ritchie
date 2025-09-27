@@ -128,25 +128,9 @@ int main(void) {
 
 
 ```bash
+# clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
 
-```bash
-/usr/bin/clang-20 -O0 -g ./src/main.c -o a05_fmt_test
-mv a05_fmt_test ./target
-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --tool=memcheck --vgdb=yes --vgdb-error=0 ./target/a05_fmt_test
-==26057== Memcheck, a memory error detector
-==26057== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==26057== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
-==26057== Command: ./target/a05_fmt_test
-==26057==
-==26057== (action at startup) vgdb me ...
-==26057==
-==26057== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==26057==   /path/to/gdb ./target/a05_fmt_test
-==26057== and then give GDB the following command
-==26057==   target remote | /usr/local/libexec/valgrind/../../bin/vgdb --pid=26057
-==26057== --pid is optional if only one valgrind process is running
-==26057==
-
+/usr/bin/clang-20 -O0 -g -fsanitize=address -fno-omit-frame-pointer ./src/main.c
 
 ==12345==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000014
 READ of size 1 at 0x602000000014 thread T0
