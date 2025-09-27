@@ -40,5 +40,68 @@ numeric value is just 0.
 어떤 표현의 성격을 강조하기 위해 종종 0 대신에 쓰이지만
 숫자 값은 단지 0입니다.
 
+- (p21)
+- The body of the while now consists of an if, which in turn controls the increment ++nl. The
+if statement tests the parenthesized condition, and if the condition is true, executes the
+statement (or group of statements in braces) that follows. We have again indented to show
+what is controlled by what.
+The double equals sign== is the C notation for ``is equal to'' (like Pascal's single= or Fortran's
+.EQ.). This symbol is used to distinguish the equality test from the single= that C uses for
+assignment. A word of caution: newcomers to C occasionally write= when they mean==
+. As
+- we will see in Chapter 2, the result is usually a legal expression, so you will get no warning.
+A character written between single quotes represents an integer value equal to the numerical
+value of the character in the machine's character set. This is called a character constant,
+although it is just another way to write a small integer. So, for example, 'A' is a character
+constant; in the ASCII character set its value is 65, the internal representation of the character
+A. Of course, 'A' is to be preferred over 65: its meaning is obvious, and it is independent of a
+particular character set.
+- The escape sequences used in string constants are also legal in character constants, so '\n'
+stands for the value of the newline character, which is 10 in ASCII. You should note carefully
+that '\n' is a single character, and in expressions is just an integer; on the other hand, '\n' is
+a string constant that happens to contain only one character. The topic of strings versus
+characters is discussed further in Chapter 2.
+- While의 본문은 이제 if로 구성되며, 이는 차례로 증가 ++nl을 제어합니다. 그
+
+If 문은 괄호 안에 있는 조건을 테스트하고, 조건이 참이면,
+
+이어지는 문장(또는 중괄호 안의 문장 그룹). 우리는 보여주기 위해 다시 들여쓰기를 했다
+
+무엇에 의해 통제되는가.
+
+이중 등호==는 ``is equal to''에 대한 C 표기법이다 (파스칼의 싱글= 또는 포트란의
+
+. EQ.). 이 기호는 C가 사용하는 single=와 평등 테스트를 구별하는 데 사용됩니다.
+
+과제. 주의 사항: C에 새로 온 사람들은 가끔 그들이 의미할 때==를 쓴다.
+
+. 에 따라
+
+우리는 2장에서 보게 될 것입니다, 결과는 일반적으로 법적 표현이므로 경고를 받지 않을 것입니다.
+
+큰따옴표 사이에 쓰여진 문자는 숫자와 같은 정수 값을 나타냅니다.
+
+기계의 문자 집합에 있는 문자의 값. 이것을 문자 상수라고 합니다.
+
+비록 그것은 작은 정수를 쓰는 또 다른 방법일 뿐이지만. 예를 들어, 'A'는 문자입니다.
+
+상수; ASCII 문자 집합에서 그 값은 65이며, 문자의 내부 표현
+
+에이. 물론, 'A'는 65세 이상 선호된다: 그 의미는 명백하며, 독립적이다.
+
+특정 문자 집합.
+
+문자열 상수에 사용되는 이스케이프 시퀀스는 문자 상수에서도 합법이므로 '\n'
+
+ASCII에서 10인 줄 바꿈 문자의 값을 의미합니다. 당신은 주의 깊게 기록해야 합니다
+
+'\N'은 단일 문자이고, 표현식에서는 정수일 뿐이다; 반면에, '\n'은
+
+한 문자만 포함하는 문자열 상수. 문자열 대
+
+캐릭터는 2장에서 더 논의된다.
+
+
+
 # `sizeof` operator
 - https://en.cppreference.com/w/c/language/sizeof.html
