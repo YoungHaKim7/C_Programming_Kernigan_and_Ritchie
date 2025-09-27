@@ -101,6 +101,59 @@ ASCII에서 10인 줄 바꿈 문자의 값을 의미합니다. 당신은 주의 
 
 캐릭터는 2장에서 더 논의된다.
 
+You want a C example where a string printing (printf) runs off the end of the allocated buffer, and ASan reports a heap-buffer-overflow, stopping when it reaches the null terminator \0 outside the buffer.
+
+Here’s a minimal reproducible example:
+
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    // Allocate space for 4 chars (but no room for the '\0')
+    char *buf = malloc(4);
+    buf[0] = 'T';
+    buf[1] = 'E';
+    buf[2] = 'S';
+    buf[3] = 'T';  // <- No null terminator inside allocated memory
+
+    // printf will keep reading until it finds a '\0' (past the buffer)
+    printf("%s\n", buf);
+
+    free(buf);
+    return 0;
+}
+```
+
+
+```bash
+
+```bash
+/usr/bin/clang-20 -O0 -g ./src/main.c -o a05_fmt_test
+mv a05_fmt_test ./target
+valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --tool=memcheck --vgdb=yes --vgdb-error=0 ./target/a05_fmt_test
+==26057== Memcheck, a memory error detector
+==26057== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==26057== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
+==26057== Command: ./target/a05_fmt_test
+==26057==
+==26057== (action at startup) vgdb me ...
+==26057==
+==26057== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==26057==   /path/to/gdb ./target/a05_fmt_test
+==26057== and then give GDB the following command
+==26057==   target remote | /usr/local/libexec/valgrind/../../bin/vgdb --pid=26057
+==26057== --pid is optional if only one valgrind process is running
+==26057==
+
+
+==12345==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000014
+READ of size 1 at 0x602000000014 thread T0
+    #0 0x7f3c2c in vfprintf ...
+    #1 0x7f3c2c in printf ...
+    #2 0x4011d6 in main test.c:12
+```
 
 
 # `sizeof` operator
