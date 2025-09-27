@@ -136,7 +136,7 @@ int main(void) {
 READ of size 1 at 0x602000000014 thread T0
     #0 0x7f3c2c in vfprintf ...
     #1 0x7f3c2c in printf ...
-    #2 0x4011d6 in main test.c:12
+    #2 0x4011d6 in main main.c:12
 ```
 
 - 오류가 나지 않게 수정한 코드
