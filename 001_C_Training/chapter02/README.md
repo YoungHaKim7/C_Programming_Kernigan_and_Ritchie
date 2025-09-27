@@ -3,18 +3,18 @@
 
 ```
 Chapter 2 - Types, Operators and Expressions
-          2.1 Variable Names......................................................................................
-          2.2 Data Types and Sizes.......................................................................................
-          2.3 Constants.......................................................36
-          2.4 Declarations.............................................................................38
-          2.5 Arithmetic Operators.
-          2.6 Relational and Logical Operators..........................................m39
-          2.7 Type Conversions.................................................................40
-          2.8 Increment and Decrement Operators...............................................
-          2.9 Bitwise Operators......
-          2.10 Assignment Operators and Expressions......................................................................46
-          2.11 Conditional Expressions.............................................................................................47
-          2.12 Precedence and Order of Evaluatio
+  2.1 Variable Names.
+  2.2 Data Types and Sizes.
+  2.3 Constants.
+  2.4 Declarations.................................................38
+  2.5 Arithmetic Operators.
+  2.6 Relational and Logical Operators..........................................m39
+  2.7 Type Conversions.................................................................40
+  2.8 Increment and Decrement Operators...............................................
+  2.9 Bitwise Operators......
+  2.10 Assignment Operators and Expressions......................................................................46
+  2.11 Conditional Expressions.............................................................................................47
+  2.12 Precedence and Order of Evaluatio
 ```
 
 <hr />
