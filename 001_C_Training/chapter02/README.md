@@ -172,5 +172,9 @@ int main(void) {
 - The following table lists the precedence and associativity of C operators. Operators are listed top to bottom, in descending precedence.
   - https://en.cppreference.com/w/c/language/operator_precedence.html
 
+- Assignment operators
+  - Assignment and compound assignment operators are binary operators that modify the variable to their left using the value to their right.
+  - https://en.cppreference.com/w/c/language/operator_assignment.html
+
 # `sizeof` operator
 - https://en.cppreference.com/w/c/language/sizeof.html
