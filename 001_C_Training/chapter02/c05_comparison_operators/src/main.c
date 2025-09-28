@@ -32,5 +32,4 @@ int main(void)
     printf("a >= b → %d (", a >= b); print_binary(a >= b); printf(")\n");
 
     return 0;
-    return 0;
 }
