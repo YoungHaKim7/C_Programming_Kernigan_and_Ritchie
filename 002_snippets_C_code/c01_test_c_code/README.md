@@ -31,8 +31,6 @@ Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kerni
 
 # Result
 
-#
-
 ```bash
 === ATOI TESTS ===
 [0] '123' => 123
