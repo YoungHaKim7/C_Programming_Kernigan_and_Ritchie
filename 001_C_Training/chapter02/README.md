@@ -185,8 +185,8 @@ that takes two operands (a binary operator) has operands of different types, the
 promoted to the ``higher'' type before the operation proceeds. The result is of the integer type.
 Section 6 of Appendix A states the conversion rules precisely. If there are no unsigned
 operands, however, the following informal set of rules will suffice:
-  - • If either operand is long double, convert the other to long double.
-  - • Otherwise, if either operand is double, convert the other to double.
-  - • Otherwise, if either operand is float, convert the other to float.
-  - • Otherwise, convert char and short to int.
+  - • If either operand is `long double`, convert the other to `long double`.
+  - • Otherwise, if either operand is `double` , convert the other to `double` .
+  - • Otherwise, if either operand is `float`.  convert the other to `float` .
+  - • Otherwise, convert `char` and `short` to `int.` .
   - • Then, if either operand is long, convert the other to long.
