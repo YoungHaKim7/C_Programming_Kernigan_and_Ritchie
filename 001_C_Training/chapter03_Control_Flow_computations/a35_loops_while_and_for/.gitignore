@@ -7,6 +7,10 @@ build
 justfile
 CMakeLists.txt
 
+# test files
+CTestTestfile.cmake
+Testing/
+
 # clangd
 .cache
 
