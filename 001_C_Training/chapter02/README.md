@@ -190,3 +190,24 @@ operands, however, the following informal set of rules will suffice:
   - • Otherwise, if either operand is `float`.  convert the other to `float` .
   - • Otherwise, convert `char` and `short` to `int.` .
   - • Then, if either operand is long, convert the other to long.
+
+# 2.12 Precedence and Order of Evaluation(p48)
+
+
+|Operators| Associativity|
+|-|-|
+|() [] -> . |left to right|
+|! ~ ++ -- + - * (type) sizeof |right to left|
+|* / % |left to right|
+|+ - |left to right|
+|<< >> |left to right|
+|< <= > >= |left to right|
+|== != |left to right|
+|& |left to right|
+|^ |left to right|
+|| |left to right|
+|&& |left to right|
+||| |left to right|
+|?: |right to left|
+|= += -= *= /= %= &= ^= \|= <<= >>= |right to left|
+, |left to right|
