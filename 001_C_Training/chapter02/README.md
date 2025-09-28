@@ -189,7 +189,7 @@ operands, however, the following informal set of rules will suffice:
   - • Otherwise, if either operand is `double` , convert the other to `double` .
   - • Otherwise, if either operand is `float`.  convert the other to `float` .
   - • Otherwise, convert `char` and `short` to `int.` .
-  - • Then, if either operand is long, convert the other to long.
+  - • Then, if either operand is `long`, convert the other to `long`.
 
 # 2.12 Precedence and Order of Evaluation(p48)
 
