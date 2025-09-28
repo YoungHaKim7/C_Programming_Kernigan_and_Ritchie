@@ -15,14 +15,26 @@ int binsearch(int x, int v[], int n)
         else /* found match */
             return mid;
     }
-    return -1; /* no match */
+    printf("no match\n"); /* no match */
+    return -1;
 }
 
 int main(void)
 {
     int x_array[] = { 1, 4,  5, 6, 10, 11, 200, 400};
     int result = binsearch(20, x_array, 8);
-    printf("Found 20 at index: %d\n", result);
+    if (result == -1) {
+        printf("No match found.\n");
+    } else {
+        printf("Found %d at index: %d\n", x_array[result], result);
+    }
+
+    int result02 = binsearch(5, x_array, 8);
+    if (result02 == -1) {
+        printf("No match found.\n");
+    } else {
+        printf("Found %d at index: %d\n", x_array[result02], result02);
+    }
 
     return 0;
 }
