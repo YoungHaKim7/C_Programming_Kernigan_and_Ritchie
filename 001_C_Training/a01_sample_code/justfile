@@ -237,11 +237,22 @@ as:
 	mv *.bc {{target_dir}}
 
 # clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
+[linux]
 san SAN:
 	rm -rf target
 	mkdir -p target
 	{{clang_which}} -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{source}}
 	{{clang_which}} -g -fsanitize={{SAN}} *.o 
+	mv a.out *.o {{target_dir}}
+	{{target_dir}}/a.out
+
+# clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
+[macos]
+san SAN:
+	rm -rf target
+	mkdir -p target
+	{{macos_clang_which}} -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{source}}
+	{{macos_clang_which}} -g -fsanitize={{SAN}} *.o 
 	mv a.out *.o {{target_dir}}
 	{{target_dir}}/a.out
 
@@ -502,3 +513,4 @@ vscode:
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json
+
