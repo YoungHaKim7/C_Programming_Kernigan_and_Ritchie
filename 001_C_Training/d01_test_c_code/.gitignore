@@ -6,6 +6,7 @@ target
 build
 justfile
 CMakeLists.txt
+Testing/
 
 # clangd
 .cache
