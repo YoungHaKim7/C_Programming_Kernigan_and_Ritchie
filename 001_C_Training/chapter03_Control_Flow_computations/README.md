@@ -32,3 +32,19 @@ ends a block.
 if, other, while, for 다음 문장들은 다른 문장입니다. (변수는 내부에 선언될 수 있습니다)
 블록; 이에 대해서는 4장에서 이야기하겠습니다.) 오른쪽 괄호 뒤에는 세미콜론이 없습니다
 블록을 끝냅니다.
+
+<hr />
+
+# 3.5 Loops - While and For
+
+# The structure of the program reflects the form of the input:(p.54)
+- 프로그램의 구조는 입력의 형태를 반영합니다:
+  - skip white space, if any
+  - get sign, if any
+  - get integer part and convert it
+    - 공백이 있는 경우 건너뛰기
+    - 표지판 받기, 만약 있다면
+    - 정수 부분을 가져와서 변환합니다
+
+- Each step does its part, and leaves things in a clean state for the next. The whole process terminates on the first character that could not be part of a number.
+  - 각 단계는 제 역할을 다하며 다음 단계를 위해 깨끗한 상태로 둡니다. 전체 과정은 숫자의 일부가 될 수 없는 첫 번째 문자로 끝납니다.
