@@ -1,3 +1,6 @@
+# Windows에서 c/c++ (VSCode)세팅
+- https://miaow-miaow.tistory.com/126
+
 # snippets C
 
 - array print패턴
