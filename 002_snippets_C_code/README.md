@@ -1,7 +1,7 @@
 # snippets C
 
 - array print패턴
-  - [c01 test c code 참고](002_snippets_C_code/c01_test_c_code)
+  - [c01 test c code 참고](./c01_test_c_code)
 
 ```c
 void print_array(const char *msg, int v[], int n) {
