@@ -222,4 +222,5 @@ operands, however, the following informal set of rules will suffice:
 
 
 |Basis | 	Logical<br />  Operators	| Bitwise <br /> Operators | 
+|-|-|-|
 |Operators	| AND (`&&`),<br />  OR (`||`),<br /> NOT (`!`) |AND (`&`), <br />OR  (`|`),XOR (`^`),<br /> Complement (`^`) | 
