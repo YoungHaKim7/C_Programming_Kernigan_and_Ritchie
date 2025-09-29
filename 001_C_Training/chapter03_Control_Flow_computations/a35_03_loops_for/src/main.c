@@ -2,12 +2,15 @@
 
 int main(void)
 {
-    // ch 숫자로 선언
     int ch;
+
     printf("Type some text (Ctrl+D to end):\n");
-    while ((ch = getchar()) != EOF) {
+
+    // for loop version
+    for (ch = getchar(); ch != EOF; ch = getchar()) {
         putchar(ch); // echo back the character
     }
+
     printf("\nDone!\n");
     return 0;
 }
