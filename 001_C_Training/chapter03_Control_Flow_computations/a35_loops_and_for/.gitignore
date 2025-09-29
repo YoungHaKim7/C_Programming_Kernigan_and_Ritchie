@@ -13,7 +13,6 @@ Testing/
 # clangd
 .cache
 
-
 # Prerequisites
 *.d
 
