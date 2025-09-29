@@ -15,7 +15,10 @@ int main(void)
 {
     int a, b;
 
+    // 0001 0100
     a = 20;
+
+    // 0000 1010
     b = 10;
 
     printf("Initial values: \n\ta = %d (", a);
@@ -83,6 +86,12 @@ int main(void)
     a >>= b;
     printf("(>>=) a >>= b → %d (", a);
     print_binary(a);
+    printf(")\n");
+
+    int aa = 0b0100;
+    aa <<= 2;
+    printf("(<<=) aa <<= 2 → %d (", aa);
+    print_binary(aa);
     printf(")\n");
 
     return 0;
