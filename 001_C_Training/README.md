@@ -15,3 +15,6 @@
 
 # C type
 - https://en.wikipedia.org/wiki/C_data_types
+
+- Good examples using 'union' with 'enum'?
+  - https://stackoverflow.com/questions/25926862/good-examples-using-union-with-enum

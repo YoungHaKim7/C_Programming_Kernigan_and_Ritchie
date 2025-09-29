@@ -42,7 +42,7 @@ int main(void)
     };
     struct Point p1 = { 10, 20 };
 
-    /* Union */
+    /* Union   enum*/
     union Data {
         int i;
         float f;
