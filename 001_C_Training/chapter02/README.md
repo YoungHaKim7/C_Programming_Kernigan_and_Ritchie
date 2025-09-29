@@ -218,3 +218,8 @@ operands, however, the following informal set of rules will suffice:
 
 # Logical Operators In C (AND, OR, NOT, XOR) With Code Examples
 - https://unstop.com/blog/logical-operators-in-c/amp
+
+
+
+|Basis | 	Logical<br />  Operators	| Bitwise <br /> Operators | 
+|Operators	| AND (`&&`),<br />  OR (`||`),<br /> NOT (`!`) |AND (`&`), <br />OR  (`|`),XOR (`^`),<br /> Complement (`^`) | 
