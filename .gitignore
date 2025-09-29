@@ -1,3 +1,18 @@
+# General(macOS)
+.DS_Store
+
+# build files
+target
+build
+justfile
+
+# testing files
+Testing/
+CTestTestfile.cmake
+
+# clangd
+.cache
+
 # Prerequisites
 *.d
 
