@@ -2,18 +2,19 @@
 
 ```bash
 digits =
-0 the total number of numbers : 2 ea
+0 the total number of numbers : 3 ea
 1 the total number of numbers : 1 ea
 2 the total number of numbers : 2 ea
 3 the total number of numbers : 1 ea
 4 the total number of numbers : 1 ea
 5 the total number of numbers : 0 ea
-6 the total number of numbers : 0 ea
+6 the total number of numbers : 1 ea
 7 the total number of numbers : 0 ea
-8 the total number of numbers : 0 ea
-9 the total number of numbers : 0 ea
+8 the total number of numbers : 1 ea
+9 the total number of numbers : 1 ea
 
- White Space = 4
+ White Space = 6
+ New Line = 5
  Letters, etc, other = 10
 
 Done!
