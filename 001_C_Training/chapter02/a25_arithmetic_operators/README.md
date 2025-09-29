@@ -1,7 +1,7 @@
 # Result
 
 ```bash
-rget/a25_arithmetic_operators
+
 2024 is a leap year
 
 Fahrenheit to Celsius table:
