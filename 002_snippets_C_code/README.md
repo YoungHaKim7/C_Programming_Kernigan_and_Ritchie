@@ -17,5 +17,5 @@ void print_array(const char *msg, int v[], int n) {
 }
 ```
 
-# santinizer Doc
+# sanitizers Doc(Google에서 만듬)
 - https://github.com/google/sanitizers
