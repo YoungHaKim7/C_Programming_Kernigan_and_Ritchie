@@ -211,3 +211,8 @@ operands, however, the following informal set of rules will suffice:
 |?: |right to left|
 |= += -= *= /= %= &= ^= \|= <<= >>= |right to left|
 , |left to right|
+
+# `%zu` 를 알아보자
+- align `%zu`
+  - https://leeiopd.tistory.com/entry/%EB%94%B0%EB%B0%B0%EC%94%A8-1512-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%A4%84%EB%A7%9E%EC%B6%A4-alignof-alignas
+

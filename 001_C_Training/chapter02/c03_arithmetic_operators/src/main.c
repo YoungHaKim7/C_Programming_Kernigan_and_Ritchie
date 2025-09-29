@@ -55,7 +55,9 @@ int main(void)
     printf("a | b → %d (", a | b);
     print_binary(a | b);
     printf(")\n");
-    printf("a ^ b → %d (", a ^ b);
+    int aa = 20;
+    int bb = 10;
+    printf("a ^ b → %d (", aa ^ bb);
     print_binary(a ^ b);
     printf(")\n");
     printf("a << b → %d (", a << b);
