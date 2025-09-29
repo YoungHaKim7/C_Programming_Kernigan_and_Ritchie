@@ -219,8 +219,15 @@ operands, however, the following informal set of rules will suffice:
 # Logical Operators In C (AND, OR, NOT, XOR) With Code Examples
 - https://unstop.com/blog/logical-operators-in-c/amp
 
-
-
 |Basis | 	Logical<br />  Operators	| Bitwise <br /> Operators | 
 |-|-|-|
 |Operators	| AND (`&&`),<br />  OR (`\|\|`),<br /> NOT (`!`) |AND (`&`), <br />OR  (`\|`),<br />XOR (`^`),<br /> Complement (`~`) | 
+
+
+# sizeof operator
+- Queries size of the object or type.
+  - Used when actual size of the object must be known.
+- 객체 또는 유형의 크기를 쿼리합니다.
+  - 객체의 실제 크기를 알아야 할 때 사용됩니다.
+- https://en.cppreference.com/w/c/language/sizeof.html
+
