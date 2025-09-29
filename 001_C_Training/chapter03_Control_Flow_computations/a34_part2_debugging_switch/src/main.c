@@ -31,7 +31,7 @@ int main()
             nwhite++; // Space or tab
             break;
         case '\n':
-            n++; // Space or tab
+            n++; // New Line
             break;
         default: // Any other character (non-digit, non-space/tab)
             nother++;
