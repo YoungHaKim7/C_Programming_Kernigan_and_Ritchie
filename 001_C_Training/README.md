@@ -12,3 +12,6 @@
 
 # fprint
 - https://en.cppreference.com/w/c/io/fprintf
+
+# C type
+- https://en.wikipedia.org/wiki/C_data_types

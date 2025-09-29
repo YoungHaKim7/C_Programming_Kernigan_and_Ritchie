@@ -16,3 +16,6 @@ void print_array(const char *msg, int v[], int n) {
     printf("\n");
 }
 ```
+
+# santinizer Doc
+- https://github.com/google/sanitizers

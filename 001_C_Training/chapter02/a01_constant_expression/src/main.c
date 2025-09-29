@@ -30,6 +30,7 @@ int strlen(char s[])
 
 int main(void)
 {
+    // string= char + char + char + char \n(null)
     char test[] = "Hello, world!";
 
     printf("String: %s\n", test);

@@ -7,7 +7,9 @@ int main(void)
     int lower = 0, upper = 300, step = 20;
     int count = 42;
     unsigned int ucount = 100u;
+    // i32
     long big = 1000000L;
+    // i16
     short small = -10;
 
     /* Characters and strings */
@@ -18,7 +20,9 @@ int main(void)
     const char msg[] = "warning: ";
 
     /* Floating point */
+    // f32
     float eps = 1.0e-5f;
+    // f64
     double pi = 3.141592653589793;
     const double e = 2.71828182845905;
 
