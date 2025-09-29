@@ -13,7 +13,6 @@ CTestTestfile.cmake
 # clangd
 .cache
 
-
 # Prerequisites
 *.d
 
