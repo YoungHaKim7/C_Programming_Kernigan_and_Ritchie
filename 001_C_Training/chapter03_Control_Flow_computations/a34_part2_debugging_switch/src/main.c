@@ -5,7 +5,8 @@ int main()
     // Pre-defined input (consider making this a parameter or array of char)
     // For simplicity, we'll use an array for direct "hard-coded" input
     const char input[]
-        = "\nHello\n123  \nWorld \n4200  68 90\n"; // Adjust to match your exact input
+        = "\nHello\n123  \nWorld \n4200  68 90\n"; // Adjust to match your exact
+                                                   // input
 
     int c;
     int nwhite = 0, n = 0, nother = 0, ndigit[10] = { 0 }; // Initialize counts
@@ -44,9 +45,11 @@ int main()
         if (ndigit[i])
             printf("%d the total number of numbers : %d ea\n", i, ndigit[i]);
         else
-            printf("%d the total number of numbers : 0 ea\n", i); // Clean up empty digits if any
+            printf("%d the total number of numbers : 0 ea\n",
+                i); // Clean up empty digits if any
     }
-    printf("\n White Space = %d\n New Line = %d\n Letters, etc, other = %d\n", nwhite,n,  nother);
+    printf("\n White Space = %d\n New Line = %d\n Letters, etc, other = %d\n",
+        nwhite, n, nother);
     printf("\nDone!\n");
 
     return 0;
