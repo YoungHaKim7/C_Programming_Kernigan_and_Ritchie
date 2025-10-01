@@ -1,11 +1,38 @@
 # Test C code
 
+- `just ctest`
+
 ```bash
-just ctest
+$ just ctest
 
+cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -S . -B build
+-- The C compiler identification is GNU 15.1.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/gcc-15/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (8.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c01_test_c_code/build
+cmake --build build
+[ 50%] Building C object CMakeFiles/c01_test_c_code.dir/src/main.c.o
+[100%] Linking C executable target/c01_test_c_code
+[100%] Built target c01_test_c_code
+ctest --test-dir ./build
+Test project /home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c01_test_c_code/build
+    Start 1: run_c01_test_c_code
+1/1 Test #1: run_c01_test_c_code ..............   Passed    0.68 sec
 
-# or
+100% tests passed, 0 tests failed out of 1
 
+Total Test time (real) =   0.68 sec
+
+```
+
+- `ctest`
+
+```bash
 cmake -S . -B build
 cmake --build build
 cd build
