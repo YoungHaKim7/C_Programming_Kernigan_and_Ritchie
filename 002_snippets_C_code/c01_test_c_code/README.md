@@ -1,7 +1,7 @@
 # link
 
 - [justfile setting복사해서 쓰기](#justfile)
-  - [justfile통합ver(LinuxOS vs macOS인지 if문으로 처리)]()
+  - [justfile통합ver(LinuxOS vs macOS인지 if문으로 처리)](#justfile통합verlinuxos-vs-macos인지-if문으로-처리)
 
 <hr />
 
