@@ -7,16 +7,39 @@ os := `uname`
 # project name
 project_name := `basename "$(pwd)"`
 
+# clang & gcc basic & clang-format basic
+clang := `which clang` 
+gcc := `which gcc`
+clang_format_basic := `which clang-format`
+
 # compiler settings
-clang_which := if os == "Linux" { "/usr/bin/clang-20" } else { "/opt/homebrew/opt/llvm/bin/clang" }
-gcc_which := if os == "Linux" { "/opt/gcc-15/bin/gcc" } else { "/opt/homebrew/opt/gcc@15/bin/gcc-15" }
+clang_which := if os == "Linux" { \
+  "/usr/bin/clang-20" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang" \
+  } else { \
+    clang \
+  }
+gcc_which := if os == "Linux" { \
+    "/opt/gcc-15/bin/gcc" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/gcc@15/bin/gcc-15" \
+  } else { \
+    gcc \
+  }
 
 # Source and target directories
 src_dir := "./src"
 target_dir := "./target"
 
 # clang-format 20
-clang_format := if os == "Linux" { "clang-format-20" } else { "/opt/homebrew/opt/llvm/bin/clang-format" }
+clang_format := if os == "Linux" { \
+    "clang-format-20" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang-format" \
+  } else { \
+    clang_format_basic \
+  }
 
 # Files
 source := src_dir+"/main.c"
@@ -285,7 +308,6 @@ xx:
 	xxd -c 16 {{project_name}} > hex_print.txt
 	mv {{project_name}} {{project_name}}.* hex_print.txt {{target_dir}}
 
-
 # clean files
 clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
@@ -373,7 +395,6 @@ codelldb:
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json
-
 
 # Debugging(VSCode)
 vscode:
