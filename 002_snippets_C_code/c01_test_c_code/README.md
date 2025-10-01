@@ -1,3 +1,6 @@
+# cmake (ctest 문서)
+- https://cmake.org/cmake/help/latest/manual/ctest.1.html
+
 # Test C code
 
 - `just ctest`
