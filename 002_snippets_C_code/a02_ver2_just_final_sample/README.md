@@ -1,7 +1,6 @@
 # justfile(최종)
 
 ```justfile
-
 # Detect OS
 os := `uname`
 
@@ -51,15 +50,15 @@ macos_fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+clang_format+" -sty
 
 # (C)gcc compile(LinuxOS)
 r:
-	rm -rf target_dir
-	mkdir -p target_dir
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	{{gcc_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
 ro:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	{{clang_which}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
@@ -99,8 +98,8 @@ cro3:
 
 # zig C compile(LinuxOS)
 zr:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	export CC={{gcc_which}}
 	zig cc {{ldflags_common}} -o {{target}} {{source}}
 	{{target}}
@@ -116,14 +115,14 @@ ctest:
 
 # clang build
 b:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	{{clang_which}} {{ldflags_debug}} -o {{target}} {{source}}
 
 # move target
 move:
-	rm -rf target
-	mkdir target
+	rm -rf {{target_dir}}
+	mkdir {{target_dir}}
 	mv CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build.ninja *.bc *.i *.s *.o *.ll a.out target
 
 # .clang-format init(LinuxOS/macOS)
