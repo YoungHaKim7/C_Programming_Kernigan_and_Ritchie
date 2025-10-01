@@ -635,14 +635,6 @@ project_name := `basename "$(pwd)"`
 clang_which := if os == "Linux" { "/usr/bin/clang-20" } else { "/opt/homebrew/opt/llvm/bin/clang" }
 gcc_which := if os == "Linux" { "/opt/gcc-15/bin/gcc" } else { "/opt/homebrew/opt/gcc@15/bin/gcc-15" }
 
-# linuxOS
-# clang_which := "/usr/bin/clang-20"
-# gcc_which := "/opt/gcc-15/bin/gcc"
-
-# macOS
-macos_clang_which := "/opt/homebrew/opt/llvm/bin/clang"
-macos_gcc_which := "/opt/homebrew/opt/gcc@15/bin/gcc-15"
-
 # Source and target directories
 src_dir := "./src"
 target_dir := "./target"
@@ -812,22 +804,11 @@ as:
 	mv *.bc {{target_dir}}
 
 # clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
-[linux]
 san SAN:
 	rm -rf target
 	mkdir -p target
 	{{clang_which}} -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{source}}
 	{{clang_which}} -g -fsanitize={{SAN}} *.o 
-	mv a.out *.o {{target_dir}}
-	{{target_dir}}/a.out
-
-# clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
-[macos]
-san SAN:
-	rm -rf target
-	mkdir -p target
-	{{macos_clang_which}} -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{source}}
-	{{macos_clang_which}} -g -fsanitize={{SAN}} *.o 
 	mv a.out *.o {{target_dir}}
 	{{target_dir}}/a.out
 
@@ -869,7 +850,7 @@ leaks:
 leaks:
 	rm -rf target
 	mkdir -p target
-	{{macos_clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{target}}
+	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{target}}
 	leaks --atExit -- {{target}}
 
 # leak memory check(valgrind)
@@ -900,11 +881,10 @@ valgrind_memcheck:
 	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --tool=memcheck --vgdb=yes --vgdb-error=0 {{target_dir }}/{{project_name}}
  
 # thread check(data race)
-[macos]
 thread:
 	rm -rf target
 	mkdir -p target
-	{{macos_clang_which}} {{ldflags_fsanitize_thread}} {{source}} -o {{target}}
+	{{clang_which}} {{ldflags_fsanitize_thread}} {{source}} -o {{target}}
 	{{target}}
 
 
@@ -933,7 +913,7 @@ xx:
 xx:
 	rm -rf target
 	mkdir -p target
-	{{macos_clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{project_name}}
+	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{project_name}}
 	xxd -c 16 {{project_name}} > hex_print.txt
 	mv {{project_name}} {{project_name}}.* hex_print.txt {{target_dir}}
 
