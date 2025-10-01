@@ -75,7 +75,7 @@ macos_fmt_flags := ". -iname '*.cpp' \
   +clang_format+ \
   " -style=file -i --files=/dev/stdin"
 
-# fast fmt(fd-find / LinuxOS)
+# fast fmt(LinuxOS / macOS)(Install "cargo install fd-find")
 fm_flags := "-e c \
   -e h \
   -e cpp \
@@ -83,16 +83,6 @@ fm_flags := "-e c \
   -e cc \
   -e cxx -x " \
   +clang_format+  \
-  " -style=file -i {} \\;"
-
-# fast fmt(fd-find / macOS)
-macos_fm_flags := "-e c \
-  -e h \
-  -e cpp \
-  -e hpp \
-  -e cc \
-  -e cxx -x " \
-  +clang_format+ \
   " -style=file -i {} \\;"
 
 # (C)gcc compile(LinuxOS)
@@ -187,15 +177,9 @@ fmt:
 fmt:
 	find {{macos_fmt_flags}}
 
-# (fast).clang-format fmt(cargo install fd-find)(LinuxOS)
-[linux]
+# (fast).clang-format fmt(cargo install fd-find)(LinuxOS / macOS)
 fm:
 	fd {{fm_flags}}
-
-# (fast).clang-format fmt(cargo install fd-find)(macOS)
-[macos]
-fm:
-	fd {{macos_fm_flags}}
 
 # clang LLVM emit-file
 ll:
