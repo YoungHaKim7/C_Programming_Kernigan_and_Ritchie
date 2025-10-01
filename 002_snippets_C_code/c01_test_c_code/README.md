@@ -249,7 +249,7 @@ ctest:
 	ctest --test-dir ./build
 
 # cmake ctest(macOS)
-[linux]
+[macos]
 ctest:
 	rm -rf build
 	mkdir -p build
