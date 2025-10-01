@@ -4,7 +4,6 @@
 # build files
 target
 build
-justfile
 
 # testing files
 Testing/
