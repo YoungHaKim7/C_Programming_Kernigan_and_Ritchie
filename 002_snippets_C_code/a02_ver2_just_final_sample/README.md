@@ -276,7 +276,7 @@ xx:
 	xxd -c 16 {{project_name}} > hex_print.txt
 	mv {{project_name}} hex_print.txt {{target_dir}}
 
-# hex view
+# hex view("rg -i <search>" | "grep -rni <search>")
 [macos]
 xx:
 	rm -rf target
