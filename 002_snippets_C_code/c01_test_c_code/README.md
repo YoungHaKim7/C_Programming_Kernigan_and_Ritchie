@@ -238,6 +238,25 @@ cro3:
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
 	./build/target/{{project_name}}
 	
+# cmake ctest(LinuxOS)
+[linux]
+ctest:
+	rm -rf build
+	mkdir -p build
+	cmake -D CMAKE_C_COMPILER={{gcc_which}} \
+		  -S . -B build
+	cmake --build build
+	ctest --test-dir ./build
+
+# cmake ctest(macOS)
+[linux]
+ctest:
+	rm -rf build
+	mkdir -p build
+	cmake -D CMAKE_C_COMPILER={{macos_gcc_which}} \
+		  -S . -B build
+	cmake --build build
+	ctest --test-dir ./build
 
 # zig C compile(LinuxOS)
 [linux]
@@ -247,15 +266,6 @@ zr:
 	export CC={{gcc_which}}
 	zig cc {{ldflags_common}} -o {{target}} {{source}}
 	{{target}}
-
-	
-ctest:
-	rm -rf build
-	mkdir -p build
-	cmake -D CMAKE_C_COMPILER={{gcc_which}} \
-		  -S . -B build
-	cmake --build build
-	ctest --test-dir ./build
 
 # zig C compile(macOS)
 [macos]
