@@ -71,7 +71,7 @@ cr:
 	cmake -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/target/{{project_name}}
+	./build/{{target}}
 
 # cmake compile(LinuxOS)
 cro:
