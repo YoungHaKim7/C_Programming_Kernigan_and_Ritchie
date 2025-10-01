@@ -1,6 +1,7 @@
 # link
 
 - [C type총정리 굿..이것만 공부해도 되겠네 ㅋ](#c-type)
+  - https://en.wikipedia.org/wiki/C_data_types
 
 <hr />
 
@@ -33,7 +34,7 @@
 </th>
 <th>Explanation
 </th>
-<th>Size (bits)<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite-bracket">[</span>a<span class="cite-bracket">]</span></a></sup>
+<th>Size (bits)<sup id="cite_ref-3" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-3"><span class="cite-bracket">[</span>a<span class="cite-bracket">]</span></a></sup>
 </th>
 <th>Format specifier
 </th>
@@ -43,7 +44,7 @@
 </th></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">bool</span></td>
-<td>Boolean type, added in <a href="/wiki/C23_(C_standard_revision)" title="C23 (C standard revision)">C23</a>. (Previously <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">_Bool</span> added in <a href="/wiki/C99" title="C99">C99</a>,<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span class="cite-bracket">[</span>3<span class="cite-bracket">]</span></a></sup> but its size and its range were not specified.)</td>
+<td>Boolean type, added in <a href="/wiki/C23_(C_standard_revision)" title="C23 (C standard revision)">C23</a>. (Previously <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">_Bool</span> added in <a href="/wiki/C99" title="C99">C99</a>,<sup id="cite_ref-4" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-4"><span class="cite-bracket">[</span>3<span class="cite-bracket">]</span></a></sup> but its size and its range were not specified.)</td>
 <td>1 (exact)</td>
 <td><code>%d</code></td>
 <td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">false</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">true</span>]</td>
@@ -51,7 +52,7 @@
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">char</span></td>
-<td>Smallest addressable unit of the machine that can contain basic character set. It is an <a href="/wiki/Integer_(computer_science)" title="Integer (computer science)">integer</a> type. Actual type can be either signed or unsigned. It contains <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">CHAR_BIT</span> bits.<sup id="cite_ref-c99sizes_5-0" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
+<td>Smallest addressable unit of the machine that can contain basic character set. It is an <a href="/wiki/Integer_(computer_science)" title="Integer (computer science)">integer</a> type. Actual type can be either signed or unsigned. It contains <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">CHAR_BIT</span> bits.<sup id="cite_ref-c99sizes_5-0" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
 <td>≥8</td>
 <td><code>%c</code></td>
 <td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">CHAR_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">CHAR_MAX</span>]</td>
@@ -59,15 +60,15 @@
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">signed char</span></td>
-<td>Of the same size as <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">char</span>, but guaranteed to be signed. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[−127, +127]</span> range.<sup id="cite_ref-c99sizes_5-1" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-0" class="reference"><a href="#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
+<td>Of the same size as <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">char</span>, but guaranteed to be signed. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[−127, +127]</span> range.<sup id="cite_ref-c99sizes_5-1" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-0" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
 <td>≥8</td>
 <td><code>%c</code><sup id="cite_ref-9" class="reference"><a href="#cite_note-9"><span class="cite-bracket">[</span>c<span class="cite-bracket">]</span></a></sup></td>
-<td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">SCHAR_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">SCHAR_MAX</span>]<sup id="cite_ref-10" class="reference"><a href="#cite_note-10"><span class="cite-bracket">[</span>7<span class="cite-bracket">]</span></a></sup></td>
+<td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">SCHAR_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">SCHAR_MAX</span>]<sup id="cite_ref-10" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-10"><span class="cite-bracket">[</span>7<span class="cite-bracket">]</span></a></sup></td>
 <td data-sort-value="" style="background: var(--background-color-interactive, #ececec); color: var(--color-base, inherit); vertical-align: middle; text-align: center;" class="table-na">—
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">unsigned char</span></td>
-<td>Of the same size as <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">char</span>, but guaranteed to be unsigned. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[0, 255]</span> range.<sup id="cite_ref-c99generalrepr_11-0" class="reference"><a href="#cite_note-c99generalrepr-11"><span class="cite-bracket">[</span>8<span class="cite-bracket">]</span></a></sup></td>
+<td>Of the same size as <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">char</span>, but guaranteed to be unsigned. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[0, 255]</span> range.<sup id="cite_ref-c99generalrepr_11-0" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99generalrepr-11"><span class="cite-bracket">[</span>8<span class="cite-bracket">]</span></a></sup></td>
 <td>≥8</td>
 <td><code>%c</code><sup id="cite_ref-12" class="reference"><a href="#cite_note-12"><span class="cite-bracket">[</span>d<span class="cite-bracket">]</span></a></sup></td>
 <td>[0, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">UCHAR_MAX</span>]</td>
@@ -81,7 +82,7 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">signed short int</span></li></ul>
 </div>
 </td>
-<td><i>Short</i> signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2995672330000000000♠"></span>−32<span style="margin-left:.25em;">767</span></span>, <span class="nowrap"><span data-sort-value="7004327670000000000♠"></span>+32<span style="margin-left:.25em;">767</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-2" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-1" class="reference"><a href="#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
+<td><i>Short</i> signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2995672330000000000♠"></span>−32<span style="margin-left:.25em;">767</span></span>, <span class="nowrap"><span data-sort-value="7004327670000000000♠"></span>+32<span style="margin-left:.25em;">767</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-2" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-1" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
 <td>≥16</td>
 <td><code>%hi</code> or <code>%hd</code></td>
 <td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">SHRT_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">SHRT_MAX</span>]</td>
@@ -93,7 +94,7 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">unsigned short int</span></li></ul>
 </div>
 </td>
-<td><i>Short</i> unsigned integer type. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7004655350000000000♠"></span>65<span style="margin-left:.25em;">535</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-3" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
+<td><i>Short</i> unsigned integer type. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7004655350000000000♠"></span>65<span style="margin-left:.25em;">535</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-3" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
 <td>≥16</td>
 <td><code>%hu</code></td>
 <td>[0, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">USHRT_MAX</span>]</td>
@@ -106,11 +107,11 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">signed int</span></li></ul>
 </div>
 </td>
-<td>Basic signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2995672330000000000♠"></span>−32<span style="margin-left:.25em;">767</span></span>, <span class="nowrap"><span data-sort-value="7004327670000000000♠"></span>+32<span style="margin-left:.25em;">767</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-4" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-2" class="reference"><a href="#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
+<td>Basic signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2995672330000000000♠"></span>−32<span style="margin-left:.25em;">767</span></span>, <span class="nowrap"><span data-sort-value="7004327670000000000♠"></span>+32<span style="margin-left:.25em;">767</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-4" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-2" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
 <td>≥16</td>
 <td><code>%i</code> or <code>%d</code></td>
 <td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">INT_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">INT_MAX</span>]</td>
-<td style="background: #EEE; color:black; vertical-align: middle; text-align: center;" class="table-cast">none<sup id="cite_ref-c99intconst_13-0" class="reference"><a href="#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
+<td style="background: #EEE; color:black; vertical-align: middle; text-align: center;" class="table-cast">none<sup id="cite_ref-c99intconst_13-0" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist">
@@ -118,11 +119,11 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">unsigned int</span></li></ul>
 </div>
 </td>
-<td>Basic unsigned integer type. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7004655350000000000♠"></span>65<span style="margin-left:.25em;">535</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-5" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
+<td>Basic unsigned integer type. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7004655350000000000♠"></span>65<span style="margin-left:.25em;">535</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-5" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
 <td>≥16</td>
 <td><code>%u</code></td>
 <td>[0, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">UINT_MAX</span>]</td>
-<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">u</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">U</span><sup id="cite_ref-c99intconst_13-1" class="reference"><a href="#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
+<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">u</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">U</span><sup id="cite_ref-c99intconst_13-1" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist">
@@ -132,11 +133,11 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">signed long int</span></li></ul>
 </div>
 </td>
-<td><i>Long</i> signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2990785251635300000♠"></span>−2<span style="margin-left:.25em;">147</span><span style="margin-left:.25em;">483</span><span style="margin-left:.25em;">647</span></span>, <span class="nowrap"><span data-sort-value="7009214748364700000♠"></span>+2<span style="margin-left:.25em;">147</span><span style="margin-left:.25em;">483</span><span style="margin-left:.25em;">647</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-6" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-3" class="reference"><a href="#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
+<td><i>Long</i> signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2990785251635300000♠"></span>−2<span style="margin-left:.25em;">147</span><span style="margin-left:.25em;">483</span><span style="margin-left:.25em;">647</span></span>, <span class="nowrap"><span data-sort-value="7009214748364700000♠"></span>+2<span style="margin-left:.25em;">147</span><span style="margin-left:.25em;">483</span><span style="margin-left:.25em;">647</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-6" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-3" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup></td>
 <td>≥32</td>
 <td><code>%li</code> or <code>%ld</code></td>
 <td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LONG_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LONG_MAX</span>]</td>
-<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">l</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">L</span><sup id="cite_ref-c99intconst_13-2" class="reference"><a href="#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
+<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">l</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">L</span><sup id="cite_ref-c99intconst_13-2" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist">
@@ -144,11 +145,11 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">unsigned long int</span></li></ul>
 </div>
 </td>
-<td><i>Long</i> unsigned integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7009429496729500000♠"></span>4<span style="margin-left:.25em;">294</span><span style="margin-left:.25em;">967</span><span style="margin-left:.25em;">295</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-7" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
+<td><i>Long</i> unsigned integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7009429496729500000♠"></span>4<span style="margin-left:.25em;">294</span><span style="margin-left:.25em;">967</span><span style="margin-left:.25em;">295</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-7" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup></td>
 <td>≥32</td>
 <td><code>%lu</code></td>
 <td>[0, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">ULONG_MAX</span>]</td>
-<td>both <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">u</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">U</span> and <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">l</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">L</span><sup id="cite_ref-c99intconst_13-3" class="reference"><a href="#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
+<td>both <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">u</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">U</span> and <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">l</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">L</span><sup id="cite_ref-c99intconst_13-3" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist">
@@ -158,11 +159,11 @@
 <li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">signed long long int</span></li></ul>
 </div>
 </td>
-<td><i>Long long</i> signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2981077662796314522♠"></span>−9<span style="margin-left:.25em;">223</span><span style="margin-left:.25em;">372</span><span style="margin-left:.25em;">036</span><span style="margin-left:.25em;">854</span><span style="margin-left:.25em;">775</span><span style="margin-left:.25em;">807</span></span>, <span class="nowrap"><span data-sort-value="7018922337203685477♠"></span>+9<span style="margin-left:.25em;">223</span><span style="margin-left:.25em;">372</span><span style="margin-left:.25em;">036</span><span style="margin-left:.25em;">854</span><span style="margin-left:.25em;">775</span><span style="margin-left:.25em;">807</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-8" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-4" class="reference"><a href="#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup> Specified since the <a href="/wiki/C99" title="C99">C99</a> version of the standard.</td>
+<td><i>Long long</i> signed integer type. Capable of containing at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="2981077662796314522♠"></span>−9<span style="margin-left:.25em;">223</span><span style="margin-left:.25em;">372</span><span style="margin-left:.25em;">036</span><span style="margin-left:.25em;">854</span><span style="margin-left:.25em;">775</span><span style="margin-left:.25em;">807</span></span>, <span class="nowrap"><span data-sort-value="7018922337203685477♠"></span>+9<span style="margin-left:.25em;">223</span><span style="margin-left:.25em;">372</span><span style="margin-left:.25em;">036</span><span style="margin-left:.25em;">854</span><span style="margin-left:.25em;">775</span><span style="margin-left:.25em;">807</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-8" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup><sup id="cite_ref-restr_8-4" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-restr-8"><span class="cite-bracket">[</span>b<span class="cite-bracket">]</span></a></sup> Specified since the <a href="/wiki/C99" title="C99">C99</a> version of the standard.</td>
 <td>≥64</td>
 <td><code>%lli</code> or <code>%lld</code></td>
 <td>[<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LLONG_MIN</span>, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LLONG_MAX</span>]</td>
-<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">ll</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LL</span><sup id="cite_ref-c99intconst_13-4" class="reference"><a href="#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
+<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">ll</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LL</span><sup id="cite_ref-c99intconst_13-4" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist">
@@ -170,11 +171,11 @@
 <li><span class="nowrap"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">unsigned long long int</span></span></li></ul>
 </div>
 </td>
-<td><i>Long long</i> unsigned integer type. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7019184467440737095♠"></span>18<span style="margin-left:.25em;">446</span><span style="margin-left:.25em;">744</span><span style="margin-left:.25em;">073</span><span style="margin-left:.25em;">709</span><span style="margin-left:.25em;">551</span><span style="margin-left:.25em;">615</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-9" class="reference"><a href="#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup> Specified since the <a href="/wiki/C99" title="C99">C99</a> version of the standard.</td>
+<td><i>Long long</i> unsigned integer type. Contains at least the <span class="texhtml texhtml-big" style="font-size:100%;">[<span class="nowrap"><span data-sort-value="5000000000000000000♠"></span>0</span>, <span class="nowrap"><span data-sort-value="7019184467440737095♠"></span>18<span style="margin-left:.25em;">446</span><span style="margin-left:.25em;">744</span><span style="margin-left:.25em;">073</span><span style="margin-left:.25em;">709</span><span style="margin-left:.25em;">551</span><span style="margin-left:.25em;">615</span></span>]</span> range.<sup id="cite_ref-c99sizes_5-9" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99sizes-5"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup> Specified since the <a href="/wiki/C99" title="C99">C99</a> version of the standard.</td>
 <td>≥64</td>
 <td><code>%llu</code></td>
 <td>[0, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">ULLONG_MAX</span>]</td>
-<td>both <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">u</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">U</span> and <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">ll</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LL</span><sup id="cite_ref-c99intconst_13-5" class="reference"><a href="#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
+<td>both <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">u</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">U</span> and <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">ll</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">LL</span><sup id="cite_ref-c99intconst_13-5" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-c99intconst-13"><span class="cite-bracket">[</span>9<span class="cite-bracket">]</span></a></sup>
 </td></tr>
 <tr>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">float</span></td>
@@ -182,7 +183,7 @@
 </td>
 <td>
 </td>
-<td>Converting from text:<sup id="cite_ref-14" class="reference"><a href="#cite_note-14"><span class="cite-bracket">[</span>e<span class="cite-bracket">]</span></a></sup><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist"><ul><li><code>%f</code> <code>%F</code></li><li><code>%g</code> <code>%G</code></li><li><code>%e</code> <code>%E</code></li><li><code>%a</code> <code>%A</code></li></ul></div></td>
+<td>Converting from text:<sup id="cite_ref-14" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-14"><span class="cite-bracket">[</span>e<span class="cite-bracket">]</span></a></sup><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist"><ul><li><code>%f</code> <code>%F</code></li><li><code>%g</code> <code>%G</code></li><li><code>%e</code> <code>%E</code></li><li><code>%a</code> <code>%A</code></li></ul></div></td>
 <td></td>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">f</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">F</span>
 </td></tr>
@@ -192,7 +193,7 @@
 </td>
 <td>
 </td>
-<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist"><ul><li><code>%lf</code> <code>%lF</code></li><li><code>%lg</code> <code>%lG</code></li><li><code>%le</code> <code>%lE</code></li><li><code>%la</code> <code>%lA</code><sup id="cite_ref-uplowcase_15-0" class="reference"><a href="#cite_note-uplowcase-15"><span class="cite-bracket">[</span>f<span class="cite-bracket">]</span></a></sup></li></ul></div></td>
+<td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1126788409"><div class="plainlist"><ul><li><code>%lf</code> <code>%lF</code></li><li><code>%lg</code> <code>%lG</code></li><li><code>%le</code> <code>%lE</code></li><li><code>%la</code> <code>%lA</code><sup id="cite_ref-uplowcase_15-0" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-uplowcase-15"><span class="cite-bracket">[</span>f<span class="cite-bracket">]</span></a></sup></li></ul></div></td>
 <td></td>
 <td>none
 </td></tr>
@@ -202,7 +203,7 @@
 </td>
 <td>
 </td>
-<td><code>%Lf</code> <code>%LF</code><br><code>%Lg</code> <code>%LG</code><br><code>%Le</code> <code>%LE</code><br><code>%La</code> <code>%LA</code><sup id="cite_ref-uplowcase_15-1" class="reference"><a href="#cite_note-uplowcase-15"><span class="cite-bracket">[</span>f<span class="cite-bracket">]</span></a></sup></td>
+<td><code>%Lf</code> <code>%LF</code><br><code>%Lg</code> <code>%LG</code><br><code>%Le</code> <code>%LE</code><br><code>%La</code> <code>%LA</code><sup id="cite_ref-uplowcase_15-1" class="reference"><a href="https://en.wikipedia.org/wiki/C_data_types#cite_note-uplowcase-15"><span class="cite-bracket">[</span>f<span class="cite-bracket">]</span></a></sup></td>
 <td></td>
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">l</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">L</span>
 </td></tr></tbody>
