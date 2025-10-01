@@ -244,7 +244,7 @@ leaks:
 	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{target}}
 	valgrind --leak-check=full {{target}}
 
-# leak memory check(valgrind)
+# leak memory check(leaks / macOS)
 [macos]
 leaks:
 	rm -rf target
