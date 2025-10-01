@@ -3,6 +3,7 @@
 
 # snippets C
 - https://github.com/Harry-Ross/vscode-c-snippets
+- https://github.com/one-harsh/vscode-cpp-snippets
 
 - array print패턴
   - [c01 test c code 참고](./c01_test_c_code)
