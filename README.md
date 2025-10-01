@@ -11,7 +11,11 @@
     - 옵션에 `--std=c23` 넣어주면 됨. 최신 컴파일러 선택
 
 - [코딩-C 개고생하면서 배우는C언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mauKnkqP6Vah7cgcvfJZg-f&si=5yZeK967zvIWUN03)
-- [(외부링크) GCC15 & LLVM20 최신버젼 설치방법 정리함](https://github.com/YoungHaKim7/cpp23_26_project?tab=readme-ov-file#link)
+
+- GCC 15 & LLVM-20(Clang)
+  - [(외부링크) GCC15 & LLVM20 최신버젼 설치방법 정리함](https://github.com/YoungHaKim7/cpp23_26_project?tab=readme-ov-file#link)
+    - [`-std=c++2b`같은거_컴파일옵션 정리 버젼별c++20+23+26 & C/C++ Support in Clang](https://github.com/YoungHaKim7/cpp23_26_project#cc-support-in-clang)
+      - [`-o -Wextra -Wall` 같은거 정리](https://github.com/YoungHaKim7/cpp23_26_project#gcc--clang) 
 
 <hr />
 
