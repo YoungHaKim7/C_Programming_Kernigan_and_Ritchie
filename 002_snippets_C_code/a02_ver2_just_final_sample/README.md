@@ -202,7 +202,7 @@ as:
 	mv *.s {{target_dir}}
 	mv *.bc {{target_dir}}
 
-# clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
+# Clang Sanitize(ASan=Address / LSan=Leak / TSan=Thread / MSan=Memory / UBSan=Undefined Behavior)
 san SAN:
 	rm -rf target
 	mkdir -p target
