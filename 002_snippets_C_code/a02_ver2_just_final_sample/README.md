@@ -1,6 +1,7 @@
 # justfile(최종)
 
 ```justfile
+
 # Detect OS
 os := `uname`
 
@@ -40,13 +41,13 @@ ldflags_optimize :=  "-Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra 
 fmt_flags := ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec "+clang_format+" -style=file -i {} \\;"
 
 # fmt .clang-format(macOS)
-macos_fmt_flags := ". -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.cc'  -o -iname '*.c'-o -iname '*.cxx' -o -iname '*.c' -o -iname '*.h' | "+macos_clang_format+" -style=file -i --files=/dev/stdin"
+macos_fmt_flags := ". -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.cc'  -o -iname '*.c'-o -iname '*.cxx' -o -iname '*.c' -o -iname '*.h' | "+clang_format+" -style=file -i --files=/dev/stdin"
 
 # fast fmt(fd-find)
 fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+clang_format+" -style=file -i {} \\;"
 
 # fast fmt(fd-find)
-macos_fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+macos_clang_format+" -style=file -i {} \\;"
+macos_fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+clang_format+" -style=file -i {} \\;"
 
 # (C)gcc compile(LinuxOS)
 r:
@@ -436,7 +437,6 @@ vscode:
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json	
-
 ```
 
 # Result
