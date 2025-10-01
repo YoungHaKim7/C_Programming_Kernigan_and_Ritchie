@@ -4,10 +4,10 @@
 
 <hr />
 
-# cmake (ctest 문서)
+# cmake (ctest 문서)[|🔝|](#link)
 - https://cmake.org/cmake/help/latest/manual/ctest.1.html
 
-# Test C code
+# Test C code[|🔝|](#link)
 
 - `just ctest`
 
@@ -47,25 +47,17 @@ cmake --build build
 cd build
 ctest --output-on-failure
 
-```
-
-```bash
-$ just ctest
-
-$ cd build/
-
-$ ls
-cmake_install.cmake  CMakeCache.txt       CMakeFiles/          CTestTestfile.cmake  Makefile             target/
+# result
 
 $ ctest --output-on-failure
-Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/001_C_Training/d01_test_c_code/build
+Test project /Users/gy/C_Programming_Kernigan_and_Ritchie/001_C_Training/d01_test_c_code/build
     Start 1: run_d01_test_c_code
 1/1 Test #1: run_d01_test_c_code ..............   Passed    0.35 sec
 
 100% tests passed, 0 tests failed out of 1    
 ```
 
-# Result
+# Result[|🔝|](#link)
 
 ```bash
 === ATOI TESTS ===
@@ -88,7 +80,7 @@ Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kerni
 [arr5 sorted] -7 -1 0 2 3
 ```
 
-# justfile
+# justfile[|🔝|](#link)
 
 ```justfile
 
