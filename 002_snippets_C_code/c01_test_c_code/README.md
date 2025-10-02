@@ -631,25 +631,81 @@ os := `uname`
 # project name
 project_name := `basename "$(pwd)"`
 
+# clang & gcc basic & clang-format basic
+clang := `which clang-20` 
+gcc := `which gcc`
+clang_format_basic := `which clang-format-20`
+
 # compiler settings
-clang_which := if os == "Linux" { "/usr/bin/clang-20" } else { "/opt/homebrew/opt/llvm/bin/clang" }
-gcc_which := if os == "Linux" { "/opt/gcc-15/bin/gcc" } else { "/opt/homebrew/opt/gcc@15/bin/gcc-15" }
+clang_which := if os == "Linux" { \
+  "/usr/bin/clang-20" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang" \
+  } else { \
+    clang \
+  }
+gcc_which := if os == "Linux" { \
+    "/opt/gcc-15/bin/gcc" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/gcc@15/bin/gcc-15" \
+  } else { \
+    gcc \
+  }
+
+# clang-format 20
+clang_format := if os == "Linux" { \
+    "clang-format-20" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang-format" \
+  } else { \
+    clang_format_basic \
+  }
+
+# fmt .clang-format(linuxOS / macOS)
+fmt_flags := if os == "Linux" { \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    +clang_format+ \
+    " -style=file -i {} \\;" \
+  } else if os == "Darwin" { \
+    ". -iname '*.cpp' \
+    -o -iname '*.hpp' \
+    -o -iname '*.cc' \
+    -o -iname '*.c' \
+    -o -iname '*.cxx' \
+    -o -iname '*.c' \
+    -o -iname '*.h' | " \
+    +clang_format+ \
+    " -style=file -i --files=/dev/stdin" \
+  } else { \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    +clang_format+ \
+    " -style=file -i {} \\;" \
+  }  
+
+# fast fmt(LinuxOS / macOS)(Install "cargo install fd-find")
+fm_flags := "-e c \
+  -e h \
+  -e cpp \
+  -e hpp \
+  -e cc \
+  -e cxx -x " \
+  +clang_format+  \
+  " -style=file -i {} \\;"
 
 # Source and target directories
 src_dir := "./src"
 target_dir := "./target"
 
-# clang-format 20
-clang_format := "clang-format-20"
-macos_clang_format := "/opt/homebrew/opt/llvm/bin/clang-format"
-
 # Files
 source := src_dir+"/main.c"
-target := target_dir+project_name
+target := target_dir+"/"+project_name
+
+# Optimize (O2(RelWithDebInfo), O3(Release))
+ldflags_optimize :=  "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
 
 # Common flags
 ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
-ldflags_debug := "-c -pthread -lm -Wall -Wextra -ggdb"
+ldflags_debug := "-std=c23 -pthread -lm -Wall -Wextra -ggdb"
 ldflags_emit_llvm := "-S -emit-llvm"
 ldflags_assembly := "-Wall -save-temps"
 ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
@@ -659,33 +715,20 @@ ldflags_fsanitize_thread_object := "-g -fsanitize=thread"
 ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
 ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_fsanitize_leak := "-fsanitize=leak -g"
-ldflags_optimize :=  "-Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
-
-# fmt .clang-format(linuxOS)
-fmt_flags := ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec "+clang_format+" -style=file -i {} \\;"
-
-# fmt .clang-format(macOS)
-macos_fmt_flags := ". -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.cc'  -o -iname '*.c'-o -iname '*.cxx' -o -iname '*.c' -o -iname '*.h' | "+macos_clang_format+" -style=file -i --files=/dev/stdin"
-
-# fast fmt(fd-find)
-fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+clang_format+" -style=file -i {} \\;"
-
-# fast fmt(fd-find)
-macos_fm_flags := "-e c -e h -e cpp -e hpp -e cc -e cxx -x "+macos_clang_format+" -style=file -i {} \\;"
 
 # (C)gcc compile(LinuxOS)
 r:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	{{gcc_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
-	{{target_dir}}/{{project_name}}
+	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
 ro:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	{{clang_which}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
-	{{target_dir}}/{{project_name}}
+	{{target}}
 
 # cmake compile(LinuxOS)
 cr:
@@ -695,7 +738,7 @@ cr:
 	cmake -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/target/{{project_name}}
+	./build/{{target}}
 
 # cmake compile(LinuxOS)
 cro:
@@ -707,7 +750,7 @@ cro:
 	      -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/target/{{project_name}}
+	./build/{{target}}
 
 # cmake compile(LinuxOS)
 cro3:
@@ -719,12 +762,12 @@ cro3:
 	      -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/target/{{project_name}}
+	./build/{{target}}
 
 # zig C compile(LinuxOS)
 zr:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	export CC={{gcc_which}}
 	zig cc {{ldflags_common}} -o {{target}} {{source}}
 	{{target}}
@@ -740,47 +783,28 @@ ctest:
 
 # clang build
 b:
-	rm -rf target
-	mkdir -p target
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	{{clang_which}} {{ldflags_debug}} -o {{target}} {{source}}
 
 # move target
 move:
-	rm -rf target
-	mkdir target
+	rm -rf {{target_dir}}
+	mkdir {{target_dir}}
 	mv CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build.ninja *.bc *.i *.s *.o *.ll a.out target
 
-# .clang-format init(LinuxOS)
-[linux]
+# .clang-format init(LinuxOS/macOS)
 cl:
 	rm -rf .clang-format
 	{{clang_format}} -style=WebKit -dump-config > .clang-format
 
-# .clang-format init(macOS)
-[macos]
-cl:
-	rm -rf .clang-format
-	{{macos_clang_format}} -style=WebKit -dump-config > .clang-format
-
-# .clang-format fmt(LinuxOS)
-[linux]
+# .clang-format fmt(LinuxOS/ macOS)
 fmt:
 	find {{fmt_flags}}
 
-# .clang-format fmt(macOS)
-[macos]
-fmt:
-	find {{macos_fmt_flags}}
-
-# (fast).clang-format fmt(cargo install fd-find)(LinuxOS)
-[linux]
+# (fast).clang-format fmt(cargo install fd-find)(LinuxOS / macOS)
 fm:
 	fd {{fm_flags}}
-
-# (fast).clang-format fmt(cargo install fd-find)(macOS)
-[macos]
-fm:
-	fd {{macos_fm_flags}}
 
 # clang LLVM emit-file
 ll:
@@ -803,7 +827,7 @@ as:
 	mv *.s {{target_dir}}
 	mv *.bc {{target_dir}}
 
-# clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
+# Clang Sanitize(ASan=Address / LSan=Leak / TSan=Thread / MSan=Memory / UBSan=Undefined Behavior)
 san SAN:
 	rm -rf target
 	mkdir -p target
@@ -845,7 +869,7 @@ leaks:
 	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{target}}
 	valgrind --leak-check=full {{target}}
 
-# leak memory check(valgrind)
+# leak memory check(leaks / macOS)
 [macos]
 leaks:
 	rm -rf target
@@ -887,7 +911,6 @@ thread:
 	{{clang_which}} {{ldflags_fsanitize_thread}} {{source}} -o {{target}}
 	{{target}}
 
-
 # object file emit-file
 obj:
 	rm -rf target
@@ -908,7 +931,7 @@ xx:
 	xxd -c 16 {{project_name}} > hex_print.txt
 	mv {{project_name}} hex_print.txt {{target_dir}}
 
-# hex view
+# hex view("rg -i <search>" | "grep -rni <search>")
 [macos]
 xx:
 	rm -rf target
@@ -916,7 +939,6 @@ xx:
 	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{project_name}}
 	xxd -c 16 {{project_name}} > hex_print.txt
 	mv {{project_name}} {{project_name}}.* hex_print.txt {{target_dir}}
-
 
 # clean files
 clean:
@@ -1006,7 +1028,6 @@ codelldb:
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json
 
-
 # Debugging(VSCode)
 vscode:
 	rm -rf .vscode
@@ -1067,5 +1088,5 @@ vscode:
 	echo '        }' >> .vscode/tasks.json
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
-	echo '}' >> .vscode/tasks.json
+	echo '}' >> .vscode/tasks.json	
 ```
