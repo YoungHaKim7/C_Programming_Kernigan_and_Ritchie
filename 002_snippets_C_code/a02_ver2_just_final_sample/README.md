@@ -41,24 +41,6 @@ clang_format := if os == "Linux" { \
     clang_format_basic \
   }
 
-# Files
-source := src_dir+"/main.c"
-target := target_dir+"/"+project_name
-
-# Common flags
-ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
-ldflags_debug := "-c -pthread -lm -Wall -Wextra -ggdb"
-ldflags_emit_llvm := "-S -emit-llvm"
-ldflags_assembly := "-Wall -save-temps"
-ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
-ldflags_fsanitize_object := "-g -fsanitize=address"
-ldflags_fsanitize_thread := "-g -fsanitize=thread -fno-omit-frame-pointer -c"
-ldflags_fsanitize_thread_object := "-g -fsanitize=thread"
-ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
-ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
-ldflags_fsanitize_leak := "-fsanitize=leak -g"
-ldflags_optimize :=  "-Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
-
 # fmt .clang-format(linuxOS / macOS)
 fmt_flags := if os == "Linux" { \
     ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
@@ -89,6 +71,25 @@ fm_flags := "-e c \
   -e cxx -x " \
   +clang_format+  \
   " -style=file -i {} \\;"
+
+ldflags_optimize :=  "-Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
+
+# Files
+source := src_dir+"/main.c"
+target := target_dir+"/"+project_name
+
+# Common flags
+ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
+ldflags_debug := "-c -pthread -lm -Wall -Wextra -ggdb"
+ldflags_emit_llvm := "-S -emit-llvm"
+ldflags_assembly := "-Wall -save-temps"
+ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
+ldflags_fsanitize_object := "-g -fsanitize=address"
+ldflags_fsanitize_thread := "-g -fsanitize=thread -fno-omit-frame-pointer -c"
+ldflags_fsanitize_thread_object := "-g -fsanitize=thread"
+ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
+ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
+ldflags_fsanitize_leak := "-fsanitize=leak -g"
 
 # (C)gcc compile(LinuxOS)
 r:
