@@ -28,10 +28,6 @@ gcc_which := if os == "Linux" { \
     gcc \
   }
 
-# Source and target directories
-src_dir := "./src"
-target_dir := "./target"
-
 # clang-format 20
 clang_format := if os == "Linux" { \
     "clang-format-20" \
@@ -71,6 +67,10 @@ fm_flags := "-e c \
   -e cxx -x " \
   +clang_format+  \
   " -style=file -i {} \\;"
+
+# Source and target directories
+src_dir := "./src"
+target_dir := "./target"
 
 # Files
 source := src_dir+"/main.c"
