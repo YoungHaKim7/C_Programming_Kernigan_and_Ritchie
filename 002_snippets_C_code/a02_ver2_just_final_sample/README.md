@@ -8,9 +8,9 @@ os := `uname`
 project_name := `basename "$(pwd)"`
 
 # clang & gcc basic & clang-format basic
-clang := `which clang` 
+clang := `which clang-20` 
 gcc := `which gcc`
-clang_format_basic := `which clang-format`
+clang_format_basic := `which clang-format-20`
 
 # compiler settings
 clang_which := if os == "Linux" { \
@@ -59,21 +59,26 @@ ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-e
 ldflags_fsanitize_leak := "-fsanitize=leak -g"
 ldflags_optimize :=  "-Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
 
-# fmt .clang-format(linuxOS)
-fmt_flags := ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
-  +clang_format+ \
-  " -style=file -i {} \\;"
-
-# fmt .clang-format(macOS)
-macos_fmt_flags := ". -iname '*.cpp' \
-  -o -iname '*.hpp' \
-  -o -iname '*.cc' \
-  -o -iname '*.c' \
-  -o -iname '*.cxx' \
-  -o -iname '*.c' \
-  -o -iname '*.h' | " \
-  +clang_format+ \
-  " -style=file -i --files=/dev/stdin"
+# fmt .clang-format(linuxOS / macOS)
+fmt_flags := if os == "Linux" { \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    +clang_format+ \
+    " -style=file -i {} \\;" \
+  } else if os == "Darwin" { \
+    ". -iname '*.cpp' \
+    -o -iname '*.hpp' \
+    -o -iname '*.cc' \
+    -o -iname '*.c' \
+    -o -iname '*.cxx' \
+    -o -iname '*.c' \
+    -o -iname '*.h' | " \
+    +clang_format+ \
+    " -style=file -i --files=/dev/stdin" \
+  } else { \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    +clang_format+ \
+    " -style=file -i {} \\;" \
+  }  
 
 # fast fmt(LinuxOS / macOS)(Install "cargo install fd-find")
 fm_flags := "-e c \
@@ -167,15 +172,9 @@ cl:
 	rm -rf .clang-format
 	{{clang_format}} -style=WebKit -dump-config > .clang-format
 
-# .clang-format fmt(LinuxOS)
-[linux]
+# .clang-format fmt(LinuxOS/ macOS)
 fmt:
 	find {{fmt_flags}}
-
-# .clang-format fmt(macOS)
-[macos]
-fmt:
-	find {{macos_fmt_flags}}
 
 # (fast).clang-format fmt(cargo install fd-find)(LinuxOS / macOS)
 fm:
@@ -285,7 +284,6 @@ thread:
 	mkdir -p target
 	{{clang_which}} {{ldflags_fsanitize_thread}} {{source}} -o {{target}}
 	{{target}}
-
 
 # object file emit-file
 obj:
