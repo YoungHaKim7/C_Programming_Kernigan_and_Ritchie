@@ -15,7 +15,7 @@ size_t strlen_simple(char* s)
 size_t strlen_glibc(char* str)
 {
     const char* ptr = str;
-    
+
     // Handle unaligned bytes first
     while (((uintptr_t)ptr & (sizeof(unsigned long) - 1)) != 0) {
         if (*ptr == '\0') {
@@ -23,25 +23,29 @@ size_t strlen_glibc(char* str)
         }
         ++ptr;
     }
-    
+
     // Now ptr is aligned to word boundary
     const unsigned long* longword_ptr = (const unsigned long*)ptr;
     const unsigned long himagic = 0x80808080UL;
     const unsigned long lomagic = 0x01010101UL;
-    
+
     // Check 4 bytes at a time
     for (;;) {
         unsigned long longword = *longword_ptr++;
-        
+
         // Check if any byte in the word is zero
         if (((longword - lomagic) & ~longword & himagic) != 0) {
             const char* cp = (const char*)(longword_ptr - 1);
-            
+
             // Check each byte in the word
-            if (cp[0] == 0) return cp - str;
-            if (cp[1] == 0) return cp - str + 1;
-            if (cp[2] == 0) return cp - str + 2;
-            if (cp[3] == 0) return cp - str + 3;
+            if (cp[0] == 0)
+                return cp - str;
+            if (cp[1] == 0)
+                return cp - str + 1;
+            if (cp[2] == 0)
+                return cp - str + 2;
+            if (cp[3] == 0)
+                return cp - str + 3;
         }
     }
 }
