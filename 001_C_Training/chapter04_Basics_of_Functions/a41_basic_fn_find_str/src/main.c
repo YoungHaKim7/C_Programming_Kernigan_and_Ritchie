@@ -15,18 +15,17 @@ int strindex(char s[], char t[])
         for (j = i, k = 0; t[k] != '\0' && s[j] == t[k]; j++, k++)
             ;
         if (k > 0 && t[k] == '\0')
-            return i;   // found at index i
+            return i; // found at index i
     }
     return -1; // not found
 }
 
 int main(void)
 {
-    char line[MAXLINE] =
-        "Ah Love! could you and I with Fate conspire "
-        "To grasp this sorry Scheme of Things entire, "
-        "Would not we shatter it to bits -- and then "
-        "Re-mould it nearer to the Heart's Desire!";
+    char line[MAXLINE] = "Ah Love! could you and I with Fate conspire "
+                         "To grasp this sorry Scheme of Things entire, "
+                         "Would not we shatter it to bits -- and then "
+                         "Re-mould it nearer to the Heart's Desire!";
 
     int found = 0;
 
