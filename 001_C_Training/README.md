@@ -7,6 +7,7 @@
 
 # eBook(C)[|🔝|](#link)
 - https://colorcomputerarchive.com/repo/Documents/Books/The%20C%20Programming%20Language%20%28Kernighan%20Ritchie%29.pdf
+  - [freeCodeCamp.org(C/C++ 강의 시리즈 영상 많다.)](https://youtube.com/playlist?list=PLWKjhJtqVAbmUE5IqyfGYEYjrZBYzaT4m&si=OPDO7vwocp6LrCdX)
 
 # build(c23)[|🔝|](#link)
 - https://github.com/YoungHaKim7/c23_pthread_cmake_just_sample
