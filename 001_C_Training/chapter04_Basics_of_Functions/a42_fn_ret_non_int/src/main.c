@@ -1,5 +1,5 @@
+#include <ctype.h> // for isspace, isdigit
 #include <stdio.h>
-#include <ctype.h>  // for isspace, isdigit
 
 double atof_custom(char s[])
 {
@@ -33,7 +33,7 @@ double atof_custom(char s[])
 
 int main(void)
 {
-    char *tests[] = {
+    char* tests[] = {
         "123",
         "-456",
         "+42",
@@ -50,7 +50,7 @@ int main(void)
 
     for (int i = 0; i < ntests; i++) {
         printf("Test %2d: input=\"%s\"  =>  result=%f\n",
-               i + 1, tests[i], atof_custom(tests[i]));
+            i + 1, tests[i], atof_custom(tests[i]));
     }
 
     return 0;
