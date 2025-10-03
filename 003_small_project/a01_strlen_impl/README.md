@@ -62,3 +62,24 @@ Test 10: "abcdefghijklmnopqrstuvwxyz"
   strlen(builtin) = 26
   ✅ Match
 ```
+
+
+# ctest
+
+```
+  Syntax Warning in cmake code at column 177
+
+  Argument not separated from preceding token by whitespace.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at CTestTestfile.cmake:8:
+  Syntax Warning in cmake code at column 259
+
+  Argument not separated from preceding token by whitespace.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+    Start 1: run_a01_strlen_impl
+1/1 Test #1: run_a01_strlen_impl ..............   Passed    0.32 sec
+
+100% tests passed, 0 tests failed out of 1  
+```

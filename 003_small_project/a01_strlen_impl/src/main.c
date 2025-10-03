@@ -12,7 +12,7 @@ size_t strlen_simple(char* s)
 }
 
 // Simplified "glibc-like" strlen (truncated for demo)
-size_t strlen_glibc(char* str)
+size_t strlen_glibc_simple(char* str)
 {
     char* ptr;
     unsigned long* longword_ptr;
@@ -64,7 +64,7 @@ int main(void)
         buffer[sizeof(buffer)-1] = '\0';
 
         size_t len1 = strlen_simple(buffer);
-        size_t len2 = strlen_glibc(buffer);
+        size_t len2 = strlen_glibc_simple(buffer);
         size_t len3 = strlen(buffer); // builtin for cross-check
 
         printf("Test %zu: \"%s\"\n", i+1, buffer);

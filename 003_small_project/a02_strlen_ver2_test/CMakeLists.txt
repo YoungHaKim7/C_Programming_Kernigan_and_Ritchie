@@ -43,26 +43,41 @@ add_compile_options(
 # Main executable with C sources
 add_executable(${ProjectId}
     src/main.c
+    src/strlen_impl.c
     # src/mandelbrot.c
 )
 
+# Test executable
+add_executable(test_strlen
+    src/test_strlen.c
+    src/strlen_impl.c
+)
+
 target_link_options(${ProjectId} PRIVATE -pthread -lm)
+target_link_options(test_strlen PRIVATE -pthread -lm)
 
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
 )
 
+set_target_properties(test_strlen PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
+)
+
 # Enable tests
 enable_testing()
 add_test(NAME run_${ProjectId} COMMAND ${ProjectId})
+add_test(NAME run_test_strlen COMMAND test_strlen)
 
-# Validation checks: only look for markers that prove tests ran correctly
+# Validation checks for main program
 set_tests_properties(run_${ProjectId} PROPERTIES
     PASS_REGULAR_EXPRESSION
-    "Test 1: \"\".*strlen_simple = 0.*strlen_glibc.*strlen\\(builtin\\) = 0.*Match.*"
-    "Test 2: \"a\".*strlen_simple = 1.*Match.*"
-    "Test 3: \"Hello\".*Mismatch!.*"
-    "Test 5: \"1234567890\".*Match.*"
-    "Test 10: \"abcdefghijklmnopqrstuvwxyz\".*Match.*"
+    "🎉 All implementations produce identical results!"
+)
+
+# Validation checks for test program
+set_tests_properties(run_test_strlen PROPERTIES
+    PASS_REGULAR_EXPRESSION
+    "🎉 All tests passed!"
 )
