@@ -390,6 +390,11 @@ init2:
 	echo '' >> src/main.c
 	echo 'int main(int argc, char* argv[]) {' >> src/main.c
 	echo '    printf("Hello world C lang ");' >> src/main.c
+	echo '    int i;' >> src/main.c
+	echo '    ' >> src/main.c
+	echo '    for (i=0; i < argc; i++) {' >> src/main.c
+	echo '        printf("%d\n", argv[i]);' >> src/main.c
+	echo '    }' >> src/main.c
 	echo '    return 0;' >> src/main.c
 	echo '}' >> src/main.c
 
