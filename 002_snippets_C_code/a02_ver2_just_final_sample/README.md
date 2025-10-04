@@ -47,9 +47,9 @@ cmake_which := if os == "Linux" { \
     cmake \
   }
 
-# clang-format 20
+# clang-format 21
 clang_format := if os == "Linux" { \
-    "clang-format-20" \
+    "clang-format-21" \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang-format" \
   } else { \
