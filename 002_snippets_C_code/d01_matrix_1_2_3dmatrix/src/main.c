@@ -2,6 +2,9 @@
 
 int main(void)
 {
+    printf("\n");
+    printf("1d array( 1d matrix)");
+    printf("\n");
     // 1D matrix
     int array_1dmatrix[] = { 1, 2, 3, 4, 5, 6 };
     int len = sizeof(array_1dmatrix) / sizeof(array_1dmatrix[0]);
@@ -12,6 +15,9 @@ int main(void)
     }
     printf("\n");
     printf("\n");
+    printf("~~~~~~~~~~~~~~~~~~~");
+    printf("2d array( 2d matrix)\n");
+
 
     // 2D matrix init (VLA in C23)
     int rows = 2, cols = 3;
@@ -68,6 +74,10 @@ int main(void)
         putchar('\n');
     }
 
+    printf("\n");
+    printf("\n");
+    printf("~~~~~~~~~~~~~~~~~~~");
+    printf("3d array( 3d matrix)");
     printf("\n");
     printf("3d matrix sample");
 
