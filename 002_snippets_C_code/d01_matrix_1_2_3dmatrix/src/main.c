@@ -75,8 +75,16 @@ int main(void)
     // 3D matrix [2][3][2]
     // 2 layers, 3 rows per layer, 2 columns per row
     int matrix_3d[2][3][2] = {
-        { {0, 1}, {2, 3}, {4, 5} },   // layer 0
-        { {6, 7}, {8, 9}, {10, 11} }  // layer 1
+        {
+            {0, 1},
+            {2, 3},
+            {4, 5}
+        },   // layer 0
+        {
+            {6, 7},
+            {8, 9},
+            {10, 11}
+        }  // layer 1
     };
     // clang-format on
 
