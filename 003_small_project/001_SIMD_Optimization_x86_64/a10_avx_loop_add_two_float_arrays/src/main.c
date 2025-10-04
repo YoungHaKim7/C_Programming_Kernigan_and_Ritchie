@@ -1,6 +1,9 @@
 #include <immintrin.h>
 #include <stdio.h>
 
+// Enable AVX support
+#pragma GCC target("avx")
+
 int main()
 {
     const int size = 16;
