@@ -31,3 +31,38 @@ $ ./target/a01_part3_argc_argv test_GYOUNg
 Hello world C lang ./target/a01_part3_argc_argvtest_GYOUNg⏎ 
 
 ```
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[])
+{
+    printf("Hello world C lang ");
+
+    int i;
+
+    for (i = 0; i < argc; i++) {
+        printf("%s", argv[i]);
+    }
+    exit(0);
+}
+```
+
+
+```c
+
+#include <stdio.h>
+
+int main(int argc, char* argv[])
+{
+    printf("Hello world C lang\n\n");
+
+    int i;
+    for (i = 0; i < argc; i++) {
+        printf("argv[%d] : %s\n", i, argv[i]);
+    }
+
+    return 0;
+}
+```
