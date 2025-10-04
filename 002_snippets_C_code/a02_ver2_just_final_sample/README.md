@@ -1,7 +1,6 @@
 # justfile(최종)
 
 ```justfile
-
 # Detect OS
 os := `uname`
 
