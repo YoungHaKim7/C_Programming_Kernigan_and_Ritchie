@@ -349,7 +349,7 @@ xx:
 # clean files
 clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
-	rm -rf build CMakeCache.txt CMakeFiles
+	rm -rf build CMakeCache.txt CMakeFiles .cache
 
 # C init
 init:
