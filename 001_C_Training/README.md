@@ -3,7 +3,7 @@
 - [C type총정리 굿..이것만 공부해도 되겠네 ㅋ](#c-type)
   - https://en.wikipedia.org/wiki/C_data_types
 
-- [C언어에서 `int main(int argc, char* argc[])` 의미]()
+- [C언어에서 `int main(int argc, char* argc[])` 의미](#c언어에서-int-mainint-argc-char-argc-의미)
 
 <hr />
 
