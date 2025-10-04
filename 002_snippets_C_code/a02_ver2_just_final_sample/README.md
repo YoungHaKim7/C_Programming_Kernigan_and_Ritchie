@@ -1,4 +1,4 @@
-# justfile(최종)
+# justfile(최종+ clangd LSP setting(c23) 추가251004)
 
 ```justfile
 # Detect OS
