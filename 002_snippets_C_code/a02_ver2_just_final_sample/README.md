@@ -393,7 +393,7 @@ init2:
 	echo '    int i;' >> src/main.c
 	echo '    ' >> src/main.c
 	echo '    for (i=0; i < argc; i++) {' >> src/main.c
-	echo '        printf("%d\n", argv[i]);' >> src/main.c
+	echo '        printf("%s", argv[i]);' >> src/main.c
 	echo '    }' >> src/main.c
 	echo '    return 0;' >> src/main.c
 	echo '}' >> src/main.c
