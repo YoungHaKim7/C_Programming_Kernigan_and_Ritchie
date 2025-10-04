@@ -3,6 +3,8 @@
 - [C type총정리 굿..이것만 공부해도 되겠네 ㅋ](#c-type)
   - https://en.wikipedia.org/wiki/C_data_types
 
+- [C언어에서 `int main(int argc, char* argc[])` 의미]()
+
 <hr />
 
 # eBook(C)[|🔝|](#link)
@@ -209,3 +211,45 @@
 <td><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">l</span> or <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span class="monospaced">L</span>
 </td></tr></tbody>
 </table>
+
+# C언어에서 `int main(int argc, char* argc[])` 의미[|🔝|](#link)
+- 리눅스에서 test해야 원하는 결과가 나온다.
+  - https://almond0115.tistory.com/entry/main%ED%95%A8%EC%88%98-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-argc%EC%99%80-argv
+
+> `int argc` : 메인 함수에 전달되는 정보의 개수(argument count)
+
+> `char* argv[]` : 메인 함수에 전달되는 실질적인 정보로, 문자열의 배열을 의미
+> 프로그램을 실행할 때 지정해 준 인자의 문자열들이 실제로 저장되는 배열
+> 인덱스가 0인 문자열은 프로그램 실행경로로 항상 고정되어 있다.(argument vector)
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+    printf("Hello world C lang ");
+
+    int i;
+    
+    for (i=0; i < argc; i++) {
+        printf("%s", argv[i]);
+    }
+    exit(0);
+}
+```
+
+- result(LinuxOS)
+
+```bash
+./main I AM JONGHYUN
+
+argv[0] : ./main
+argv[1] : I
+argv[2] : AM
+argv[3] : JONGHYUN
+```
+
+- result(macOS)
+```bash
+ ./target/a01_c_test_argc /hello good
+Hello world C lang ./target/a01_c_test_argc/hellogood
+```
