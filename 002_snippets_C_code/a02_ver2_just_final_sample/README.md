@@ -17,14 +17,14 @@ cmake := `which cmake`
 
 # compiler settings
 clang_which := if os == "Linux" { \
-  "/usr/bin/clang-20" \
+  "/usr/bin/clang-21" \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang" \
   } else { \
     clang \
   }
 clangpp_which := if os == "Linux" { \
-  "/usr/bin/clang++-20" \
+  "/usr/bin/clang++-21" \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang++" \
   } else { \
