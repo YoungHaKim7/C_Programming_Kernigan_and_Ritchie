@@ -351,7 +351,7 @@ clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
 	rm -rf build CMakeCache.txt CMakeFiles .cache
 
-# C init
+# C init(int main(void))
 init:
 	mkdir -p src
 	echo '# BasedOnStyle: WebKit' > .clang-format
@@ -372,7 +372,7 @@ init:
 	echo '    return 0;' >> src/main.c
 	echo '}' >> src/main.c
 
-# C init
+# C init(int main(int argc, char* argv[]))
 init2:
 	mkdir -p src
 	echo '# BasedOnStyle: WebKit' > .clang-format
