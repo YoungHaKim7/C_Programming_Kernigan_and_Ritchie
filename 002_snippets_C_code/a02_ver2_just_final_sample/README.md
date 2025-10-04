@@ -372,6 +372,27 @@ init:
 	echo '    return 0;' >> src/main.c
 	echo '}' >> src/main.c
 
+# C init
+init2:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <stdio.h>' > src/main.c
+	echo '' >> src/main.c
+	echo 'int main(int argc, char* argv[]) {' >> src/main.c
+	echo '    printf("Hello world C lang ");' >> src/main.c
+	echo '    return 0;' >> src/main.c
+	echo '}' >> src/main.c
+
 # Debugging(VSCode codelldb ver)
 codelldb:
 	rm -rf .vscode
