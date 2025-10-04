@@ -10,7 +10,8 @@ int main()
     __m256 vb = _mm256_loadu_ps(b);
     __m256 vr = _mm256_mul_ps(va, vb);
     _mm256_storeu_ps(result, vr);
-    for (int i = 0; i < 8; ++i)
+    int len = sizeof(a) / sizeof(a[0]);
+    for (int i = 0; i < len; ++i)
         printf("%f ", result[i]);
     printf("\n");
     return 0;
