@@ -8,7 +8,8 @@ int main()
     __m128 vb = _mm_loadu_ps(b);
     __m128 vr = _mm_blend_ps(va, vb, 0b1010);
     _mm_storeu_ps(result, vr);
-    for (int i = 0; i < 4; ++i)
+    int len = sizeof(a) / sizeof(a[0]);
+    for (int i = 0; i < len; ++i)
         printf("%f ", result[i]);
     printf("\n");
     return 0;
