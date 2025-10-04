@@ -24,7 +24,7 @@ clang_which := if os == "Linux" { \
     clang \
   }
 clangpp_which := if os == "Linux" { \
-  "/usr/bin/clang-20" \
+  "/usr/bin/clang++-20" \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang++" \
   } else { \
@@ -40,7 +40,7 @@ gcc_which := if os == "Linux" { \
 
 # cmake settings(4.0)
 cmake_which := if os == "Linux" { \
-  "/usr/bin/clang-20" \
+    "/usr/local/bin/cmake" \
   } else if os == "Darwin" { \
     "/opt/homebrew/bin/cmake"
   } else { \
