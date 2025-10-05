@@ -48,3 +48,59 @@ C의 변경 사항. 1장에서 먼저 살펴본 것처럼 이제 인수 유형�
 선언과 정의가 일치합니다. 이를 통해 컴파일러는 더 많은 것을 감지할 수 있습니다
 이전보다 더 큰 오류. 또한 인수가 적절하게 선언되면 적절합니다
 타입 강제가 자동으로 수행됩니다.
+
+# The question is, which method has better performance? And by how much?
+- https://stackoverflow.com/questions/34847662/is-accessing-statically-or-dynamically-allocated-memory-faster
+
+- There are 2 ways of allocating global array in C:
+
+  - 1. statically
+
+```c
+char data[65536];
+```
+
+  - 2. dynamically
+
+```c
+char *data;
+…
+data = (char*)malloc(65536);  /* or whatever size */
+```
+
+As understand it, the first method should be faster.
+
+Because with the second method, to access the array you have to dereference element's address each time it is accessed, like this:
+
+```bash
+
+    read the variable data which contains the pointer to the beginning of the array
+    calculate the offset to specific element
+    access the element
+```
+
+With the first method, the compiler hard-codes the address of the data variable into the code, first step is skipped, so we have:
+
+```bash
+    calculate the offset to specific element from fixed address defined at compile time
+    access the element of the array
+```
+
+Each memory access is equivalent to about 40 CPU clock cycles, so , using dynamic allocation, specially for not frequent reads can have significant performance decrease vs static allocation because the data variable may be purged from the cache by some more frequently accessed variable. On the contrary , the cost of dereferencing statically allocated global variable is 0, because its address is already hard-coded in the code.
+
+질문은, 어떤 방법이 더 나은 성능을 가지고 있느냐는 것입니다. 그리고 얼마나?
+
+이해한 바에 따르면, 첫 번째 방법이 더 빨라야 합니다.
+
+두 번째 방법에서는 배열에 접근할 때마다 요소의 주소를 다음과 같이 참조 해제해야 하기 때문입니다:
+
+    배열의 시작을 가리키는 포인터가 포함된 변수 데이터를 읽습니다
+    특정 요소에 대한 오프셋 계산
+    요소에 액세스합니다
+
+첫 번째 메서드를 사용하면 컴파일러가 데이터 변수의 주소를 코드에 하드코딩하여 첫 번째 단계를 건너뛸 수 있으므로 다음과 같이 할 수 있습니다:
+
+    컴파일 시 정의된 고정 주소에서 특정 요소로 오프셋을 계산합니다
+    배열의 요소에 액세스합니다
+
+각 메모리 액세스는 약 40개의 CPU 클럭 사이클에 해당하므로, 동적 할당, 특히 빈번하지 않은 읽기의 경우 정적 할당에 비해 성능이 크게 저하될 수 있습니다. 이는 데이터 변수가 더 자주 접근하는 변수에 의해 캐시에서 제거될 수 있기 때문입니다. 반대로, 정적으로 할당된 글로벌 변수의 디퍼런스 비용은 0입니다. 왜냐하면 해당 변수의 주소는 이미 코드에 하드코딩되어 있기 때문입니다.
