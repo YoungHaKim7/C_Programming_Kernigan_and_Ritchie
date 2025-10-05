@@ -110,6 +110,51 @@ int main(void)
         }
         putchar('\n');
     }
+    
+    // clang-format off
+    // 3D matrix [5][3][2]
+    // 5 layers, 3 rows per layer, 2 columns per row
+    int matrix_3d[5][3][2] = {
+        {   // Layer 0
+            {  0,  1 },
+            {  2,  3 },
+            {  4,  5 }
+        },
+        {   // Layer 1
+            {  6,  7 },
+            {  8,  9 },
+            { 10, 11 }
+        },
+        {   // Layer 2
+            { 12, 13 },
+            { 14, 15 },
+            { 16, 17 }
+        },
+        {   // Layer 3
+            { 18, 19 },
+            { 20, 21 },
+            { 22, 23 }
+        },
+        {   // Layer 4
+            { 24, 25 },
+            { 26, 27 },
+            { 28, 29 }
+        }
+    };
+    // clang-format on
+
+    printf("Matrix 3D (5x3x2):\n");
+
+    for (int i = 0; i < 5; i++) {
+        printf("Layer %d:\n", i);
+        for (int j = 0; j < 3; j++) {
+            for (int k = 0; k < 2; k++) {
+                printf("%2d ", matrix_3d[i][j][k]);
+            }
+            putchar('\n');
+        }
+        putchar('\n');
+    }
 
     return 0;
 }
