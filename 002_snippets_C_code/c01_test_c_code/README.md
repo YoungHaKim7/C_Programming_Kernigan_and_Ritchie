@@ -54,7 +54,12 @@ Test project /Users/gy/C_Programming_Kernigan_and_Ritchie/001_C_Training/d01_tes
     Start 1: run_d01_test_c_code
 1/1 Test #1: run_d01_test_c_code ..............   Passed    0.35 sec
 
-100% tests passed, 0 tests failed out of 1    
+100% tests passed, 0 tests failed out of 1
+
+# or
+cmake -S . -B build
+cmake --build build
+ctest --test-dir ./build
 ```
 
 # Result[|🔝|](#link)
