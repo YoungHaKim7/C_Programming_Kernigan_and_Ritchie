@@ -64,9 +64,3 @@ add_executable(test_runner
 set_target_properties(test_runner PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
 )
-
-# Enable testing
-enable_testing()
-
-# Add the test to CTest
-add_test(NAME calculator_tests COMMAND test_runner WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
