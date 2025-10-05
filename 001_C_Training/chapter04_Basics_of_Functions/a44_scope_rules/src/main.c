@@ -5,7 +5,7 @@ int global_x = 42;
 int counter = 0;
 int total = 5;
 int val = 123;
-int numbers[3] = {10, 20, 30};
+int numbers[3] = { 10, 20, 30 };
 int mode = 42;
 
 // === Example 4 globals and functions ===
@@ -13,20 +13,24 @@ int mode = 42;
 int sp = 0;
 double val_stack[MAXVAL];
 
-void push(double f) {
+void push(double f)
+{
     val_stack[sp++] = f;
 }
 
-double pop(void) {
+double pop(void)
+{
     return val_stack[--sp];
 }
 
 // === Example 9–10 functions ===
-void greet(void) {
+void greet(void)
+{
     printf("Hello from greet!\n");
 }
 
-void show_mode(void) {
+void show_mode(void)
+{
     printf("mode = %d\n", mode);
 }
 
