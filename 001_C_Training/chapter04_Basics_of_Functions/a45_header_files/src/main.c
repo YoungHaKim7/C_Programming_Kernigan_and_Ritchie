@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers/calc.h"
@@ -7,6 +6,8 @@
 
 int main ()
 {
+    printf("Type some text (Ctrl+D to end) 'ex) 2 3 +' :\n");
+
     int type;
     double op2;
     char s[MAXOP];
@@ -41,6 +42,9 @@ int main ()
                 break;
         }
     }
+
+    printf("\nDone!\n");
+
     return 0;
 }
 
