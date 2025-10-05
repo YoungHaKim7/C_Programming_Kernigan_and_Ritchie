@@ -1,40 +1,116 @@
 # Result
 
 ```bash
-/opt/homebrew/opt/gcc@15/bin/gcc-15 -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror -o ./target/a44_scope_rules ./src/main.c
-./target/a44_scope_rules
-=== Example 1 — Simple global definition ===
-x = 42
+$ just ctest
+rm -rf build
+mkdir -p build
+cmake -D CMAKE_C_COMPILER=/opt/homebrew/opt/gcc@15/bin/gcc-15 -S . -B build
+-- The C compiler identification is GNU 15.1.0
+-- Checking whether C compiler has -isysroot
+-- Checking whether C compiler has -isysroot - yes
+-- Checking whether C compiler supports OSX deployment target flag
+-- Checking whether C compiler supports OSX deployment target flag - yes
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/homebrew/opt/gcc@15/bin/gcc-15 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test/build
+cmake --build build
+[ 10%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/main.c.o
+[ 20%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/getop.c.o
+[ 30%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/getch.c.o
+[ 40%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/stack.c.o
+[ 50%] Linking C executable target/c02_calculator_header_divided_conquer_code_test
+[ 50%] Built target c02_calculator_header_divided_conquer_code_test
+[ 60%] Building C object CMakeFiles/test_runner.dir/test/test.c.o
+[ 70%] Building C object CMakeFiles/test_runner.dir/src/getop.c.o
+[ 80%] Building C object CMakeFiles/test_runner.dir/src/getch.c.o
+[ 90%] Building C object CMakeFiles/test_runner.dir/src/stack.c.o
+[100%] Linking C executable target/test_runner
+[100%] Built target test_runner
+ctest --test-dir ./build
+Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test/build
+    Start 1: calculator_tests
+2 3 +
+1/1 Test #1: calculator_tests .................   Passed    4.74 sec
 
-=== Example 2 — Declaration without definition (simulated) ===
-// (In single-file demo, this works because global_x is defined above)
-extern global_x = 42
+100% tests passed, 0 tests failed out of 1
 
-=== Example 3 — Simulated separate definition file ===
-counter = 100
+Total Test time (real) =   4.75 sec
 
-=== Example 4 — push/pop with extern vars ===
-pop1 = 20.5
-pop2 = 10.5
+…_code/c02_calculator_header_divided_conquer_code_test on  main via △ v4.1.1 took 6s
+❯ just ctest
+rm -rf build
+mkdir -p build
+cmake -D CMAKE_C_COMPILER=/opt/homebrew/opt/gcc@15/bin/gcc-15 -S . -B build
+-- The C compiler identification is GNU 15.1.0
+-- Checking whether C compiler has -isysroot
+-- Checking whether C compiler has -isysroot - yes
+-- Checking whether C compiler supports OSX deployment target flag
+-- Checking whether C compiler supports OSX deployment target flag - yes
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/homebrew/opt/gcc@15/bin/gcc-15 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test/build
+cmake --build build
+[ 10%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/main.c.o
+[ 20%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/getop.c.o
+[ 30%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/getch.c.o
+[ 40%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/stack.c.o
+[ 50%] Linking C executable target/c02_calculator_header_divided_conquer_code_test
+[ 50%] Built target c02_calculator_header_divided_conquer_code_test
+[ 60%] Building C object CMakeFiles/test_runner.dir/test/test.c.o
+[ 70%] Building C object CMakeFiles/test_runner.dir/src/getop.c.o
+[ 80%] Building C object CMakeFiles/test_runner.dir/src/getch.c.o
+[ 90%] Building C object CMakeFiles/test_runner.dir/src/stack.c.o
+[100%] Linking C executable target/test_runner
+[100%] Built target test_runner
+ctest --test-dir ./build
+Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test/build
+    Start 1: calculator_tests
+2 3 +
 
-=== Example 5 — Multiple extern declarations allowed ===
-total = 5
+1/1 Test #1: calculator_tests .................   Passed    5.30 sec
 
-=== Example 6 — extern + initialization ===
-val = 123
+100% tests passed, 0 tests failed out of 1
 
-=== Example 7 — extern inside a function ===
-counter (extern inside block) = 10
+Total Test time (real) =   5.30 sec
 
-=== Example 8 — extern with arrays ===
-10 20 30
+# ~~~~
+# ~~~~
 
-=== Example 9 — extern with functions ===
-Hello from greet!
-
-=== Example 10 — Global shared across sections ===
-mode = 42
-mode = 99
-
-✅ All 10 extern examples completed successfully.
+$ just cr
+rm -rf build
+mkdir -p build
+export CC=/opt/homebrew/opt/gcc@15/bin/gcc-15
+cmake -D CMAKE_C_COMPILER=/opt/homebrew/opt/gcc@15/bin/gcc-15 -G Ninja .
+-- The C compiler identification is GNU 15.1.0
+-- Checking whether C compiler has -isysroot
+-- Checking whether C compiler has -isysroot - yes
+-- Checking whether C compiler supports OSX deployment target flag
+-- Checking whether C compiler supports OSX deployment target flag - yes
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/homebrew/opt/gcc@15/bin/gcc-15 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test
+ninja
+[10/10] Linking C executable target/test_runner
+mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
+./build/./target/c02_calculator_header_divided_conquer_code_test
+Type some text (Ctrl+D to end) 'ex) 2 3 +' :
+2 3 +
+	5
+^D
+Done!
 ```
