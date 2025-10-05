@@ -52,3 +52,15 @@ add_executable(${ProjectId}
 set_target_properties(${ProjectId} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
 )
+
+# Test executable
+add_executable(test_runner
+    test/test.c
+    src/getop.c
+    src/getch.c
+    src/stack.c
+)
+
+set_target_properties(test_runner PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
+)
