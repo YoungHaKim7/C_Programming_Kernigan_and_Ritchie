@@ -1,3 +1,6 @@
+# justfile 여기서 copy해서 쓰면됨.
+[c02_calculator_header_divided_conquer_code_test#justfile](/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test#justfile)
+
 # Result
 
 ```bash
