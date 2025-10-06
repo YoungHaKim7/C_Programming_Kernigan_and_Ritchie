@@ -5,22 +5,25 @@ int m, n;
 vector<long long> dp_before, dp_cur;
 
 // Example cost function - can be customized based on specific problem
-long long C(int i, int j) {
-    if (i > j) return 0;
+long long C(int i, int j)
+{
+    if (i > j)
+        return 0;
     // Simple example: cost is the distance between i and j squared
     return (long long)(j - i) * (j - i);
 }
 
 // compute dp_cur[l], ... dp_cur[r] (inclusive)
-void compute(int l, int r, int optl, int optr) {
+void compute(int l, int r, int optl, int optr)
+{
     if (l > r)
         return;
 
     int mid = (l + r) >> 1;
-    pair<long long, int> best = {LLONG_MAX, -1};
+    pair<long long, int> best = { LLONG_MAX, -1 };
 
     for (int k = optl; k <= min(mid, optr); k++) {
-        best = min(best, {(k ? dp_before[k - 1] : 0) + C(k, mid), k});
+        best = min(best, { (k ? dp_before[k - 1] : 0) + C(k, mid), k });
     }
 
     dp_cur[mid] = best.first;
@@ -30,9 +33,10 @@ void compute(int l, int r, int optl, int optr) {
     compute(mid + 1, r, opt, optr);
 }
 
-long long solve() {
-    dp_before.assign(n,0);
-    dp_cur.assign(n,0);
+long long solve()
+{
+    dp_before.assign(n, 0);
+    dp_cur.assign(n, 0);
 
     for (int i = 0; i < n; i++)
         dp_before[i] = C(0, i);
@@ -44,7 +48,8 @@ long long solve() {
 
     return dp_before[n - 1];
 }
-int main(void) {
+int main(void)
+{
     // Test Case 1: Basic case
     m = 2, n = 5;
     cout << "Test 1 (m=2, n=5): " << solve() << endl;
