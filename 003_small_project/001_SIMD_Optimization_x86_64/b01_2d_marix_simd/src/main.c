@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <xmmintrin.h>
 
@@ -24,6 +25,8 @@ int main(void)
     float result[4][4];
 
     int len = sizeof(a) / sizeof(a[0]);
+    int len2 = sizeof(b) / sizeof(b[0]);
+    assert(len == len2);
 
     // Add the matrices row by row using SSE
     for (int i = 0; i < len; ++i) {
