@@ -15,13 +15,13 @@ fn main() {
     array[0][0][1] = 12;
     println!("array : {array:?}");
     println!();
-    array[1][0][0] = 21;
+    array[1][1][0] = 21;
     println!("array : {array:?}");
     println!();
-    array[2][0][0] = 31;
+    array[2][0][1] = 31;
     println!("array : {array:?}");
     println!();
-    println!("array[0][0][1] = 12\narray[1][0][0] = 21\narray[2][0][0] = 31\n");
+    println!("array[0][0][1] = 12\narray[1][1][0] = 21\narray[2][0][1] = 31\n");
     // for d_2d in array {
     //     for d_3d in d_2d {
     //         println!("{:?}", d_2d);
@@ -31,8 +31,8 @@ fn main() {
     // }
     // Print array layers
     println!("array[0][0][1] = 12");
-    println!("array[1][0][0] = 21");
-    println!("array[2][0][0] = 31\n");
+    println!("array[1][1][0] = 21");
+    println!("array[2][0][1] = 31\n");
 
     for (layer_idx, layer) in array.iter().enumerate() {
         println!("Layer {layer_idx}:");
