@@ -149,7 +149,7 @@ ro:
 cr:
 	rm -rf build
 	mkdir -p build
-	export CC={{gpp_which}}
+	export CXX={{gpp_which}}
 	cmake -D CMAKE_CXX_COMPILER={{gpp_which}} -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
@@ -183,7 +183,7 @@ cro3:
 zr:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	export CC={{gpp_which}}
+	export CXX={{gpp_which}}
 	zig c++ {{ldflags_common}} -o {{target}} {{source}}
 	{{target}}
 	
