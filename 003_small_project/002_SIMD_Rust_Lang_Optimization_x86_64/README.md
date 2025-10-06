@@ -1,3 +1,6 @@
+# Optimising path tracing with SIMD
+- https://bitshifter.github.io/2018/06/04/simd-path-tracing/
+
 # Performance optimization, and how to do it wrong - some things I learned implementing SIMD convolution in Rust 
 - https://www.reddit.com/r/rust/comments/1j2iqhq/performance_optimization_and_how_to_do_it_wrong/
 

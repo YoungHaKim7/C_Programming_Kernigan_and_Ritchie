@@ -1,0 +1,6 @@
+[package]
+name = "c01_unsafe_arch_x86_mm_add_load"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
