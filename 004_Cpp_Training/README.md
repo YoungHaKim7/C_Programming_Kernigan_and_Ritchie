@@ -8,6 +8,7 @@
 - https://isocpp.org/blog/tag/experimental
 
 # 유튜브 영상
+- [Modern C++ 유명함 Mike Shah](https://youtube.com/playlist?list=PLvv0ScY6vfd8j-tlhYVPYgiIyXduu6m-L&si=q8NcZEOdHd2KvOBr)
 - [(31hr)C++ Programming Course - Beginner to Advanced | freeCodeCamp.org](https://youtu.be/8jLOx1hD3_o?si=5qBWwxb0cPopgjX5)
 
 #
