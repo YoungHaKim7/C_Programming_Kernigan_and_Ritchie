@@ -21,7 +21,6 @@ fn main() {
     array[2][0][1] = 31;
     println!("array : {array:?}");
     println!();
-    println!("array[0][0][1] = 12\narray[1][1][0] = 21\narray[2][0][1] = 31\n");
     // for d_2d in array {
     //     for d_3d in d_2d {
     //         println!("{:?}", d_2d);
