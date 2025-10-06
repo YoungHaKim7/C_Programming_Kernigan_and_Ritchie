@@ -6,3 +6,8 @@
 
 # c++26
 - https://isocpp.org/blog/tag/experimental
+
+# 유튜브 영상
+- [(31hr)C++ Programming Course - Beginner to Advanced | freeCodeCamp.org](https://youtu.be/8jLOx1hD3_o?si=5qBWwxb0cPopgjX5)
+
+#
