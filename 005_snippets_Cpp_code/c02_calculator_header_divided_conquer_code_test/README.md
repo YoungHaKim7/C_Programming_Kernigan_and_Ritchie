@@ -1,0 +1,610 @@
+# justfile
+
+```bash
+
+# Detect OS
+os := `uname`
+
+# project name
+project_name := `basename "$(pwd)"`
+full_project_name := `pwd`
+
+# clang & gcc basic & clang-format basic & cmake basic
+clang := `which clang` 
+clangpp := `which clang++` 
+gcc := `which gcc`
+clang_format_basic := `which clang-format`
+cmake := `which cmake`
+
+# compiler settings
+clang_which := if os == "Linux" { \
+  "/usr/bin/clang-21" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang" \
+  } else { \
+    clang \
+  }
+clangpp_which := if os == "Linux" { \
+  "/usr/bin/clang++-21" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang++" \
+  } else { \
+    clangpp \
+  }
+gcc_which := if os == "Linux" { \
+    "/opt/gcc-15/bin/gcc" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/gcc@15/bin/gcc-15" \
+  } else { \
+    gcc \
+  }
+
+# cmake settings(4.0)
+cmake_which := if os == "Linux" { \
+    "/usr/local/bin/cmake" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/bin/cmake"
+  } else { \
+    cmake \
+  }
+
+# clang-format 21
+clang_format := if os == "Linux" { \
+    "clang-format-21" \
+  } else if os == "Darwin" { \
+    "/opt/homebrew/opt/llvm/bin/clang-format" \
+  } else { \
+    clang_format_basic \
+  }
+
+# fmt .clang-format(linuxOS / macOS)
+fmt_flags := if os == "Linux" { \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    +clang_format+ \
+    " -style=file -i {} \\;" \
+  } else if os == "Darwin" { \
+    ". -iname '*.cpp' \
+    -o -iname '*.hpp' \
+    -o -iname '*.cc' \
+    -o -iname '*.c' \
+    -o -iname '*.cxx' \
+    -o -iname '*.c' \
+    -o -iname '*.h' | " \
+    +clang_format+ \
+    " -style=file -i --files=/dev/stdin" \
+  } else { \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    +clang_format+ \
+    " -style=file -i {} \\;" \
+  }  
+
+# fast fmt(LinuxOS / macOS)(Install "cargo install fd-find")
+fm_flags := "-e c \
+  -e h \
+  -e cpp \
+  -e hpp \
+  -e cc \
+  -e cxx -x " \
+  +clang_format+  \
+  " -style=file -i {} \\;"
+
+# Source and target directories
+src_dir := "./src"
+target_dir := "./target"
+
+# Files
+source := src_dir+"/main.c"
+target := target_dir+"/"+project_name
+link_files := "-c "+ src_dir+"/getop.c " \
++ src_dir+"/"+"getch.c " \
++ src_dir+"/"+"stack.c "
+
+# Optimize (O2(RelWithDebInfo), O3(Release))
+ldflags_optimize :=  "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
+
+# Common flags
+ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
+ldflags_debug := "-std=c23 -pthread -lm -Wall -Wextra -ggdb"
+ldflags_emit_llvm := "-S -emit-llvm"
+ldflags_assembly := "-Wall -save-temps"
+ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
+ldflags_fsanitize_object := "-g -fsanitize=address"
+ldflags_fsanitize_thread := "-g -fsanitize=thread -fno-omit-frame-pointer -c"
+ldflags_fsanitize_thread_object := "-g -fsanitize=thread"
+ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
+ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
+ldflags_fsanitize_leak := "-fsanitize=leak -g"
+
+# (C)gcc compile(LinuxOS)
+r:
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
+	{{gcc_which}} {{ldflags_common}} {{source}} {{link_files}}
+	{{gcc_which}} *.o
+	mv *.o a.out {{target_dir}}
+	{{target_dir}}/a.out
+
+# (C)clang compile(Optimization/LinuxOS/ macOS)
+ro:
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
+	{{clang_which}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{clang_which}} *.o
+	mv *.o a.out {{target_dir}}
+	{{target_dir}}/a.out
+	{{target}}
+
+# cmake compile(LinuxOS)
+cr:
+	rm -rf build
+	mkdir -p build
+	export CC={{gcc_which}}
+	cmake -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
+	ninja
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
+	./build/{{target}}
+
+# cmake compile(LinuxOS)
+cro:
+	rm -rf build
+	mkdir -p build
+	cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo \
+	      -D CMAKE_C_COMPILER={{gcc_which}} \
+	      -D CMAKE_C_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
+	      -G Ninja .
+	ninja
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
+	./build/{{target}}
+
+# cmake compile(LinuxOS)
+cro3:
+	rm -rf build
+	mkdir -p build
+	cmake -D CMAKE_BUILD_TYPE=Release \
+	      -D CMAKE_C_COMPILER={{gcc_which}} \
+	      -D CMAKE_C_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
+	      -G Ninja .
+	ninja
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
+	./build/{{target}}
+
+# zig C compile(LinuxOS)
+zr:
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
+	export CC={{gcc_which}}
+	zig cc {{ldflags_common}} -o {{target}} {{source}}
+	{{target}}
+	
+# cmake ctest
+ctest:
+	rm -rf build
+	mkdir -p build
+	cmake -D CMAKE_C_COMPILER={{gcc_which}} \
+		  -S . -B build
+	cmake --build build
+	ctest --test-dir ./build
+
+# clang build
+b:
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
+	{{clang_which}} {{ldflags_debug}} -o {{target}} {{source}}
+
+# clangd .cache(c23 LSP build)
+clangd:
+	rm -rf .cache
+	{{cmake_which}} -DCMAKE_BUILD_TYPE:STRING=Debug \
+					-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \
+					-DCMAKE_C_COMPILER:FILEPATH={{clang_which}} \
+					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} --no-warn-unused-cli \
+					-S {{full_project_name}} \
+					-B {{full_project_name}}/build \
+					-G Ninja
+
+# move target
+move:
+	rm -rf {{target_dir}}
+	mkdir {{target_dir}}
+	mv CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build.ninja *.bc *.i *.s *.o *.ll a.out target
+
+# .clang-format init(LinuxOS/macOS)
+cl:
+	rm -rf .clang-format
+	{{clang_format}} -style=WebKit -dump-config > .clang-format
+
+# .clang-format fmt(LinuxOS/ macOS)
+fmt:
+	find {{fmt_flags}}
+
+# (fast).clang-format fmt(cargo install fd-find)(LinuxOS / macOS)
+fm:
+	fd {{fm_flags}}
+
+# clang LLVM emit-file
+ll:
+	rm -rf target
+	mkdir -p target
+	cp -rf {{src_dir}}/*.* ./.
+	{{clang_which}} {{ldflags_emit_llvm}} main.c
+	mv *.ll {{target_dir}}
+	{{clang_which}} {{ldflags_common}} -o {{target}} {{source}}
+	mv *.cpp {{target_dir}}
+	rm -rf *.out
+
+# Assembly emit-file
+as:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_assembly}} -o {{target}} {{source}}
+	mv *.i {{target_dir}}
+	mv *.o {{target_dir}}
+	mv *.s {{target_dir}}
+	mv *.bc {{target_dir}}
+
+# Clang Sanitize(ASan=Address / LSan=Leak / TSan=Thread / MSan=Memory / UBSan=Undefined Behavior)
+san SAN:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{source}}
+	{{clang_which}} -g -fsanitize={{SAN}} *.o 
+	mv a.out *.o {{target_dir}}
+	{{target_dir}}/a.out
+
+# clang (ASan)fsanitize_address
+asan:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_address}} {{source}}
+	{{clang_which}} {{ldflags_fsanitize_object}} *.o 
+	mv a.out *.o {{target_dir}}
+	{{target_dir}}/a.out
+
+# clang LSan_Leak_Sanitizer
+lsan:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_leak}} {{source}} -o {{target}}
+	{{target}}
+
+# clang TSan_Thread_Sanitizer
+tsan:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_thread}} {{source}}
+	{{clang_which}} {{ldflags_fsanitize_thread_object}} *.o 
+	mv a.out *.o {{target_dir}}
+	{{target_dir}}/a.out
+
+# leak memory check(valgrind)
+[linux]
+leaks:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{target}}
+	valgrind --leak-check=full {{target}}
+
+# leak memory check(leaks / macOS)
+[macos]
+leaks:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{target}}
+	leaks --atExit -- {{target}}
+
+# leak memory check(valgrind)
+[linux]
+valgrind:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_valgrind_O0}} {{source}} -o {{project_name}}
+	mv {{project_name}} {{target_dir}}
+	valgrind --leak-check=full {{target_dir }}/{{project_name}}
+
+# valgrind --track-origins=yes 
+[linux]
+valgrind_detail:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_valgrind_O0}} {{source}} -o {{project_name}}
+	mv {{project_name}} {{target_dir}}
+	valgrind --leak-check=full --track-origins=yes {{target_dir }}/{{project_name}}
+
+# valgrind --tool=memcheck --vgdb=yes --vgdb-error=0
+[linux]
+valgrind_memcheck:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} -O0 -g {{source}} -o {{project_name}}
+	mv {{project_name}} {{target_dir}}
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --tool=memcheck --vgdb=yes --vgdb-error=0 {{target_dir }}/{{project_name}}
+ 
+# thread check(data race)
+thread:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_thread}} {{source}} -o {{target}}
+	{{target}}
+
+# object file emit-file
+obj:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_assembly}} -o {{target}} {{source}}
+	mv *.ii {{target_dir}}
+	mv *.o {{target_dir}}
+	mv *.s {{target_dir}}
+	mv *.bc {{target_dir}}
+	objdump --disassemble -S -C {{target_dir}}/main.o
+
+# hex view("rg -i <search>" | "grep -rni <search>")
+[linux]
+xx:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{project_name}}
+	xxd -c 16 {{project_name}} > hex_print.txt
+	mv {{project_name}} hex_print.txt {{target_dir}}
+
+# hex view("rg -i <search>" | "grep -rni <search>")
+[macos]
+xx:
+	rm -rf target
+	mkdir -p target
+	{{clang_which}} {{ldflags_fsanitize_valgrind}} {{source}} -o {{project_name}}
+	xxd -c 16 {{project_name}} > hex_print.txt
+	mv {{project_name}} {{project_name}}.* hex_print.txt {{target_dir}}
+
+# clean files
+clean:
+	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
+	rm -rf build CMakeCache.txt CMakeFiles .cache
+
+# C init(int main(void))
+init:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <stdio.h>' > src/main.c
+	echo '' >> src/main.c
+	echo 'int main(void) {' >> src/main.c
+	echo '    printf("Hello world C lang ");' >> src/main.c
+	echo '    return 0;' >> src/main.c
+	echo '}' >> src/main.c
+
+# C init(int main(int argc, char* argv[]))
+init2:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <stdio.h>' > src/main.c
+	echo '' >> src/main.c
+	echo 'int main(int argc, char* argv[]) {' >> src/main.c
+	echo '    printf("Hello world C lang ");' >> src/main.c
+	echo '    int i;' >> src/main.c
+	echo '    ' >> src/main.c
+	echo '    for (i=0; i < argc; i++) {' >> src/main.c
+	echo '        printf("%s", argv[i]);' >> src/main.c
+	echo '    }' >> src/main.c
+	echo '    return 0;' >> src/main.c
+	echo '}' >> src/main.c
+
+# Debugging(VSCode codelldb ver)
+codelldb:
+	rm -rf .vscode
+	mkdir -p .vscode
+	echo '{' > .vscode/launch.json
+	echo '    "version": "0.2.0",' >> .vscode/launch.json
+	echo '    "configurations": [' >> .vscode/launch.json
+	echo '        {' >> .vscode/launch.json
+	echo '            "type": "lldb",' >> .vscode/launch.json
+	echo '            "request": "launch",' >> .vscode/launch.json
+	echo '            "name": "Launch",' >> .vscode/launch.json
+	echo '            "program": "${workspaceFolder}/build/target/${workspaceFolderBasename}",' >> .vscode/launch.json
+	echo '            "args": [],' >> .vscode/launch.json
+	echo '            "cwd": "${workspaceFolder}"' >> .vscode/launch.json
+	echo '            // "preLaunchTask": "C/C++: clang build active file"' >> .vscode/launch.json
+	echo '        },' >> .vscode/launch.json
+	echo '        {' >> .vscode/launch.json
+	echo '            "name": "gcc - Build and debug active file",' >> .vscode/launch.json
+	echo '            "type": "lldb",' >> .vscode/launch.json
+	echo '            "request": "launch",' >> .vscode/launch.json
+	echo '            "program": "${fileDirname}/build/target/${workspaceFolderBasename}",' >> .vscode/launch.json
+	echo '            "args": [],' >> .vscode/launch.json
+	echo '            "stopAtEntry": false,' >> .vscode/launch.json
+	echo '            "cwd": "${fileDirname}",' >> .vscode/launch.json
+	echo '            "environment": [],' >> .vscode/launch.json
+	echo '            "externalConsole": false,' >> .vscode/launch.json
+	echo '            "MIMode": "lldb"' >> .vscode/launch.json
+	echo '            // "tasks": "C/C++: clang build active file"' >> .vscode/launch.json
+	echo '        }' >> .vscode/launch.json
+	echo '    ]' >> .vscode/launch.json
+	echo '}' >> .vscode/launch.json
+	echo '{' > .vscode/tasks.json
+	echo '    "tasks": [' >> .vscode/tasks.json
+	echo '        {' >> .vscode/tasks.json
+	echo '            "type": "C_Cpp_Build",' >> .vscode/tasks.json
+	echo '            "label": "C/C++: clang build active file",' >> .vscode/tasks.json
+	echo '            "command": "{{clang_which}}",' >> .vscode/tasks.json
+	echo '            "args": [' >> .vscode/tasks.json
+	echo '                "-c",' >> .vscode/tasks.json
+	echo '                "-fcolor-diagnostics",' >> .vscode/tasks.json
+	echo '                "-fansi-escape-codes",' >> .vscode/tasks.json
+	echo '                "-g",' >> .vscode/tasks.json
+	echo '                "${file}",' >> .vscode/tasks.json
+	echo '                "-o",' >> .vscode/tasks.json
+	echo '                "${fileDirname}/build/target/${workspaceFolderBasename}"' >> .vscode/tasks.json
+	echo '            ],' >> .vscode/tasks.json
+	echo '            "options": {' >> .vscode/tasks.json
+	echo '                "cwd": "${fileDirname}"' >> .vscode/tasks.json
+	echo '            },' >> .vscode/tasks.json
+	echo '            "problemMatcher": [' >> .vscode/tasks.json
+	echo '                "$gcc"' >> .vscode/tasks.json
+	echo '            ],' >> .vscode/tasks.json
+	echo '            "group": {' >> .vscode/tasks.json
+	echo '                "kind": "build",' >> .vscode/tasks.json
+	echo '                "isDefault": true' >> .vscode/tasks.json
+	echo '            },' >> .vscode/tasks.json
+	echo '            "detail": "Task generated by Debugger."' >> .vscode/tasks.json
+	echo '        }' >> .vscode/tasks.json
+	echo '    ],' >> .vscode/tasks.json
+	echo '    "version": "2.0.0"' >> .vscode/tasks.json
+	echo '}' >> .vscode/tasks.json
+
+# Debugging(VSCode)
+vscode:
+	rm -rf .vscode
+	mkdir -p .vscode
+	echo '{' > .vscode/launch.json
+	echo '    "version": "0.2.0",' >> .vscode/launch.json
+	echo '    "configurations": [' >> .vscode/launch.json
+	echo '        {' >> .vscode/launch.json
+	echo '            "type": "lldb",' >> .vscode/launch.json
+	echo '            "request": "launch",' >> .vscode/launch.json
+	echo '            "name": "Launch",' >> .vscode/launch.json
+	echo '            "program": "${workspaceFolder}/target/${fileBasenameNoExtension}",' >> .vscode/launch.json
+	echo '            "args": [],' >> .vscode/launch.json
+	echo '            "cwd": "${workspaceFolder}"' >> .vscode/launch.json
+	echo '            // "preLaunchTask": "C/C++: clang build active file"' >> .vscode/launch.json
+	echo '        },' >> .vscode/launch.json
+	echo '        {' >> .vscode/launch.json
+	echo '            "name": "gcc - Build and debug active file",' >> .vscode/launch.json
+	echo '            "type": "cppdbg",' >> .vscode/launch.json
+	echo '            "request": "launch",' >> .vscode/launch.json
+	echo '            "program": "${fileDirname}/target/${fileBasenameNoExtension}",' >> .vscode/launch.json
+	echo '            "args": [],' >> .vscode/launch.json
+	echo '            "stopAtEntry": false,' >> .vscode/launch.json
+	echo '            "cwd": "${fileDirname}",' >> .vscode/launch.json
+	echo '            "environment": [],' >> .vscode/launch.json
+	echo '            "externalConsole": false,' >> .vscode/launch.json
+	echo '            "MIMode": "lldb"' >> .vscode/launch.json
+	echo '            // "tasks": "C/C++: clang build active file"' >> .vscode/launch.json
+	echo '        }' >> .vscode/launch.json
+	echo '    ]' >> .vscode/launch.json
+	echo '}' >> .vscode/launch.json
+	echo '{' > .vscode/tasks.json
+	echo '    "tasks": [' >> .vscode/tasks.json
+	echo '        {' >> .vscode/tasks.json
+	echo '            "type": "cppbuild",' >> .vscode/tasks.json
+	echo '            "label": "C/C++: clang build active file",' >> .vscode/tasks.json
+	echo '            "command": "{{clang_which}}",' >> .vscode/tasks.json
+	echo '            "args": [' >> .vscode/tasks.json
+	echo '                "-c",' >> .vscode/tasks.json
+	echo '                "-fcolor-diagnostics",' >> .vscode/tasks.json
+	echo '                "-fansi-escape-codes",' >> .vscode/tasks.json
+	echo '                "-g",' >> .vscode/tasks.json
+	echo '                "${file}",' >> .vscode/tasks.json
+	echo '                "-o",' >> .vscode/tasks.json
+	echo '                "${fileDirname}/target/${fileBasenameNoExtension}"' >> .vscode/tasks.json
+	echo '            ],' >> .vscode/tasks.json
+	echo '            "options": {' >> .vscode/tasks.json
+	echo '                "cwd": "${fileDirname}"' >> .vscode/tasks.json
+	echo '            },' >> .vscode/tasks.json
+	echo '            "problemMatcher": [' >> .vscode/tasks.json
+	echo '                "$gcc"' >> .vscode/tasks.json
+	echo '            ],' >> .vscode/tasks.json
+	echo '            "group": {' >> .vscode/tasks.json
+	echo '                "kind": "build",' >> .vscode/tasks.json
+	echo '                "isDefault": true' >> .vscode/tasks.json
+	echo '            },' >> .vscode/tasks.json
+	echo '            "detail": "Task generated by Debugger."' >> .vscode/tasks.json
+	echo '        }' >> .vscode/tasks.json
+	echo '    ],' >> .vscode/tasks.json
+	echo '    "version": "2.0.0"' >> .vscode/tasks.json
+	echo '}' >> .vscode/tasks.json	
+
+```
+
+# Result
+
+```bash
+$ just ctest
+rm -rf build
+mkdir -p build
+cmake -D CMAKE_C_COMPILER=/opt/homebrew/opt/gcc@15/bin/gcc-15 -S . -B build
+-- The C compiler identification is GNU 15.1.0
+-- Checking whether C compiler has -isysroot
+-- Checking whether C compiler has -isysroot - yes
+-- Checking whether C compiler supports OSX deployment target flag
+-- Checking whether C compiler supports OSX deployment target flag - yes
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/homebrew/opt/gcc@15/bin/gcc-15 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test/build
+cmake --build build
+[ 10%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/main.c.o
+[ 20%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/getop.c.o
+[ 30%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/getch.c.o
+[ 40%] Building C object CMakeFiles/c02_calculator_header_divided_conquer_code_test.dir/src/stack.c.o
+[ 50%] Linking C executable target/c02_calculator_header_divided_conquer_code_test
+[ 50%] Built target c02_calculator_header_divided_conquer_code_test
+[ 60%] Building C object CMakeFiles/test_runner.dir/test/test.c.o
+[ 70%] Building C object CMakeFiles/test_runner.dir/src/getop.c.o
+[ 80%] Building C object CMakeFiles/test_runner.dir/src/getch.c.o
+[ 90%] Building C object CMakeFiles/test_runner.dir/src/stack.c.o
+[100%] Linking C executable target/test_runner
+[100%] Built target test_runner
+ctest --test-dir ./build
+Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test/build
+    Start 1: calculator_tests
+2 3 +
+
+1/1 Test #1: calculator_tests .................   Passed    5.30 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   5.30 sec
+
+# ~~~~
+# ~~~~
+
+$ just cr
+rm -rf build
+mkdir -p build
+export CC=/opt/homebrew/opt/gcc@15/bin/gcc-15
+cmake -D CMAKE_C_COMPILER=/opt/homebrew/opt/gcc@15/bin/gcc-15 -G Ninja .
+-- The C compiler identification is GNU 15.1.0
+-- Checking whether C compiler has -isysroot
+-- Checking whether C compiler has -isysroot - yes
+-- Checking whether C compiler supports OSX deployment target flag
+-- Checking whether C compiler supports OSX deployment target flag - yes
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/homebrew/opt/gcc@15/bin/gcc-15 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/002_snippets_C_code/c02_calculator_header_divided_conquer_code_test
+ninja
+[10/10] Linking C executable target/test_runner
+mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
+./build/./target/c02_calculator_header_divided_conquer_code_test
+Type some text (Ctrl+D to end) 'ex) 2 3 +' :
+2 3 +
+	5
+^D
+Done!
+```
