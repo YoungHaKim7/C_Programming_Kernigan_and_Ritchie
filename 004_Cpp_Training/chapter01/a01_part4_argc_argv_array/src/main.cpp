@@ -1,11 +1,14 @@
 #include <iostream>
+#include <print>
 
-int main(int argc, char* argv[]) {
-    std::cout << "Hello world C lang " << std::endl;
-    int i;
-    
-    for (i=0; i < argc; i++) {
-        printf("%s", argv[i]);
+int main(int argc, char* argv[])
+{
+    std::print("Hello world C++26 lang ");
+
+    std::cout << "number of arguments: " << argc << std::endl;
+
+    for (int i = 0; i < argc; ++i) {
+        std::cout << "argv[" << i << "]: " << argv[i] << std::endl;
     }
     return 0;
 }
