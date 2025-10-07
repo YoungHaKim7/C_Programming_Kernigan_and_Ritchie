@@ -1,5 +1,6 @@
 # cpp기초
 - https://github.com/CoffeeBeforeArch/cpp_from_scratch
+- https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
 
 # 연습용
 - https://github.com/cpp-best-practices/cppbestpractices
