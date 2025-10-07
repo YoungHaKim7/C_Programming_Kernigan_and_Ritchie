@@ -1,9 +1,9 @@
-#include <print>
 #include <cmath>
+#include <print>
 
 int round_custom(double d, bool round_up = true)
 {
-    return (round_up) ? ceil(d) : d;    // don't: "invisible" dependency
+    return (round_up) ? ceil(d) : d; // don't: "invisible" dependency
 }
 
 int main(void)
@@ -32,13 +32,15 @@ int main(void)
     std::print("round_custom(1234.567) = {}\n", round_custom(1234.567));
 
     // Example 8: Large number round down
-    std::print("round_custom(1234.567, false) = {}\n", round_custom(1234.567, false));
+    std::print(
+        "round_custom(1234.567, false) = {}\n", round_custom(1234.567, false));
 
     // Example 9: Very small number
     std::print("round_custom(0.001, true) = {}\n", round_custom(0.001, true));
 
     // Example 10: Negative small number
-    std::print("round_custom(-0.999, false) = {}\n", round_custom(-0.999, false));
+    std::print(
+        "round_custom(-0.999, false) = {}\n", round_custom(-0.999, false));
 
     return 0;
 }
