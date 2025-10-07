@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <vector>
 
 #define ROWS 3
 #define COLS 4
@@ -58,7 +59,7 @@ int main(void)
 
     // make matrix init
     int rows = 2, cols = 3;
-    int matrix02[rows][cols]; // VLA in C23
+    std::vector<std::vector<int>> matrix02(rows, std::vector<int>(cols)); // C++ way
 
     printf("\n");
     printf("Matrix (%dx%d):\n", rows, cols);
