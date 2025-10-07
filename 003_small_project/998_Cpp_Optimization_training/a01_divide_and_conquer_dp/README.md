@@ -454,9 +454,9 @@ init4:
 	echo 'IndentPPDirectives: None' >> .clang-format
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
 	echo '#include <iostream>' > src/main.cpp
-	echo '#include <vector>' > src/main.cpp
-	echo '#include <algorithm>' > src/main.cpp
-	echo '#include <iterator>' > src/main.cpp
+	echo '#include <vector>' >> src/main.cpp
+	echo '#include <algorithm>' >> src/main.cpp
+	echo '#include <iterator>' >> src/main.cpp
 	echo '' >> src/main.cpp
 	echo 'template <typename C>' >> src/main.cpp
 	echo 'void reverse_sort(C& c)' >> src/main.cpp
