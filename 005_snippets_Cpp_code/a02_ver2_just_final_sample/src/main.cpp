@@ -59,7 +59,8 @@ int main(void)
 
     // make matrix init
     int rows = 2, cols = 3;
-    std::vector<std::vector<int>> matrix02(rows, std::vector<int>(cols)); // C++ way
+    std::vector<std::vector<int>> matrix02(
+        rows, std::vector<int>(cols)); // C++ way
 
     printf("\n");
     printf("Matrix (%dx%d):\n", rows, cols);
