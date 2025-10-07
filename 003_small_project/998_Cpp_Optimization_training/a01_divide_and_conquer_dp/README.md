@@ -439,6 +439,47 @@ init3:
 	echo '    return 0;' >> src/main.cpp
 	echo '}' >> src/main.cpp
 
+# C++ init(int main(int argc, char** argv))
+init4:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <iostream>' > src/main.cpp
+	echo '#include <vector>' > src/main.cpp
+	echo '#include <algorithm>' > src/main.cpp
+	echo '#include <iterator>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'template <typename C>' >> src/main.cpp
+	echo 'void reverse_sort(C& c)' >> src/main.cpp
+	echo '{' >> src/main.cpp
+	echo '    sort(begin(c), end(c), [](auto x, auto y){ return x > y; });' >> src/main.cpp
+	echo '}' >> src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main(int argc, char** argv) {' >> src/main.cpp
+	echo '    std::cout << "Hello world C++ reverse sort " << std::endl;' >> src/main.cpp
+	echo '    std::vector<int> v= {3, 7, 2, 9};' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    std::sort(begin(v), end(v));' >> src/main.cpp
+	echo '    std::copy(cbegin(v), cend(v), ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
+	echo '    std::cout << std::endl;' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    // sort(begin(v), end(v), [](auto x, auto y){ return x > y; });' >> src/main.cpp
+	echo '    reverse_sort(v); ' >> src/main.cpp
+	echo '    std::copy(begin(v), end(v), ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
+	echo '    std::cout << std::endl;' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
+
 # Debugging(VSCode codelldb ver)
 codelldb:
 	rm -rf .vscode
