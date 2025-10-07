@@ -469,13 +469,24 @@ init4:
 	echo '    std::vector<int> v= {3, 7, 2, 9};' >> src/main.cpp
 	echo '    ' >> src/main.cpp
 	echo '    std::sort(begin(v), end(v));' >> src/main.cpp
-	echo '    std::copy(cbegin(v), cend(v), ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
+	echo '    std::copy(cbegin(v), cend(v), std::ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
 	echo '    std::cout << std::endl;' >> src/main.cpp
 	echo '    ' >> src/main.cpp
 	echo '    // sort(begin(v), end(v), [](auto x, auto y){ return x > y; });' >> src/main.cpp
 	echo '    reverse_sort(v); ' >> src/main.cpp
-	echo '    std::copy(begin(v), end(v), ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
+	echo '    std::copy(begin(v), end(v), std::ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
 	echo '    std::cout << std::endl;' >> src/main.cpp
+	echo '    std::cout << "number of arguments: " << argc << std::endl;' >> src/main.cpp
+	echo '    for (int i = 0; i < argc; ++i) {' >> src/main.cpp
+	echo '        std::cout << "argv[" << i << "]: " << argv[i] << std::endl;' >> src/main.cpp
+	echo '    }' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    if (argc < 2) {' >> src/main.cpp
+	echo '        std::cout << "Usage: " << argv[0] << " <name>" << std::endl;' >> src/main.cpp
+	echo '        return 1;' >> src/main.cpp
+	echo '    }' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    std::cout << "Hello, " << argv[1] << "!" << std::endl;' >> src/main.cpp
 	echo '    ' >> src/main.cpp
 	echo '    return 0;' >> src/main.cpp
 	echo '}' >> src/main.cpp
