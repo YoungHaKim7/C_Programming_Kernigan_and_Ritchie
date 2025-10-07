@@ -4,6 +4,7 @@
 
 int main()
 {
+    std::print("\nPress Ctrl+D to exit.\n\n");
     double x = 0.0;
     double y = 0.0;
     double result = 0.0;
@@ -15,14 +16,13 @@ int main()
               << "\n";
 
     Calculator c;
-    while (true) {
-        std::cin >> x >> oper >> y;
+    while (std::cin >> x >> oper >> y) {
         result = c.Calculate(x, oper, y);
         std::cout << "Result " << "of " << x << oper << y << " is: " << result
                   << "\n";
     }
 
-    std::print("bye~~~");
+    std::print("Thank you for using the calculator. Goodbye!\n");
 
     return 0;
 }
