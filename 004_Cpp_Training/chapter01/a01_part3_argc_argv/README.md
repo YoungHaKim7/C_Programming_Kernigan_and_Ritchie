@@ -3,65 +3,29 @@
 - linuxOS
 
 ```bash
-$ ./target/a01_part3_argc_argv Hello C TestGood 2nd 3nd
-Hello world C lang
+$ /opt/homebrew/opt/gcc@15/bin/g++-15 -std=c++2c -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror -o ./target/a01_part3_argc_argv ./src/main.cpp
 
-argv[0] : ./target/a01_part3_argc_argv
-argv[1] : Hello
-argv[2] : C
-argv[3] : TestGood
-argv[4] : 2nd
-argv[5] : 3nd
+$ ./target/a01_part3_argc_argv
 
-$ ./target/a01_part3_argc_argv HelloCTestGood 2nd 3nd
-Hello world C lang
-
-argv[0] : ./target/a01_part3_argc_argv
-argv[1] : HelloCTestGood
-argv[2] : 2nd
-argv[3] : 3nd
-```
-
-- macOS
-
-```bash
-$ ./target/a01_part3_argc_argv test_GYOUNg
-
-Hello world C lang ./target/a01_part3_argc_argvtest_GYOUNg⏎ 
-
-```
-
-```c
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(int argc, char* argv[])
-{
-    printf("Hello world C lang ");
-
-    int i;
-
-    for (i = 0; i < argc; i++) {
-        printf("%s", argv[i]);
-    }
-    exit(0);
-}
-```
+Hello world C++ reverse sort
+2, 3, 7, 9,
+9, 7, 3, 2,
+number of arguments: 1
+argv[0]: ./target/a01_part3_argc_argv
+Usage: ./target/a01_part3_argc_argv <name>
+error: Recipe `r` failed on line 116 with exit code 1
 
 
-```c
+# ~~~~~~
 
-#include <stdio.h>
-
-int main(int argc, char* argv[])
-{
-    printf("Hello world C lang\n\n");
-
-    int i;
-    for (i = 0; i < argc; i++) {
-        printf("argv[%d] : %s\n", i, argv[i]);
-    }
-
-    return 0;
-}
+$ ./target/a01_part3_argc_argv hello test good
+Hello world C++ reverse sort
+2, 3, 7, 9,
+9, 7, 3, 2,
+number of arguments: 4
+argv[0]: ./target/a01_part3_argc_argv
+argv[1]: hello
+argv[2]: test
+argv[3]: good
+Hello, hello!
 ```
