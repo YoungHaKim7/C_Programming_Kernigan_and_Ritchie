@@ -371,7 +371,7 @@ clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
 	rm -rf build CMakeCache.txt CMakeFiles .cache
 
-# C init(int main(void))
+# C++ 26 init(int main(void))
 init:
 	mkdir -p src
 	echo '# BasedOnStyle: WebKit' > .clang-format
@@ -385,14 +385,14 @@ init:
 	echo 'IndentGotoLabels: true' >> .clang-format
 	echo 'IndentPPDirectives: None' >> .clang-format
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
-	echo '#include <stdio.h>' > src/main.c
-	echo '' >> src/main.c
-	echo 'int main(void) {' >> src/main.c
-	echo '    printf("Hello world C lang ");' >> src/main.c
-	echo '    return 0;' >> src/main.c
-	echo '}' >> src/main.c
+	echo '#include <print>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main(void) {' >> src/main.cpp
+	echo '        std::print("Hello world Cpp 26 lang ");' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
 
-# C init(int main(int argc, char* argv[]))
+# C++ 20 init(int main(void))
 init2:
 	mkdir -p src
 	echo '# BasedOnStyle: WebKit' > .clang-format
@@ -406,17 +406,38 @@ init2:
 	echo 'IndentGotoLabels: true' >> .clang-format
 	echo 'IndentPPDirectives: None' >> .clang-format
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
-	echo '#include <stdio.h>' > src/main.c
-	echo '' >> src/main.c
-	echo 'int main(int argc, char* argv[]) {' >> src/main.c
-	echo '    printf("Hello world C lang ");' >> src/main.c
-	echo '    int i;' >> src/main.c
-	echo '    ' >> src/main.c
-	echo '    for (i=0; i < argc; i++) {' >> src/main.c
-	echo '        printf("%s", argv[i]);' >> src/main.c
-	echo '    }' >> src/main.c
-	echo '    return 0;' >> src/main.c
-	echo '}' >> src/main.c
+	echo '#include <iostream>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main() {' >> src/main.cpp
+	echo '        std::cout << ("Hello world Cpp 20 lang ") << std::endl;' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
+
+# C++ init(int main(int argc, char* argv[]))
+init3:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <iostream>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main(int argc, char* argv[]) {' >> src/main.cpp
+	echo '    std::cout << "Hello world C lang " << std::endl;' >> src/main.cpp
+	echo '    int i;' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    for (i=0; i < argc; i++) {' >> src/main.cpp
+	echo '        printf("%s", argv[i]);' >> src/main.cpp
+	echo '    }' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
 
 # Debugging(VSCode codelldb ver)
 codelldb:
