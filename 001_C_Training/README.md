@@ -11,6 +11,9 @@
 - https://colorcomputerarchive.com/repo/Documents/Books/The%20C%20Programming%20Language%20%28Kernighan%20Ritchie%29.pdf
   - [freeCodeCamp.org(C/C++ 강의 시리즈 영상 많다.)](https://youtube.com/playlist?list=PLWKjhJtqVAbmUE5IqyfGYEYjrZBYzaT4m&si=OPDO7vwocp6LrCdX)
 
+- [(251007) Learn C from scratch - One course to rule them all | dr Jonas Birch](https://youtu.be/wzMaNVSqfYw?si=6xW8IYDXLdMeewM3)
+  - 코드 https://repo.doctorbirch.com/roadmap/
+
 # build(c23)[|🔝|](#link)
 - https://github.com/YoungHaKim7/c23_pthread_cmake_just_sample
 
