@@ -1,3 +1,4 @@
+#include <print>
 #include <stdio.h>
 #include <vector>
 
@@ -12,6 +13,7 @@ struct Student {
 
 int main(void)
 {
+    std::print("c++26 hello world\n");
 
     // Decimal with separators
     // clang-format off
