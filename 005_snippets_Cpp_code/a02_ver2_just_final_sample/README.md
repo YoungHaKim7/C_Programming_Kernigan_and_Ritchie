@@ -1,4 +1,4 @@
-# justfile(최종+ clangd LSP setting(c23) 추가251004)
+# justfile(최종+ clangd LSP setting(c++26) 추가251007)
 
 ```justfile
 # Detect OS
@@ -8,18 +8,18 @@ os := `uname`
 project_name := `basename "$(pwd)"`
 full_project_name := `pwd`
 
-# clang & gcc basic & clang-format basic & cmake basic
+# clang & g++ basic & clang-format basic & cmake basic
 clang := `which clang` 
 clangpp := `which clang++` 
-gcc := `which gcc`
+gpp := `which g++`
 clang_format_basic := `which clang-format`
 cmake := `which cmake`
 
 # compiler settings
 clang_which := if os == "Linux" { \
-  "/usr/bin/clang-21" \
+  "/usr/bin/clang++-21" \
   } else if os == "Darwin" { \
-    "/opt/homebrew/opt/llvm/bin/clang" \
+    "/opt/homebrew/opt/llvm/bin/clang++" \
   } else { \
     clang \
   }
@@ -30,12 +30,12 @@ clangpp_which := if os == "Linux" { \
   } else { \
     clangpp \
   }
-gcc_which := if os == "Linux" { \
-    "/opt/gcc-15/bin/gcc" \
+gpp_which := if os == "Linux" { \
+    "/opt/gcc-15/bin/g++" \
   } else if os == "Darwin" { \
-    "/opt/homebrew/opt/gcc@15/bin/gcc-15" \
+    "/opt/homebrew/opt/gcc@15/bin/g++-15" \
   } else { \
-    gcc \
+    gpp \
   }
 
 # cmake settings(4.0)
@@ -92,15 +92,15 @@ src_dir := "./src"
 target_dir := "./target"
 
 # Files
-source := src_dir+"/main.c"
+source := src_dir+"/main.cpp"
 target := target_dir+"/"+project_name
 
 # Optimize (O2(RelWithDebInfo), O3(Release))
-ldflags_optimize :=  "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
+ldflags_optimize :=  "-std=c++2c -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
 
 # Common flags
-ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
-ldflags_debug := "-std=c23 -pthread -lm -Wall -Wextra -ggdb"
+ldflags_common := "-std=c++2c -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
+ldflags_debug := "-std=c++2c -pthread -lm -Wall -Wextra -ggdb"
 ldflags_emit_llvm := "-S -emit-llvm"
 ldflags_assembly := "-Wall -save-temps"
 ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
@@ -111,11 +111,11 @@ ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
 ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_fsanitize_leak := "-fsanitize=leak -g"
 
-# (C)gcc compile(LinuxOS)
+# (C)gpp compile(LinuxOS)
 r:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	{{gcc_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{gpp_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
@@ -129,8 +129,8 @@ ro:
 cr:
 	rm -rf build
 	mkdir -p build
-	export CC={{gcc_which}}
-	cmake -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
+	export CXX={{gpp_which}}
+	cmake -D CMAKE_CXX_COMPILER={{gpp_which}} -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
 	./build/{{target}}
@@ -140,8 +140,8 @@ cro:
 	rm -rf build
 	mkdir -p build
 	cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo \
-	      -D CMAKE_C_COMPILER={{gcc_which}} \
-	      -D CMAKE_C_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
+	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
+	      -D CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
 	      -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
@@ -152,8 +152,8 @@ cro3:
 	rm -rf build
 	mkdir -p build
 	cmake -D CMAKE_BUILD_TYPE=Release \
-	      -D CMAKE_C_COMPILER={{gcc_which}} \
-	      -D CMAKE_C_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
+	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
+	      -D CMAKE_CXX_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
@@ -163,15 +163,15 @@ cro3:
 zr:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	export CC={{gcc_which}}
-	zig cc {{ldflags_common}} -o {{target}} {{source}}
+	export CXX={{gpp_which}}
+	zig c++ {{ldflags_common}} -o {{target}} {{source}}
 	{{target}}
 	
 # cmake ctest
 ctest:
 	rm -rf build
 	mkdir -p build
-	cmake -D CMAKE_C_COMPILER={{gcc_which}} \
+	cmake -D CMAKE_CXX_COMPILER={{gpp_which}} \
 		  -S . -B build
 	cmake --build build
 	ctest --test-dir ./build
@@ -351,7 +351,7 @@ clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
 	rm -rf build CMakeCache.txt CMakeFiles .cache
 
-# C init(int main(void))
+# C++ 26 init(int main(void))
 init:
 	mkdir -p src
 	echo '# BasedOnStyle: WebKit' > .clang-format
@@ -365,14 +365,14 @@ init:
 	echo 'IndentGotoLabels: true' >> .clang-format
 	echo 'IndentPPDirectives: None' >> .clang-format
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
-	echo '#include <stdio.h>' > src/main.c
-	echo '' >> src/main.c
-	echo 'int main(void) {' >> src/main.c
-	echo '    printf("Hello world C lang ");' >> src/main.c
-	echo '    return 0;' >> src/main.c
-	echo '}' >> src/main.c
+	echo '#include <print>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main(void) {' >> src/main.cpp
+	echo '        std::print("Hello world Cpp 26 lang ");' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
 
-# C init(int main(int argc, char* argv[]))
+# C++ 20 init(int main(void))
 init2:
 	mkdir -p src
 	echo '# BasedOnStyle: WebKit' > .clang-format
@@ -386,17 +386,90 @@ init2:
 	echo 'IndentGotoLabels: true' >> .clang-format
 	echo 'IndentPPDirectives: None' >> .clang-format
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
-	echo '#include <stdio.h>' > src/main.c
-	echo '' >> src/main.c
-	echo 'int main(int argc, char* argv[]) {' >> src/main.c
-	echo '    printf("Hello world C lang ");' >> src/main.c
-	echo '    int i;' >> src/main.c
-	echo '    ' >> src/main.c
-	echo '    for (i=0; i < argc; i++) {' >> src/main.c
-	echo '        printf("%s", argv[i]);' >> src/main.c
-	echo '    }' >> src/main.c
-	echo '    return 0;' >> src/main.c
-	echo '}' >> src/main.c
+	echo '#include <iostream>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main() {' >> src/main.cpp
+	echo '        std::cout << ("Hello world Cpp 20 lang ") << std::endl;' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
+
+# C++ init(int main(int argc, char* argv[]))
+init3:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <iostream>' > src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main(int argc, char* argv[]) {' >> src/main.cpp
+	echo '    std::cout << "Hello world C lang " << std::endl;' >> src/main.cpp
+	echo '    int i;' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    for (i=0; i < argc; i++) {' >> src/main.cpp
+	echo '        printf("%s", argv[i]);' >> src/main.cpp
+	echo '    }' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
+
+# C++ init(int main(int argc, char** argv))
+init4:
+	mkdir -p src
+	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
+	echo "" >> .clang-format
+	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'IndentWidth: 4' >> .clang-format
+	echo 'ContinuationIndentWidth: 4' >> .clang-format
+	echo 'IndentCaseLabels: false' >> .clang-format
+	echo 'IndentCaseBlocks: false' >> .clang-format
+	echo 'IndentGotoLabels: true' >> .clang-format
+	echo 'IndentPPDirectives: None' >> .clang-format
+	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo '#include <iostream>' > src/main.cpp
+	echo '#include <vector>' >> src/main.cpp
+	echo '#include <algorithm>' >> src/main.cpp
+	echo '#include <iterator>' >> src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'template <typename C>' >> src/main.cpp
+	echo 'void reverse_sort(C& c)' >> src/main.cpp
+	echo '{' >> src/main.cpp
+	echo '    sort(begin(c), end(c), [](auto x, auto y){ return x > y; });' >> src/main.cpp
+	echo '}' >> src/main.cpp
+	echo '' >> src/main.cpp
+	echo 'int main(int argc, char** argv) {' >> src/main.cpp
+	echo '    std::cout << "Hello world C++ reverse sort " << std::endl;' >> src/main.cpp
+	echo '    std::vector<int> v= {3, 7, 2, 9};' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    std::sort(begin(v), end(v));' >> src/main.cpp
+	echo '    std::copy(cbegin(v), cend(v), std::ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
+	echo '    std::cout << std::endl;' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    // sort(begin(v), end(v), [](auto x, auto y){ return x > y; });' >> src/main.cpp
+	echo '    reverse_sort(v); ' >> src/main.cpp
+	echo '    std::copy(begin(v), end(v), std::ostream_iterator<int>(std::cout, ", "));' >> src/main.cpp
+	echo '    std::cout << std::endl;' >> src/main.cpp
+	echo '    std::cout << "number of arguments: " << argc << std::endl;' >> src/main.cpp
+	echo '    for (int i = 0; i < argc; ++i) {' >> src/main.cpp
+	echo '        std::cout << "argv[" << i << "]: " << argv[i] << std::endl;' >> src/main.cpp
+	echo '    }' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    if (argc < 2) {' >> src/main.cpp
+	echo '        std::cout << "Usage: " << argv[0] << " <name>" << std::endl;' >> src/main.cpp
+	echo '        return 1;' >> src/main.cpp
+	echo '    }' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    std::cout << "Hello, " << argv[1] << "!" << std::endl;' >> src/main.cpp
+	echo '    ' >> src/main.cpp
+	echo '    return 0;' >> src/main.cpp
+	echo '}' >> src/main.cpp
 
 # Debugging(VSCode codelldb ver)
 codelldb:
@@ -415,7 +488,7 @@ codelldb:
 	echo '            // "preLaunchTask": "C/C++: clang build active file"' >> .vscode/launch.json
 	echo '        },' >> .vscode/launch.json
 	echo '        {' >> .vscode/launch.json
-	echo '            "name": "gcc - Build and debug active file",' >> .vscode/launch.json
+	echo '            "name": "g++ - Build and debug active file",' >> .vscode/launch.json
 	echo '            "type": "lldb",' >> .vscode/launch.json
 	echo '            "request": "launch",' >> .vscode/launch.json
 	echo '            "program": "${fileDirname}/build/target/${workspaceFolderBasename}",' >> .vscode/launch.json
@@ -477,7 +550,7 @@ vscode:
 	echo '            // "preLaunchTask": "C/C++: clang build active file"' >> .vscode/launch.json
 	echo '        },' >> .vscode/launch.json
 	echo '        {' >> .vscode/launch.json
-	echo '            "name": "gcc - Build and debug active file",' >> .vscode/launch.json
+	echo '            "name": "g++ - Build and debug active file",' >> .vscode/launch.json
 	echo '            "type": "cppdbg",' >> .vscode/launch.json
 	echo '            "request": "launch",' >> .vscode/launch.json
 	echo '            "program": "${fileDirname}/target/${fileBasenameNoExtension}",' >> .vscode/launch.json
@@ -521,30 +594,4 @@ vscode:
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json	
-```
-
-# Result
-
-```bash
-Decimal: 1000000
-Hex:     DEADBEEF
-Binary:  172 (0b1010'1100)
-Octal:   123456
-
-2D array (matrix)
-Matrix (3x4):
-
-  1   2   3   4
- 10  20  30  40
-100 200 300 400
-
-Matrix (2x3):
- 0  0  0
- 0  1  2
-
-Struct Example
-Student ID: 101
-Score: 85
-Grade: B
-Good job!
 ```
