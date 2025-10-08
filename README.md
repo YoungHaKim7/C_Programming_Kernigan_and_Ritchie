@@ -17,6 +17,8 @@
     - [`-std=c++2b`같은거_컴파일옵션 정리 버젼별c++20+23+26 & C/C++ Support in Clang](https://github.com/YoungHaKim7/cpp23_26_project#cc-support-in-clang)
       - [`-o -Wextra -Wall` 같은거 정리](https://github.com/YoungHaKim7/cpp23_26_project#gcc--clang) 
 
+- [(영상모아보기) IB Computer Science | Learn Learn Scratch Tutorials](https://youtube.com/playlist?list=PLfd-8l91Lb4VQGio0EiJPh_pdna2wYiv_&si=cptLhESq7BogbYBw)
+
 <hr />
 
 # Compiler (Assembly 분석하기 좋다.)
