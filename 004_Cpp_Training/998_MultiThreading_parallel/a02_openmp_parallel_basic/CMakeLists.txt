@@ -31,7 +31,7 @@ add_compile_options(
     # -Wdangling  # clang option
 )
 
-# Main executable with mandelbrot sources
+# Main executable with main.cpp sources
 add_executable(${ProjectId}
     src/main.cpp
     # src/mandelbrot.cpp
