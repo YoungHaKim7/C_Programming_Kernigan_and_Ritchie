@@ -22,6 +22,21 @@ Chapter 2 - Types, Operators and Expressions
 
 <hr />
 
+# `return 0`의 의미
+- What does "return 0" actually do?
+  - https://www.reddit.com/r/C_Programming/comments/180q8gu/what_does_return_0_actually_do/
+
+```c
+
+0 -> 코드 성공
+1 -> 코드 에러
+-1 -> EOF (End of File)
+
+```
+
+
+<hr />
+
 # The complete set of escape sequences is
 
 |||||
