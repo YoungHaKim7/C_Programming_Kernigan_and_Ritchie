@@ -4,6 +4,7 @@ CppNow
 
 
 ```cpp
+#include <iostream>
 #include <omp.h>
 
 int main() {
@@ -15,7 +16,7 @@ int main() {
         int thread_id = omp_get_thread_num();
         int num_threads = omp_get_num_threads();
         std::cout << "Hello from thread " << thread_id
-                  << " of " << num_threads << " threads" << std::endl;
+                  << " of " << num_threads << " threads \n" << std::endl;
     }
 }
 ```
@@ -24,5 +25,21 @@ int main() {
 
 ```bash
 
+OpenMP Example
+Hello from thread 1 of 8 threads
+
+Hello from thread Hello from thread 4 of 8 threads
+Hello from thread Hello from thread 3 of 8 threads
+Hello from thread
+Hello from thread Hello from thread 7 of 8 threads
+
+0 of 8 threads
+
+
+2 of 8 threads
+65 of 8 threads
+
+
+ of 8 threads
 
 ```
