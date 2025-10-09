@@ -27,6 +27,7 @@
   - [코딩 - C 개고생하면서 배우는 C 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mauKnkqP6Vah7cgcvfJZg-f&si=5yZeK967zvIWUN03)
   - [코딩 - C++ 개고생하면서 배우는 C++ 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07maditE825fheEV6EsQAdLdA&si=HQVLmZjtT57IeY92)
   - [코딩 - Zig_Language 개고생하면서 배우는 zig 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mbgfnYY9YIXo_Ls9FTSvDPx&si=hwNtsFZIohfDzmyz)
+  - [코딩 - Rust_Programming_러스트 개고생하면서 배우는 Rust 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07maeDuKrsf5GYMDB5obTWoWg&si=uKkM5fOxEGVgRCvf)
 
 <hr />
 
