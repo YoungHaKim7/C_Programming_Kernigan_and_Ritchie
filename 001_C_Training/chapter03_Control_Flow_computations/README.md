@@ -48,3 +48,167 @@ if, other, while, for 다음 문장들은 다른 문장입니다. (변수는 내
 
 - Each step does its part, and leaves things in a clean state for the next. The whole process terminates on the first character that could not be part of a number.
   - 각 단계는 제 역할을 다하며 다음 단계를 위해 깨끗한 상태로 둡니다. 전체 과정은 숫자의 일부가 될 수 없는 첫 번째 문자로 끝납니다.
+
+# 10 Examples of else if Statements
+
+## 1. JavaScript - Grade Calculator
+```javascript
+function getGrade(score) {
+    if (score >= 90) {
+        return "A";
+    } else if (score >= 80) {
+        return "B";
+    } else if (score >= 70) {
+        return "C";
+    } else if (score >= 60) {
+        return "D";
+    } else {
+        return "F";
+    }
+}
+```
+
+## 2. Python - Temperature Converter
+```python
+def describe_temperature(celsius):
+    if celsius > 30:
+        return "Very hot"
+    elif celsius > 20:
+        return "Warm"
+    elif celsius > 10:
+        return "Cool"
+    elif celsius > 0:
+        return "Cold"
+    else:
+        return "Freezing"
+```
+
+## 3. Java - Age Classifier
+```java
+public class AgeClassifier {
+    public static String classifyAge(int age) {
+        if (age < 13) {
+            return "Child";
+        } else if (age < 20) {
+            return "Teenager";
+        } else if (age < 65) {
+            return "Adult";
+        } else {
+            return "Senior";
+        }
+    }
+}
+```
+
+## 4. C++ - Traffic Light System
+```cpp
+#include <string>
+
+std::string getTrafficLightAction(int duration) {
+    if (duration > 60) {
+        return "Extend green light";
+    } else if (duration > 30) {
+        return "Normal operation";
+    } else if (duration > 10) {
+        return "Prepare to change";
+    } else {
+        return "Change to yellow/red";
+    }
+}
+```
+
+## 5. C# - Login System
+```csharp
+public string CheckLoginStatus(int failedAttempts) {
+    if (failedAttempts == 0) {
+        return "Welcome back!";
+    } else if (failedAttempts < 3) {
+        return "Please try again";
+    } else if (failedAttempts < 5) {
+        return "Warning: Multiple failed attempts";
+    } else {
+        return "Account temporarily locked";
+    }
+}
+```
+
+## 6. PHP - File Size Formatter
+```php
+function formatFileSize($bytes) {
+    if ($bytes >= 1073741824) {
+        return number_format($bytes / 1073741824, 2) . ' GB';
+    } else if ($bytes >= 1048576) {
+        return number_format($bytes / 1048576, 2) . ' MB';
+    } else if ($bytes >= 1024) {
+        return number_format($bytes / 1024, 2) . ' KB';
+    } else {
+        return $bytes . ' bytes';
+    }
+}
+```
+
+## 7. Ruby - BMI Calculator
+```ruby
+def get_bmi_category(bmi)
+    if bmi < 18.5
+        "Underweight"
+    elsif bmi < 25
+        "Normal weight"
+    elsif bmi < 30
+        "Overweight"
+    else
+        "Obese"
+    end
+end
+```
+
+## 8. Go - Priority Queue
+```go
+func GetPriorityLevel(score int) string {
+    if score >= 90 {
+        return "Critical"
+    } else if score >= 70 {
+        return "High"
+    } else if score >= 50 {
+        return "Medium"
+    } else if score >= 30 {
+        return "Low"
+    } else {
+        return "Minimal"
+    }
+}
+```
+
+## 9. Swift - Weather App
+```swift
+func getWeatherIcon(condition: String) -> String {
+    if condition.contains("rain") {
+        return "🌧️"
+    } else if condition.contains("snow") {
+        return "❄️"
+    } else if condition.contains("cloud") {
+        return "☁️"
+    } else if condition.contains("sun") {
+        return "☀️"
+    } else {
+        return "🌤️"
+    }
+}
+```
+
+## 10. Rust - Shipping Calculator
+```rust
+fn calculate_shipping_cost(weight: f64) -> f64 {
+    if weight > 50.0 {
+        25.99
+    } else if weight > 20.0 {
+        15.99
+    } else if weight > 10.0 {
+        9.99
+    } else if weight > 5.0 {
+        5.99
+    } else {
+        2.99
+    }
+}
+```
