@@ -19,6 +19,9 @@
 
 - [(영상모아보기) IB Computer Science | Learn Learn Scratch Tutorials](https://youtube.com/playlist?list=PLfd-8l91Lb4VQGio0EiJPh_pdna2wYiv_&si=cptLhESq7BogbYBw)
 
+- meson build sample
+  - https://github.com/YoungHaKim7/Cpp_glfw3_mesion_build_justfile
+
 <hr />
 
 # Compiler (Assembly 분석하기 좋다.)
