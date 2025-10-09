@@ -1,9 +1,4 @@
-# Making A Program Faster - Multithreading & Automatic Compiler Vectorization - Ivica Bogosavljevic
-CppNow
-- https://youtu.be/GTAE_znTvuk?si=6qGH021DzJkyalHr
-
-
-```cpp
+#include <iostream>
 #include <omp.h>
 
 int main() {
@@ -15,14 +10,6 @@ int main() {
         int thread_id = omp_get_thread_num();
         int num_threads = omp_get_num_threads();
         std::cout << "Hello from thread " << thread_id
-                  << " of " << num_threads << " threads" << std::endl;
+                  << " of " << num_threads << " threads \n" << std::endl;
     }
 }
-```
-
-- result
-
-```bash
-
-
-```
