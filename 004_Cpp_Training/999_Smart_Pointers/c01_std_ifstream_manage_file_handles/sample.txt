@@ -1,0 +1,7 @@
+Hello, World!
+This is a sample text file for demonstrating std::ifstream file handle management.
+Line 3: C++ provides excellent RAII support for file handling.
+Line 4: Files are automatically closed when std::ifstream objects go out of scope.
+Line 5: This makes memory and resource management much safer and easier.
+Line 6: No need to manually remember to close files!
+Final line of the sample file.
