@@ -1,8 +1,8 @@
 <p align="center">
-  <img alt="clang" width=20px src="https://github.com/YoungHaKim7/Cpp_Training/assets/67513038/1ff1c447-9b46-4775-85e2-66818ff2c318" />
-  <img alt="cpp" width=20px src="https://github.com/user-attachments/assets/41f357e5-7664-4b2a-8d70-bdfcf0102d36" />
-  <img alt="zig" width="20px" src="https://user-images.githubusercontent.com/67513038/178751011-806395c2-c3dc-4094-80da-5a9dc82f0782.png" /> 
-  <img alt="rust" width=20px src="https://github.com/user-attachments/assets/3489669b-63c0-439e-b507-9b2bfb3fdd5e" />
+  <img alt="clang" width=30px src="https://github.com/YoungHaKim7/Cpp_Training/assets/67513038/1ff1c447-9b46-4775-85e2-66818ff2c318" />
+  <img alt="cpp" width=30px src="https://github.com/user-attachments/assets/41f357e5-7664-4b2a-8d70-bdfcf0102d36" />
+  <img alt="zig" width=30px src="https://user-images.githubusercontent.com/67513038/178751011-806395c2-c3dc-4094-80da-5a9dc82f0782.png" /> 
+  <img alt="rust" width=30px src="https://github.com/user-attachments/assets/3489669b-63c0-439e-b507-9b2bfb3fdd5e" />
 </p>
 
 # link
