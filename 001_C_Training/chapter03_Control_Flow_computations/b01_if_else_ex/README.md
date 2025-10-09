@@ -1,5 +1,6 @@
 # Result
 
 ```bash
-Found common element: 9 (a[4] == b[4])
+z : 42
+res: Extend green light
 ```
