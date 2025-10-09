@@ -34,6 +34,23 @@ Chapter 2 - Types, Operators and Expressions
 
 ```
 
+- On a [Unix-like system](https://www.reddit.com/search/?q=Unix-like+system&cId=b9caa870-c189-4dbf-a6f6-2630375602e7&iId=dee5d075-170c-46ef-aaed-f878b22b85b9) , when you `return 0` from `main()`, the following things happen:
+  - Control returns to the program entry point, _start, which is part of the C runtime for that system.
+  - The code in `_start` calls `exit(0)`, or something which has the same effect. All functions registered with `atexit()` are called, destructors are run.
+  - The `exit()` function invokes the `exit` syscall, which transfers control to the kernel.
+  - The kernel reclaims all the resources that the process was using, except for the one record—a record which says that the process exited with status `0`.
+  - The program’s parent process, at some point, calls `wait()` or a similar syscall. This function will clean up that last record in the kernel, and report the exit status.
+  - That program can do whatever it wants with the 0.
+- When you run a program in a shell, the shell is the parent process. The shell keeps track of that `0`. If you run another program after yours with `&&`, then the shell will run that next program. If you use `||`, it won’t. This isn’t really special — it’s just what the shell is programmed to do. 
+
+- 유닉스 계열 시스템에서 'main()'에서 '0'을 반환하면 다음과 같은 일이 발생합니다:
+  - 제어는 해당 시스템의 C 런타임에 속하는 프로그램 진입 지점인 _start로 돌아갑니다.
+  - '_start'의 코드는 'exit(0)' 또는 동일한 효과를 가진 것을 호출합니다. 'atexit()'에 등록된 모든 함수를 호출하고, 디스트럭터를 실행합니다.
+  - '출구()' 함수는 '출구' 시스콜을 호출하여 커널에 제어권을 전달합니다.
+  - 커널은 프로세스가 사용하던 모든 리소스를 회수합니다. 단 하나의 레코드, 즉 프로세스가 상태 '0'으로 종료되었음을 나타내는 레코드를 제외하고 말이죠.
+  - 프로그램의 상위 프로세스는 어느 시점에서 'wait()' 또는 유사한 시스콜을 호출합니다. 이 함수는 커널의 마지막 레코드를 정리하고 종료 상태를 보고합니다.
+  - 그 프로그램은 0으로 원하는 모든 것을 할 수 있습니다.
+- 셸에서 프로그램을 실행할 때 셸은 상위 프로세스입니다. 셸은 해당 0을 추적합니다. `&&`을 사용하여 다른 프로그램을 실행하면 셸은 다음 프로그램을 실행합니다. `||`을 사용하면 그렇지 않습니다. 이것은 정말 특별한 것이 아니라 셸이 프로그래밍한 작업일 뿐입니다.
 
 <hr />
 
