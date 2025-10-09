@@ -32,3 +32,16 @@ void processData()
     delete[] data;
 }
 ```
+
+# RAII: (Resource Acquisition Is Initiaization)
+
+# RAII Ensures:
+  - Automatic cleanup
+  - Exception safety
+  - No Memory/resource leaks
+
+- Common RAII classes in C++:
+  - `std::unique_ptr, std::shared_ptr` - smart pointers
+  - `std::vector`, `std::string` - manage dynamic memory
+  - `std::ifstream`, `ofstream` - manage file handles
+  - `std::lock_guard`, `std::scopted_lock` - manage locks
