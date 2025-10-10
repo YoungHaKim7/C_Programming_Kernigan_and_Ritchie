@@ -1,1 +1,0 @@
-- https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-interfaces
