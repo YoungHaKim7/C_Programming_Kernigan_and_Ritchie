@@ -104,3 +104,36 @@ Each memory access is equivalent to about 40 CPU clock cycles, so , using dynami
     배열의 요소에 액세스합니다
 
 각 메모리 액세스는 약 40개의 CPU 클럭 사이클에 해당하므로, 동적 할당, 특히 빈번하지 않은 읽기의 경우 정적 할당에 비해 성능이 크게 저하될 수 있습니다. 이는 데이터 변수가 더 자주 접근하는 변수에 의해 캐시에서 제거될 수 있기 때문입니다. 반대로, 정적으로 할당된 글로벌 변수의 디퍼런스 비용은 0입니다. 왜냐하면 해당 변수의 주소는 이미 코드에 하드코딩되어 있기 때문입니다.
+
+
+# 🧠 Notes(register 메모리는 접근 할 수 없다.)
+
+- register is only a hint — compilers may or may not place the variable in a CPU register.
+
+- You cannot take the address of a register variable:
+
+```c
+register int x = 5;
+int *p = &x;  // ❌ Error: cannot take address of register variable
+
+```
+
+
+- result
+
+
+```bash
+/opt/homebrew/opt/gcc@15/bin/gcc-15 -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror -o ./target/a47_register_variables ./src/main.c
+./src/main.c: In function 'main':
+./src/main.c:33:5: error: address of register variable 'x' requested
+   33 |     int *p = &x;  // ❌ Error: cannot take address of register variable
+      |     ^~~
+./src/main.c:34:5: error: address of register variable 'x' requested
+   34 |     printf("register *p = %p", &x);
+      |     ^~~~~~
+./src/main.c:33:10: error: unused variable 'p' [-Werror=unused-variable]
+   33 |     int *p = &x;  // ❌ Error: cannot take address of register variable
+      |          ^
+cc1: all warnings being treated as errors
+error: Recipe `r` failed on line 115 with exit code 1
+
