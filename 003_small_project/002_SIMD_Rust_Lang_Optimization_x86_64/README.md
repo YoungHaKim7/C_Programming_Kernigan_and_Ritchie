@@ -48,3 +48,6 @@ fn main() {
 
 # burn러스트 머시러닝 라이브러리-[Feat] SIMD acceleration for ndarray backend #2851  
 - https://github.com/tracel-ai/burn/pull/2851/
+
+# simd_saturating_sub
+- https://doc.rust-lang.org/nightly/std/intrinsics/simd/fn.simd_saturating_sub.html
