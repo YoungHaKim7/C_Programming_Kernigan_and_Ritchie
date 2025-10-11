@@ -17,7 +17,7 @@ int main(void)
     register char c;
 
     printf("Enter a character: ");
-    c = getchar();  // read one character from stdin
+    c = getchar(); // read one character from stdin
 
     printf("You entered: %c\n", c);
 
@@ -28,6 +28,11 @@ int main(void)
             printf("Countdown: %d\n", count);
         }
     }
+
+    // error code
+    // register int x = 5;
+    // int *p = &x;  // ❌ Error: cannot take address of register variable
+    // printf("register *p = %p", &x);
 
     return 0;
 }
