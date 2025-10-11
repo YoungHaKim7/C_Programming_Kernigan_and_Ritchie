@@ -32,3 +32,6 @@ _mm_storeu_ps(result[i], vr); // store result into row i
 
 # Introduction to SIMD | i64
 - https://youtu.be/hAlSKGgz-h0?si=3GTd9DULie6Xz5Ji
+
+# x86 SIMD instruction listings
+- https://en.wikipedia.org/wiki/X86_SIMD_instruction_listings
