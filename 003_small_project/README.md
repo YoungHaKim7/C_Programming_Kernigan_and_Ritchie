@@ -5,3 +5,7 @@ LLVM Social Bangalore
 
 # Arm SIMD
 - https://arm-software.github.io/CMSIS_5/Core/html/group__intrinsic__SIMD__gr.html
+
+
+# zig언어) Saturating arithmetic
+- https://github.com/ziglang/zig/issues/1284
