@@ -136,7 +136,7 @@ int *p = &x;  // ❌ Error: cannot take address of register variable
       |          ^
 cc1: all warnings being treated as errors
 error: Recipe `r` failed on line 115 with exit code 1
-
+```
 
 
 # static VS const(Rust)
