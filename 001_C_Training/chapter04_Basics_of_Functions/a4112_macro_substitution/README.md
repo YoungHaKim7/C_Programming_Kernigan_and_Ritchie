@@ -18,31 +18,18 @@
 # Result
 
 ```bash
+
 /opt/gcc-15/bin/gcc -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror -o ./target/a4112_macro_substitution ./src/main.c
 ./target/a4112_macro_substitution
-=== File Inclusion Demo: Managing Collections ===
-
-Math Utilities Collection:
-Add: 5 + 3 = 8
-Multiply: 4 * 7 = 28
-Factorial of 5 = 120
-Is 17 prime? Yes
-Is 15 prime? No
-
-Array Utilities Collection:
-Original array: [64, 34, 25, 12, 22, 11, 90]
-Max value: 90
-Min value: 11
-Average: 36.86
-Sorted array: [11, 12, 22, 25, 34, 64, 90]
-
-Combined Operations Example:
-Data array: [5, 3, 8, 1, 9, 2, 7]
-Prime numbers and their factorials:
-  5! = 120
-  3! = 6
-  2! = 2
-  7! = 5040
-
-File inclusion makes it easy to organize and reuse collections of related functions!
+Example 1: PI value is 3.141590
+Example 2: 0 1 2 3 (simulated infinite loop)
+Example 3: Hello from macro!
+Example 4: Max of 10 and 20 is 20
+Example 5: Square of 5 is 25
+Example 5b: Square of (5+1) is 36
+Example 6: Absolute value of -15 is 15
+Example 7: pi_val = 3.14159
+Example 8: test_var = 42
+Example 9: var_test1 = 100, var_test2 = 200
+Example 10: Debug at line 72: Program is running
 ```

@@ -1,56 +1,75 @@
-#include "array_utils.c"
-#include "array_utils.h"
-#include "math_utils.c"
-#include "math_utils.h"
 #include <stdio.h>
+
+// Simple macro definitions
+#define PI 3.14159
+#define FOREVER for (;;)
+#define MESSAGE "Hello from macro!"
+
+// Parameterized macros
+#define MAX(A, B) ((A) > (B) ? (A) : (B))
+#define SQUARE(x) ((x) * (x))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+
+// Stringification macro
+#define dprint(expr) printf(#expr " = %g\n", expr)
+#define print_var(var) printf(#var " = %d\n", var)
+
+// Token pasting macro
+#define paste(front, back) front##back
+#define make_var(name, num) paste(var, name)##num
+
+// Debug macro with line numbers
+#define DEBUG(msg) printf("Debug at line %d: " #msg "\n", __LINE__)
 
 int main()
 {
-    printf("=== File Inclusion Demo: Managing Collections ===\n\n");
+    // Example 1: Simple macro substitution
+    printf("Example 1: PI value is %f\n", PI);
 
-    // Math utilities collection
-    printf("Math Utilities Collection:\n");
-    printf("Add: 5 + 3 = %d\n", add(5, 3));
-    printf("Multiply: 4 * 7 = %d\n", multiply(4, 7));
-    printf("Factorial of 5 = %d\n", factorial(5));
-    printf("Is 17 prime? %s\n", is_prime(17) ? "Yes" : "No");
-    printf("Is 15 prime? %s\n", is_prime(15) ? "Yes" : "No");
-    printf("\n");
-
-    // Array utilities collection
-    printf("Array Utilities Collection:\n");
-    int numbers[] = { 64, 34, 25, 12, 22, 11, 90 };
-    int size = sizeof(numbers) / sizeof(numbers[0]);
-
-    printf("Original array: ");
-    print_array(numbers, size);
-
-    printf("Max value: %d\n", find_max(numbers, size));
-    printf("Min value: %d\n", find_min(numbers, size));
-    printf("Average: %.2f\n", calculate_average(numbers, size));
-
-    sort_array(numbers, size);
-    printf("Sorted array: ");
-    print_array(numbers, size);
-    printf("\n");
-
-    // Combining collections
-    printf("Combined Operations Example:\n");
-    int data[] = { 5, 3, 8, 1, 9, 2, 7 };
-    int data_size = sizeof(data) / sizeof(data[0]);
-
-    printf("Data array: ");
-    print_array(data, data_size);
-
-    // Find prime numbers in array and calculate their factorials
-    printf("Prime numbers and their factorials:\n");
-    for (int i = 0; i < data_size; i++) {
-        if (is_prime(data[i])) {
-            printf("  %d! = %d\n", data[i], factorial(data[i]));
-        }
+    // Example 2: Using a macro to define an infinite loop (demonstration only)
+    printf("Example 2: ");
+    int count = 0;
+    for (;;) { // Using FOREVER macro would be: FOREVER {
+        printf("%d ", count);
+        count++;
+        if (count > 3)
+            break;
     }
+    printf("(simulated infinite loop)\n");
 
-    printf("\nFile inclusion makes it easy to organize and reuse collections of related functions!\n");
+    // Example 3: Simple message macro
+    printf("Example 3: %s\n", MESSAGE);
+
+    // Example 4: Parameterized macro for finding maximum
+    int a = 10, b = 20;
+    printf("Example 4: Max of %d and %d is %d\n", a, b, MAX(a, b));
+
+    // Example 5: Square macro with proper parentheses
+    int x = 5;
+    printf("Example 5: Square of %d is %d\n", x, SQUARE(x));
+    printf("Example 5b: Square of (%d+1) is %d\n", x, SQUARE(x + 1));
+
+    // Example 6: Absolute value macro
+    int negative_num = -15;
+    printf("Example 6: Absolute value of %d is %d\n", negative_num, ABS(negative_num));
+
+    // Example 7: Stringification macro
+    float pi_val = 3.14159;
+    printf("Example 7: ");
+    dprint(pi_val);
+
+    // Example 8: Variable name printing macro
+    int test_var = 42;
+    printf("Example 8: ");
+    print_var(test_var);
+
+    // Example 9: Token pasting macro
+    int var_test1 = 100, var_test2 = 200;
+    printf("Example 9: var_test1 = %d, var_test2 = %d\n", var_test1, var_test2);
+
+    // Example 10: Debug macro with line numbers
+    printf("Example 10: ");
+    DEBUG(Program is running);
 
     return 0;
 }
