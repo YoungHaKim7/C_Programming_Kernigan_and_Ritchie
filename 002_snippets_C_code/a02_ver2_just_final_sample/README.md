@@ -290,7 +290,7 @@ valgrind:
 	mkdir -p target
 	{{clang_which}} {{ldflags_fsanitize_valgrind_O0}} {{source}} -o {{project_name}}
 	mv {{project_name}} {{target_dir}}
-	valgrind --leak-check=full {{target_dir }}/{{project_name}}
+	valgrind --leak-check=full {{target_dir}}/{{project_name}}
 
 # valgrind --track-origins=yes 
 [linux]
