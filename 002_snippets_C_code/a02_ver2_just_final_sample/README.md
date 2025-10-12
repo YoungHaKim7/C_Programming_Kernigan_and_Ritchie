@@ -128,6 +128,7 @@ ro:
 
 # cmake compile(LinuxOS)
 cr:
+	just fm
 	rm -rf build
 	mkdir -p build
 	export CC={{gcc_which}}
