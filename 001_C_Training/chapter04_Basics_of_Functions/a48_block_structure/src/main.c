@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int x = 10;  // external variable (global)
-int y = 20;  // external variable (global)
+int x = 10; // external variable (global)
+int y = 20; // external variable (global)
 
 int main(void)
 {
@@ -9,7 +9,7 @@ int main(void)
 
     // Example 1: simple block scope
     {
-        int x = 1;  // hides global x
+        int x = 1; // hides global x
         printf("2️⃣ Inner block: x = %d (local hides global)\n", x);
     }
 
@@ -63,7 +63,7 @@ int main(void)
     {
         int printf = 42; // hides function name printf in this block
         // can't call printf() here safely
-        (void)printf;    // just to use it
+        (void)printf; // just to use it
         puts("🧩 printf name hidden here");
     }
 
@@ -90,4 +90,3 @@ int main(void)
 
     return 0;
 }
-
