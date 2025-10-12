@@ -137,3 +137,58 @@ int *p = &x;  // ❌ Error: cannot take address of register variable
 cc1: all warnings being treated as errors
 error: Recipe `r` failed on line 115 with exit code 1
 
+
+
+# static VS const(Rust)
+
+
+- static ( 장점)
+  - 대용량의 게임 맵같은 할당.(덩치 큰거 할당 좋다.)
+  - 프로그램이 종료될때까지 메모리 살아있어야하깐.
+  - 내가 지정한 메모리 에 박아 넣는다
+
+- const(장점)
+  - copy & 복사하기 붙혀넣기
+  - 같은메모리 메모리에 실행되게 해서 빠르다.
+  - assembly jump가 없다.
+  - 왔다리 갔다리갔다.
+  - fn마다 주소 다 틀려요
+  - 0x4000000 공간이 없이 빠짝 붙혀서  0x4000004 고속도로처럼 쭉가면됨.
+    - 단점 컴파일 길어지겠죠.. 복사하고 붙혀넣고 용량이 약간 커진다.
+
+# C++ constexpr(러스트에서는 const fn  -> C++에서 좋은 기능 가져옴.)
+
+
+
+# When you would want to use each one:
+- https://stackoverflow.com/questions/408670/stack-static-and-heap-in-c
+
+    Statics/globals are useful for memory that you know you will always need and you know that you don't ever want to deallocate. (By the way, embedded environments may be thought of as having only static memory... the stack and heap are part of a known address space shared by a third memory type: the program code. Programs will often do dynamic allocation out of their static memory when they need things like linked lists. But regardless, the static memory itself (the buffer) is not itself "allocated", but rather other objects are allocated out of the memory held by the buffer for this purpose. You can do this in non-embedded as well, and console games will frequently eschew the built in dynamic memory mechanisms in favor of tightly controlling the allocation process by using buffers of preset sizes for all allocations.)
+
+    Stack variables are useful for when you know that as long as the function is in scope (on the stack somewhere), you will want the variables to remain. Stacks are nice for variables that you need for the code where they are located, but which isn't needed outside that code. They are also really nice for when you are accessing a resource, like a file, and want the resource to automatically go away when you leave that code.
+
+    Heap allocations (dynamically allocated memory) is useful when you want to be more flexible than the above. Frequently, a function gets called to respond to an event (the user clicks the "create box" button). The proper response may require allocating a new object (a new Box object) that should stick around long after the function is exited, so it can't be on the stack. But you don't know how many boxes you would want at the start of the program, so it can't be a static.
+
+
+
+- It's been said elaborately, just as "the short answer":
+
+    static variable (class)
+    lifetime = program runtime (1)
+    visibility = determined by access modifiers (private/protected/public)
+
+    static variable (global scope)
+    lifetime = program runtime (1)
+    visibility = the compilation unit it is instantiated in (2)
+
+    heap variable
+    lifetime = defined by you (new to delete)
+    visibility = defined by you (whatever you assign the pointer to)
+
+    stack variable
+    visibility = from declaration until scope is exited
+    lifetime = from declaration until declaring scope is exited
+
+
+# 공식문서 static, fn, auto , register
+- https://en.cppreference.com/w/cpp/language/storage_duration.html

@@ -1,7 +1,10 @@
+// preprocessor
 #include "array_utils.c"
 #include "array_utils.h"
 #include "math_utils.c"
 #include "math_utils.h"
+
+// <> angle brackets std  standard library
 #include <stdio.h>
 
 int main()
@@ -21,6 +24,15 @@ int main()
     printf("Array Utilities Collection:\n");
     int numbers[] = { 64, 34, 25, 12, 22, 11, 90 };
     int size = sizeof(numbers) / sizeof(numbers[0]);
+    int len = sizeof(numbers);
+    int len02 = sizeof(numbers[0]);
+    printf("\n\nsize : %d\n , len : %d \n len02 : %d\n\n\n", size, len, len02);
+
+    for (int i = 0; i < len; i++) {
+        if (is_prime(numbers[i])) {
+            printf("numbers :   %d! = %d\n\n\n", numbers[i], factorial(numbers[i]));
+        }
+    }
 
     printf("Original array: ");
     print_array(numbers, size);
