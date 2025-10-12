@@ -1,25 +1,59 @@
 # Result
 
 ```bash
+main.c:50:11: warning: unused variable ‘func_ptr’ [-Wunused-variable]
+   50 |     int (*func_ptr)(int, int) = NULL;
+      |           ^~~~~~~~
+[2/2] Linking C executable target/a01_pointers_and_addresses
+mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
+./build/./target/a01_pointers_and_addresses
+=== Pointer Examples ===
 
+1. Basic pointer declaration and assignment:
+   Value of x: 42
+   Address of x: 0x7ffcb3edb914
+   Pointer ptr points to: 0x7ffcb3edb914
+   Value pointed to by ptr: 42
+
+2. Pointer arithmetic:
+   First element: 10
+   Second element (arr_ptr + 1): 20
+   Third element (arr_ptr + 2): 30
+
+3. Pointer to pointer:
+   Value of y: 100
+   Value pointed to by p1: 100
+   Value pointed to by *p2: 100
+
+4. Null pointer:
+   Null pointer value: (nil)
+   Pointer is NULL
+
+5. Pointer to char (string):
+   String: Hello, World!
+   First character: H
+   Second character: e
+
+6. Function pointer:
+   Function pointer declared
+
+7. Pointer and array relationship:
+   Array access using []: 3
+   Pointer access using *: 3
+   Array size using sizeof: 20
+   Pointer size: 8
+
+8. Dynamic memory allocation simulation:
+   Dynamically allocated value: 999
+   Address of dynamically allocated: 0x7ffcb3edb8cc
+
+9. Pointer comparison:
+   Address of a: 0x7ffcb3edb8c8
+   Address of b: 0x7ffcb3edb8c4
+   ptr_a < ptr_b: false
+
+10. Pointer with different data types:
+    Char value: A, size: 1 bytes
+    Short value: 32767, size: 2 bytes
+    Long value: 1234567890, size: 8 bytes
 ```
-
-I've created a C program with 10 pointer examples that demonstrates the key concepts from section 5.1
-  about pointers and addresses. The program covers:
-
-  1. Basic pointer declaration and assignment - Shows how to declare a pointer and assign it the address
-  of a variable
-  2. Pointer arithmetic - Demonstrates how to access array elements using pointer arithmetic
-  3. Pointer to pointer - Shows a pointer that points to another pointer
-  4. Null pointer - Demonstrates the concept of a NULL pointer
-  5. Pointer to char - Shows how character pointers work with strings
-  6. Function pointer - Shows declaration of a function pointer
-  7. Pointer and array relationship - Demonstrates the relationship between arrays and pointers
-  8. Dynamic memory allocation simulation - Shows pointer usage with dynamic memory
-  9. Pointer comparison - Demonstrates comparing pointer addresses
-  10. Pointer with different data types - Shows how pointers work with different sized data types
-
-  The program compiles and runs successfully, showing the actual memory addresses and demonstrating how
-  pointers store addresses as described in the text. Each example includes clear output showing the values
-   and addresses involved.
-

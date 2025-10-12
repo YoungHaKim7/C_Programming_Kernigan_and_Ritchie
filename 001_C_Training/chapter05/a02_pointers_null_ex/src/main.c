@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+int add(int a, int b) {
+    return a + b;
+}
+
 int main()
 {
     printf("=== Pointer Examples ===\n\n");
@@ -47,8 +51,9 @@ int main()
 
     // Example 6: Function pointer
     printf("6. Function pointer:\n");
-    int (*func_ptr)(int, int) = NULL;
-    printf("   Function pointer declared\n\n");
+    int (*func_ptr)(int, int) = &add;
+    printf("   Function pointer points to add function\n");
+    printf("   Calling function through pointer: add(5, 3) = %d\n\n", func_ptr(5, 3));
 
     // Example 7: Pointer and array relationship
     printf("7. Pointer and array relationship:\n");
