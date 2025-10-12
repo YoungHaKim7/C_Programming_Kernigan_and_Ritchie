@@ -7,6 +7,7 @@ long version: 86400000
 
 # Related suffixes
 - Suffix	Meaning	Example
+
 ||||
 |-|-|-|
 |L or l |	long |	1234L|
