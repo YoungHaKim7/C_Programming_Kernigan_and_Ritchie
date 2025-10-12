@@ -1,10 +1,11 @@
-#include <stdio.h>
-#include "math_utils.h"
+#include "array_utils.c"
 #include "array_utils.h"
 #include "math_utils.c"
-#include "array_utils.c"
+#include "math_utils.h"
+#include <stdio.h>
 
-int main() {
+int main()
+{
     printf("=== File Inclusion Demo: Managing Collections ===\n\n");
 
     // Math utilities collection
@@ -18,7 +19,7 @@ int main() {
 
     // Array utilities collection
     printf("Array Utilities Collection:\n");
-    int numbers[] = {64, 34, 25, 12, 22, 11, 90};
+    int numbers[] = { 64, 34, 25, 12, 22, 11, 90 };
     int size = sizeof(numbers) / sizeof(numbers[0]);
 
     printf("Original array: ");
@@ -35,7 +36,7 @@ int main() {
 
     // Combining collections
     printf("Combined Operations Example:\n");
-    int data[] = {5, 3, 8, 1, 9, 2, 7};
+    int data[] = { 5, 3, 8, 1, 9, 2, 7 };
     int data_size = sizeof(data) / sizeof(data[0]);
 
     printf("Data array: ");
@@ -53,4 +54,3 @@ int main() {
 
     return 0;
 }
-
