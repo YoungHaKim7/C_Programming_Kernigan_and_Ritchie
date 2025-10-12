@@ -6,8 +6,9 @@ void printd(int n)
         putchar('-');
         n = -n;
     }
-    if (n / 10)
+    if (n > 0) {
         printd(n / 10);
+    }
     putchar(n % 10 + '0');
 }
 
@@ -46,6 +47,10 @@ int main()
     printd(123);
     printf("\n");
 
+    printf("Example 1-1: Printing positive number 3\n");
+    printd(3);
+    printf("\n");
+
     printf("Example 2: Printing negative number -456\n");
     printd(-456);
     printf("\n");
@@ -59,27 +64,31 @@ int main()
     printf("\n");
 
     printf("Example 5: Sorting array [3, 1, 4, 1, 5]\n");
-    int arr1[] = {3, 1, 4, 1, 5};
+    int arr1[] = { 3, 1, 4, 1, 5 };
     qsort(arr1, 0, 4);
-    for(int i = 0; i < 5; i++) printf("%d ", arr1[i]);
+    for (int i = 0; i < 5; i++)
+        printf("%d ", arr1[i]);
     printf("\n");
 
     printf("Example 6: Sorting array [9, 8, 7, 6, 5]\n");
-    int arr2[] = {9, 8, 7, 6, 5};
+    int arr2[] = { 9, 8, 7, 6, 5 };
     qsort(arr2, 0, 4);
-    for(int i = 0; i < 5; i++) printf("%d ", arr2[i]);
+    for (int i = 0; i < 5; i++)
+        printf("%d ", arr2[i]);
     printf("\n");
 
     printf("Example 7: Sorting array [1, 2, 3, 4, 5]\n");
-    int arr3[] = {1, 2, 3, 4, 5};
+    int arr3[] = { 1, 2, 3, 4, 5 };
     qsort(arr3, 0, 4);
-    for(int i = 0; i < 5; i++) printf("%d ", arr3[i]);
+    for (int i = 0; i < 5; i++)
+        printf("%d ", arr3[i]);
     printf("\n");
 
     printf("Example 8: Sorting array [5, -1, 3, -2, 0]\n");
-    int arr4[] = {5, -1, 3, -2, 0};
+    int arr4[] = { 5, -1, 3, -2, 0 };
     qsort(arr4, 0, 4);
-    for(int i = 0; i < 5; i++) printf("%d ", arr4[i]);
+    for (int i = 0; i < 5; i++)
+        printf("%d ", arr4[i]);
     printf("\n");
 
     printf("Example 9: Printing large number 99999\n");
@@ -87,7 +96,7 @@ int main()
     printf("\n");
 
     printf("Example 10: Sorting single element array [42]\n");
-    int arr5[] = {42};
+    int arr5[] = { 42 };
     qsort(arr5, 0, 0);
     printf("%d\n", arr5[0]);
 
