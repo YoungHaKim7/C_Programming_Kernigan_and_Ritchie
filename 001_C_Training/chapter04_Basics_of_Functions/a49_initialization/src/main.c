@@ -18,11 +18,10 @@ int binsearch(int x, int v[], int n)
     return -1;
 }
 
-
 // === External and Static Global Variables ===
-int global_counter;                              // uninitialized external → defaults to 0
-double global_pi;                                // uninitialized external → defaults to 0.0
-static int static_global = 42;                   // static global initialized explicitly
+int global_counter; // uninitialized external → defaults to 0
+double global_pi; // uninitialized external → defaults to 0.0
+static int static_global = 42; // static global initialized explicitly
 long milliseconds_per_day = 1000L * 60L * 60L * 24L; // constant expression initializer
 
 // Helper function: demonstrates static local variable
@@ -41,8 +40,8 @@ int main(void)
     // ✅ Example group 1: declare all 10 variables at once
     // ---------------------------------------------------------
     int a = 0, x = 1, y = 3, z = 9;
-        int b = 10;
-        int c = b+ 5;
+    int b = 10;
+    int c = b + 5;
     char squote = '\'', newline = '\n';
     int d = printf("1️⃣ Hello from printf initializer!\n");
     register int reg_x = 123;
@@ -73,18 +72,18 @@ int main(void)
 
     // Example 7: external variables auto-initialized before main
     printf("Global vars: counter=%d, pi=%f, ms/day=%ld\n",
-           global_counter, global_pi, milliseconds_per_day);
+        global_counter, global_pi, milliseconds_per_day);
 
     // ---------------------------------------------------------
     // ✅ Binary Search Example
     // ---------------------------------------------------------
     printf("\n=== Binary Search Examples ===\n");
 
-    int sorted_array[] = {2, 4, 7, 11, 15, 19, 23, 28, 31, 42};
+    int sorted_array[] = { 2, 4, 7, 11, 15, 19, 23, 28, 31, 42 };
     int n = sizeof(sorted_array) / sizeof(sorted_array[0]);
 
     // Test cases
-    int search_values[] = {7, 15, 42, 2, 99, -5, 23};
+    int search_values[] = { 7, 15, 42, 2, 99, -5, 23 };
     int num_tests = sizeof(search_values) / sizeof(search_values[0]);
 
     printf("Sorted array: ");
