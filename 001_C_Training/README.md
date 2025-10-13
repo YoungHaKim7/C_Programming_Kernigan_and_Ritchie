@@ -19,10 +19,13 @@
 # GlobalYoung방송 다시보기
 
 - chapter01
+  - [01_러스트개발자의 위한 C언어 기초(c23) chapter01 #c #rust](https://youtube.com/live/s9623ufsK8o?feature=share)
 
 - chapter02
+  - [02_러스트개발자의 위한 C언어 기초(c23) chapter02 #c #rust](https://youtube.com/live/_FkrWkV4-Wk?feature=share)
 
-- chapter03 
+- chapter03
+  - [03_러스트개발자의 위한 C언어 기초(c23) chapter03 #c #rust](https://youtube.com/live/AAF0PDxAS8E?feature=share)
 
 - chapter04
   - [(251012방송)04_러스트개발자의 위한 C언어 기초(c23) chapter04 #c #rust](https://youtube.com/live/DEvbvRWN8rU?feature=share)
