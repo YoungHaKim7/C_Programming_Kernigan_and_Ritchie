@@ -406,7 +406,7 @@ init:
 	echo '' >> CMakeLists.txt
 	echo '# Common compile flags' >> CMakeLists.txt
 	echo 'add_compile_options(' >> CMakeLists.txt
-	echo '    -pedantic' >> CMakeists.txt
+	echo '    -pedantic' >> CMakeLists.txt
 	echo '    -pthread' >> CMakeLists.txt
 	echo '    -pedantic-errors' >> CMakeLists.txt
 	echo '    -lm' >> CMakeLists.txt
