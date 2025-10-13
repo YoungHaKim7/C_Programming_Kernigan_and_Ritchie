@@ -5,6 +5,8 @@
 
 - [C언어에서 `int main(int argc, char* argc[])` 의미](#c언어에서-int-mainint-argc-char-argc-의미)
 
+- GlobalYoung방송 다시보기
+
 <hr />
 
 # eBook(C)[|🔝|](#link)
@@ -13,6 +15,17 @@
 
 - [(251007) Learn C from scratch - One course to rule them all | dr Jonas Birch](https://youtu.be/wzMaNVSqfYw?si=6xW8IYDXLdMeewM3)
   - 코드 https://repo.doctorbirch.com/roadmap/
+
+# GlobalYoung방송 다시보기
+
+- chapter01
+
+- chapter02
+
+- chapter03 
+
+- chapter04
+  - [(251012방송)04_러스트개발자의 위한 C언어 기초(c23) chapter04 #c #rust](https://youtube.com/live/DEvbvRWN8rU?feature=share)
 
 # build(c23)[|🔝|](#link)
 - https://github.com/YoungHaKim7/c23_pthread_cmake_just_sample
