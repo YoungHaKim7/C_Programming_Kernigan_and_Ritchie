@@ -1,9 +1,0 @@
-# ninja log v7
-1	38	1760443645249265795	CMakeFiles/a01_cpp23_import_std.dir/src/main.cpp.o.ddi	4cf2c59606e6d00b
-1	75	1760443645249000591	CMakeFiles/a01_cpp23_import_std.dir/src/std_import.cppm.o.ddi	33024c7c0b6d7688
-75	85	1760443645332551551	CMakeFiles/a01_cpp23_import_std.dir/CXX.dd	d6744462088120df
-75	85	1760443645332551551	CMakeFiles/a01_cpp23_import_std.dir/CXXModules.json	d6744462088120df
-75	85	1760443645332551551	CMakeFiles/a01_cpp23_import_std.dir/src/std_import.cppm.o.modmap	d6744462088120df
-75	85	1760443645332551551	CMakeFiles/a01_cpp23_import_std.dir/src/main.cpp.o.modmap	d6744462088120df
-85	194	1760443645438755597	CMakeFiles/a01_cpp23_import_std.dir/src/std_import.cppm.o	49df3e681eb8d120
-85	194	1760443645438755597	CMakeFiles/a01_cpp23_import_std.dir/std_import.pcm	49df3e681eb8d120
