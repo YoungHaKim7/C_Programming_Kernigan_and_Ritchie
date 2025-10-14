@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 4.0)
 
 # Enable C++23 modules support BEFORE project() call
 set(CMAKE_CXX_STANDARD 23)
