@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -std=c++23 -arch arm64 -pedantic -pthread -pedantic-errors -Wall -Wextra -ggdb -fmodules -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk @CMakeFiles/a01_macos_cpp23_import_std.dir/src/std_import.cppm.o.modmap -o CMakeFiles/a01_macos_cpp23_import_std.dir/src/std_import.cppm.o -c /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std/src/std_import.cppm",
+  "file": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std/src/std_import.cppm",
+  "output": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std/CMakeFiles/a01_macos_cpp23_import_std.dir/src/std_import.cppm.o"
+},
+{
+  "directory": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -std=c++23 -arch arm64 -pedantic -pthread -pedantic-errors -Wall -Wextra -ggdb -fmodules -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk @CMakeFiles/a01_macos_cpp23_import_std.dir/src/main.cpp.o.modmap -o CMakeFiles/a01_macos_cpp23_import_std.dir/src/main.cpp.o -c /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std/src/main.cpp",
+  "file": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std/src/main.cpp",
+  "output": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_macos_cpp23_import_std/CMakeFiles/a01_macos_cpp23_import_std.dir/src/main.cpp.o"
+}
+]
