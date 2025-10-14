@@ -1,6 +1,6 @@
+#include <format>
 #include <print>
 #include <vector>
-#include <format>
 
 int main()
 {
@@ -19,7 +19,6 @@ int main()
     std::println("");
     std::print("~~~~~~~~~~~~~~~~~~~");
     std::println("2d array( 2d matrix)");
-
 
     // 2D matrix using std::vector
     int rows = 2, cols = 3;
@@ -108,7 +107,7 @@ int main()
         }
         std::println("");
     }
-    
+
     // clang-format off
     // 3D matrix [5][3][2]
     // 5 layers, 3 rows per layer, 2 columns per row
