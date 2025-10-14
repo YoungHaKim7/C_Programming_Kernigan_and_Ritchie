@@ -1,0 +1,16 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/a01_cpp23_import_std.dir/src/std_import.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "std_import",
+          "source-path": "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std/src/std_import.cppm"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

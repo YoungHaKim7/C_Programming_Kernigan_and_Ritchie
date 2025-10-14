@@ -375,6 +375,11 @@ init:
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
 	echo 'cmake_minimum_required(VERSION 4.0)' >> CMakeLists.txt
 	echo '' >> CMakeLists.txt
+	echo 'set(CMAKE_C_STANDARD 23)' >> CMakeLists.txt
+	echo 'set(CMAKE_C_STANDARD_REQUIRED ON)' >> CMakeLists.txt
+	echo 'set(CMAKE_C_EXTENSIONS OFF)' >> CMakeLists.txt
+	echo '# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)' >> CMakeLists.txt
+	echo '' >> CMakeLists.txt
 	echo 'get_filename_component(ProjectId ${CMAKE_CURRENT_SOURCE_DIR} NAME)' >> CMakeLists.txt
 	echo 'string(REPLACE " " "_" ProjectId ${ProjectId})' >> CMakeLists.txt
 	echo 'project(${ProjectId} LANGUAGES C)' >> CMakeLists.txt
@@ -388,10 +393,6 @@ init:
 	echo '# Force Clang 21(macOS)' >> CMakeLists.txt
 	echo '# set(CMAKE_CXX_COMPILER "/opt/homebrew/opt/llvm/bin/clang")' >> CMakeLists.txt
 	echo '' >> CMakeLists.txt
-	echo 'set(CMAKE_C_STANDARD 23)' >> CMakeLists.txt
-	echo 'set(CMAKE_C_STANDARD_REQUIRED ON)' >> CMakeLists.txt
-	echo 'set(CMAKE_C_EXTENSIONS OFF)' >> CMakeLists.txt
-	echo '# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)' >> CMakeLists.txt
 	echo 'SET (CMAKE_C_FLAGS_INIT                "-Wall -std=c23")' >> CMakeLists.txt
 	echo 'SET (CMAKE_C_FLAGS_DEBUG_INIT          "-g")' >> CMakeLists.txt
 	echo 'SET (CMAKE_C_FLAGS_MINSIZEREL_INIT     "-Os -DNDEBUG")' >> CMakeLists.txt

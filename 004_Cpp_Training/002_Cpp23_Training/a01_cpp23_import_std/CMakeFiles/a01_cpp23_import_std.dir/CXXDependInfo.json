@@ -1,0 +1,39 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "",
+	"config" : "",
+	"cxx-modules" : 
+	{
+		"CMakeFiles/a01_cpp23_import_std.dir/src/std_import.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"destination" : null,
+			"name" : "CXX_MODULES",
+			"relative-directory" : "src",
+			"source" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std/src/std_import.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PRIVATE"
+		}
+	},
+	"database-info" : null,
+	"dir-cur-bld" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std",
+	"dir-cur-src" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std",
+	"dir-top-bld" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std",
+	"dir-top-src" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std/CMakeFiles/a01_cpp23_import_std.dir",
+	"sources" : 
+	{
+		"CMakeFiles/a01_cpp23_import_std.dir/src/main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/004_Cpp_Training/002_Cpp23_Training/a01_cpp23_import_std/src/main.cpp"
+		}
+	}
+}

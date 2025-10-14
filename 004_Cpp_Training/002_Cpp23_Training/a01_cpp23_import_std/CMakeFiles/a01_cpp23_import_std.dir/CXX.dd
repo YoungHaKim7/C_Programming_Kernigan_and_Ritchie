@@ -1,0 +1,6 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/a01_cpp23_import_std.dir/src/std_import.cppm.o | CMakeFiles/a01_cpp23_import_std.dir/std_import.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/a01_cpp23_import_std.dir/src/main.cpp.o: dyndep | CMakeFiles/a01_cpp23_import_std.dir/std_import.pcm
+
