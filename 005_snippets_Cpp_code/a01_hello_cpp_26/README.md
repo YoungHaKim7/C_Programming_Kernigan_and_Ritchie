@@ -110,6 +110,8 @@ fm_flags := "-e c \
   -e h \
   -e cpp \
   -e hpp \
+  -e cppm \
+  -e ixx \
   -e cc \
   -e cxx -x " \
   +clang_format+  \
