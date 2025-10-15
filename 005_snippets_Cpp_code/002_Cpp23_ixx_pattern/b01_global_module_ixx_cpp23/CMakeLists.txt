@@ -13,7 +13,7 @@ project(${ProjectId} LANGUAGES CXX)
 # Force GCC 15(LinuxOS)
 # set(CMAKE_CXX_COMPILER "/opt/gcc-15/bin/g++")
 # Force Clang 20(LinuxOS)
-set(CMAKE_CXX_COMPILER "/usr/bin/clang++-21")
+# set(CMAKE_CXX_COMPILER "/usr/bin/clang++-21")
 # Force Clang 20(macOS)
 # set(CMAKE_CXX_COMPILER "/opt/homebrew/opt/llvm/bin/clang++")
 
@@ -34,14 +34,14 @@ add_compile_options(
 
 # Main executable with sources
 add_executable(${ProjectId}
-    src/std_import.cppm
+    src/modules/math_stuff.ixx
     src/main.cpp
 )
 
 # Set up module support
 target_sources(${ProjectId} PRIVATE
     FILE_SET CXX_MODULES FILES
-    src/std_import.cppm
+    src/modules/math_stuff.ixx
 )
 
 # Set properties for the executable to support modules
