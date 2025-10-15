@@ -84,7 +84,7 @@ clang_format := if os == "Linux" { \
 
 # fmt .clang-format(linuxOS / macOS)
 fmt_flags := if os == "Linux" { \
-    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
+    ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|ixx\\|cppm\\|c\\|h\\)' -exec " \
     +clang_format+ \
     " -style=file -i {} \\;" \
   } else if os == "Darwin" { \
@@ -93,6 +93,8 @@ fmt_flags := if os == "Linux" { \
     -o -iname '*.cc' \
     -o -iname '*.c' \
     -o -iname '*.cxx' \
+    -o -iname '*.cppm' \
+    -o -iname '*.ixx' \
     -o -iname '*.c' \
     -o -iname '*.h' | " \
     +clang_format+ \
