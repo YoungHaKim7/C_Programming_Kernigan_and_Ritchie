@@ -1,0 +1,10 @@
+# ninja log v5
+5	350	1760581980950041400	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/calculator.cpp.o.ddi	f31669c217a3bfd5
+3	581	1760582534534272700	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/main.cpp.o.ddi	5bf58d46ba399154
+581	969	1760582534924463600	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/CXX.dd	6ce3842a4a19f79e
+581	969	1760582534924463600	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/CXXModules.json	6ce3842a4a19f79e
+581	969	1760582534924463600	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/main.cpp.o.modmap	6ce3842a4a19f79e
+581	969	1760582534924463600	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/calculator.cpp.o.modmap	6ce3842a4a19f79e
+975	1434	1760582535382110800	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/calculator.cpp.o	eb81ecbfc804b57a
+971	3343	1760582537293296800	CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/main.cpp.o	53ec9f3f73db243c
+3346	4222	1760582538169232000	target/a03_cpp26_divided_conquer_code_calculator	c19c51a509d65a8b

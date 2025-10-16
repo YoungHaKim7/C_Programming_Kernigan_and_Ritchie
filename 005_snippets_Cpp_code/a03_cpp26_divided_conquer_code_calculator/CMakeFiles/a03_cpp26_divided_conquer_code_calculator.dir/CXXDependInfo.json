@@ -1,0 +1,32 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator",
+	"dir-cur-src" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator",
+	"dir-top-bld" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator",
+	"dir-top-src" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator/CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir",
+	"sources" : 
+	{
+		"CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/calculator.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator/src/calculator.cpp"
+		},
+		"CMakeFiles/a03_cpp26_divided_conquer_code_calculator.dir/src/main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/y/my_project/Rust_Lang/9999/C_Programming_Kernigan_and_Ritchie/005_snippets_Cpp_code/a03_cpp26_divided_conquer_code_calculator/src/main.cpp"
+		}
+	}
+}
