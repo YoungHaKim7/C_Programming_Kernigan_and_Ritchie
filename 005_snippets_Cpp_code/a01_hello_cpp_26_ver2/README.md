@@ -143,6 +143,7 @@ ldflags_fsanitize_leak := "-fsanitize=leak -g"
 
 # (C)gpp compile(LinuxOS)
 r:
+	just fm
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
 	{{gpp_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
@@ -157,6 +158,7 @@ ro:
 
 # cmake compile(LinuxOS)
 cr:
+	just fm
 	rm -rf build
 	mkdir -p build
 	export CXX={{gpp_which}}
