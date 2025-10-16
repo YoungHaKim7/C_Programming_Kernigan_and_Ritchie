@@ -379,7 +379,7 @@ xx:
 # clean files
 clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
-	rm -rf build CMakeCache.txt CMakeFiles .cache
+	rm -rf build CMakeCache.txt CMakeFiles .cache build.ninja cmake_install.cmake .ninja_deps .ninja_log
 
 # C++ 26 init(int main(void))
 init:
