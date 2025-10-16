@@ -33,6 +33,13 @@ int main()
         }
     }
 
+    // Fill with 0
+    // for (int i = 0; i < rows; i++) {
+    //    for (int j = 0; j < cols; j++) {
+    //        matrix02[i][j] = 0;
+    //    }
+    // }
+
     // Print
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
