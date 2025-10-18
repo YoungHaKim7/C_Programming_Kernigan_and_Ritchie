@@ -31,3 +31,6 @@ already enforce. In addition, the type void * (pointer to void) replaces char * 
 예상치 못한 곳을 가리키는 포인터를 만듭니다. 그러나 훈육을 통해 포인터는 명확성과 단순성을 달성하는 데에도 사용할 수 있습니다. 이것이 바로 우리가 설명하려고 하는 측면입니다.
 ANSI C의 주요 변경 사항은 포인터를 조작하는 방법에 대한 규칙을 명시적으로 명시하는 것으로, 실제로 좋은 프로그래머와 좋은 컴파일러가 이미 연습하는 것을 의무화하는 것입니다
 이미 시행 중입니다. 또한, void * (point to void) 타입이 일반 포인터의 적절한 타입으로 char *를 대체합니다.
+
+# (220819) `int *p` vs `int* p` Pointer Declarations | C Programming Tutorial | Portfolio Courses
+- https://youtu.be/H5MlTh5cBOg?si=iptCPb6I_4uqgQ1h
