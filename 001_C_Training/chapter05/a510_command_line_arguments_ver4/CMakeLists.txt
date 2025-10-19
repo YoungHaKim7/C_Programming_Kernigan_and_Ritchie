@@ -55,3 +55,22 @@ target_link_options(${ProjectId} PRIVATE -pthread -lm)
 set_target_properties(${ProjectId} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
 )
+
+# Test executable
+add_executable(test_find
+    test/test_find.c
+)
+
+# Link test executable with the same flags
+target_link_options(test_find PRIVATE -pthread -lm)
+
+# Enable testing
+enable_testing()
+
+# Add test
+add_test(NAME FindCommandLineTest COMMAND test_find)
+
+# Set test properties
+set_tests_properties(FindCommandLineTest PROPERTIES
+    TIMEOUT 30
+)

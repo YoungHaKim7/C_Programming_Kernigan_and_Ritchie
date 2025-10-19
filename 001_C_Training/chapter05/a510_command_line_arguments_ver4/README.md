@@ -48,3 +48,17 @@ cat logfile.txt | ./build/./target/a510_command_line_arguments_ver4 -n error
 ```
 
 - The error you saw was because -5 isn't a valid option - only x and n are supported.
+
+# I've created a comprehensive test suite for your command line arguments program. The test covers:
+
+- Test Coverage:
+  - 1. Basic pattern search - Tests basic functionality of finding patterns
+  - 2. Numbered output (-n) - Tests line numbering option
+  - 3. Except option (-x) - Tests inverse matching
+  - 4. Combined options (-x -n) - Tests multiple flags together
+  - 5. No matches - Tests behavior when no patterns are found
+  - 6. Invalid option - Tests error handling for unknown flags
+  - 7. No arguments - Tests usage message when args are missing
+  - 8. Empty input - Tests behavior with empty input
+
+- The test uses fork() and exec() to run your program in a separate process with controlled input, capturing both stdout and exit codes for verification.

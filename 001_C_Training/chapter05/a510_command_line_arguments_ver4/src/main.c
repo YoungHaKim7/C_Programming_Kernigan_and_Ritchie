@@ -40,17 +40,18 @@ int main(int argc, char* argv[])
                 found = -1;
                 break;
             }
-    if (argc != 1)
+    if (argc != 1) {
         printf("Usage: find -x -n pattern\n");
-    else
-        while (custom_getline(line, MAXLINE) > 0) {
-            lineno++;
-            if ((strstr(line, *argv) != NULL) != except) {
-                if (number)
-                    printf("%ld:", lineno);
-                printf("%s", line);
-                found++;
-            }
+        return found;
+    }
+    while (custom_getline(line, MAXLINE) > 0) {
+        lineno++;
+        if ((strstr(line, *argv) != NULL) != except) {
+            if (number)
+                printf("%ld:", lineno);
+            printf("%s", line);
+            found++;
         }
+    }
     return found;
 }
