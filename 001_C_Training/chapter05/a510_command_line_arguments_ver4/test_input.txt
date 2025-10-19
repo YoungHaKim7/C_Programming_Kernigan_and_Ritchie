@@ -1,0 +1,5 @@
+good test
+hello
+ctest.txt
+hello world
+command line

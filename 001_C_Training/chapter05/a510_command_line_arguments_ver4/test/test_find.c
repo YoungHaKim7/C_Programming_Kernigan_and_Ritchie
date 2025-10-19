@@ -43,8 +43,21 @@ int run_program_with_input(char* argv[], char* input, char* output, int output_s
         close(temp_fd);
 
         // Execute the program
-        execv("./target/a510_command_line_arguments_ver4", argv);
-        perror("execv");
+        // Try different paths based on where we're running from
+        if (access("./target/a510_command_line_arguments_ver4", X_OK) == 0) {
+            execv("./target/a510_command_line_arguments_ver4", argv);
+        } else if (access("./build/target/a510_command_line_arguments_ver4", X_OK) == 0) {
+            execv("./build/target/a510_command_line_arguments_ver4", argv);
+        } else {
+            // Debug: print what we're looking for
+            fprintf(stderr, "execv: Cannot find executable. Looking for:\n");
+            fprintf(stderr, "  ./target/a510_command_line_arguments_ver4: %s\n",
+                    access("./target/a510_command_line_arguments_ver4", X_OK) == 0 ? "found" : "not found");
+            fprintf(stderr, "  ./build/target/a510_command_line_arguments_ver4: %s\n",
+                    access("./build/target/a510_command_line_arguments_ver4", X_OK) == 0 ? "found" : "not found");
+            exit(1);
+        }
+        // Should never reach here
         exit(1);
     } else { // Parent process
         close(pipefd[0]); // Close read end
@@ -207,6 +220,34 @@ void test_empty_input()
     printf("✓ Empty input test passed\n");
 }
 
+void test_with_file_input()
+{
+    printf("Testing with test_input.txt file...\n");
+
+    // Read the actual test_input.txt file
+    FILE* file = fopen(TEST_INPUT_FILE, "r");
+    if (!file) {
+        printf("❌ Could not open test_input.txt\n");
+        return;
+    }
+
+    char file_content[MAX_OUTPUT];
+    size_t bytes_read = fread(file_content, 1, MAX_OUTPUT - 1, file);
+    file_content[bytes_read] = '\0';
+    fclose(file);
+
+    char* argv[] = { "a510_command_line_arguments_ver4", "hello", NULL };
+    char output[MAX_OUTPUT];
+
+    int exit_code = run_program_with_input(argv, file_content, output, MAX_OUTPUT);
+
+    // Should find lines containing "hello"
+    assert(exit_code >= 1); // Should find at least 1 match
+    assert(strstr(output, "hello") != NULL);
+
+    printf("✓ Processing test_input.txt: test ok\n");
+}
+
 int main()
 {
     printf("Running tests for find command line arguments program...\n\n");
@@ -220,6 +261,7 @@ int main()
     test_invalid_option();
     test_no_arguments();
     test_empty_input();
+    test_with_file_input();
 
     printf("\n✅ All tests passed!\n");
     return 0;
