@@ -2,6 +2,7 @@
 
 - `make clean`
 - `make all`
+- `make run`
 - `make test`
 
 ```bash
