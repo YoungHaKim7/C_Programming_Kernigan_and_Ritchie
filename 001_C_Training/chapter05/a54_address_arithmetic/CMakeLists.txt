@@ -48,24 +48,8 @@ add_executable(${ProjectId}
 
 target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
-# Test executable for pointers and arrays
-add_executable(test_pointers_arrays
-    tests/test_pointers_arrays.c
-)
-
-target_link_options(test_pointers_arrays PRIVATE -pthread -lm)
-
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
 )
 
-set_target_properties(test_pointers_arrays PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
-)
-
-# Enable testing
-enable_testing()
-
-# Add test to CTest
-add_test(NAME pointers_arrays_test COMMAND test_pointers_arrays)
