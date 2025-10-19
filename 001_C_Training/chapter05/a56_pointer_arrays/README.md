@@ -1,109 +1,133 @@
-erfect! I have successfully implemented a comprehensive C program for Chapter 5.6 "Pointer Arrays; Pointers to Pointers" with the following
-  components:
-
-  Program Files Created:
-
-  1. src/main.c - Main demonstration program with 10 comprehensive examples
-  2. src/sort.c - The original sorting program from the textbook
-  3. src/test.c - Comprehensive test suite with validation
-  4. test_input.txt - Sample input for testing the sorting program
-  5. interactive_test.sh - Script for interactive testing
-
-  10 Examples Implemented:
-
-  1. Basic Pointer Array Declaration - Shows how to declare and use arrays of character pointers
-  2. Pointer Arrays with Dynamic Allocation - Demonstrates dynamic assignment to pointer arrays
-  3. Sorting with Pointer Arrays - Complete sorting demonstration using pointer arrays
-  4. Pointers to Pointers - Shows double pointer dereferencing and usage
-  5. Memory Layout Demonstration - Visualizes how pointer arrays are stored in memory
-  6. Pointer Arithmetic with Pointer Arrays - Shows pointer operations on pointer arrays
-  7. Two-dimensional Arrays vs Pointer Arrays - Compares memory efficiency
-  8. Command-line Arguments Simulation - Demonstrates argv-style usage
-  9. Array of Function Pointers - Shows function pointer arrays
-  10. Complete Sorting Program - Full implementation as described in the textbook
-
-  Key Features:
-
-  - Efficient Memory Usage: Uses pointer arrays to avoid copying large strings
-  - Quicksort Implementation: Implements the textbook's quicksort algorithm
-  - Memory Management: Custom allocator function for dynamic memory
-  - Comprehensive Testing: Full test suite with edge cases and validation
-  - Interactive Mode: Can read from stdin or files for sorting
-
-  Test Results:
-
-  All tests passed successfully:
-  - ✅ Memory allocation and management
-  - ✅ Pointer swapping operations
-  - ✅ Quicksort algorithm correctness
-  - ✅ Sorting with various string types
-  - ✅ Edge cases (empty array, single element, duplicates)
-
-  The implementation perfectly demonstrates the textbook's concepts: pointer arrays eliminate the "twin problems of complicated storage management
-  and high overhead that would go with moving the lines themselves" by only swapping pointers rather than copying entire strings during sorting.
-
-
 # Result
 
 ```bash
-=== Chapter 5.5: Character Pointers and Functions ===
+=== Chapter 5.6: Pointer Arrays; Pointers to Pointers ===
 
-1. String Constants and Character Pointers:
-   Pointer assignment: pmessage = "now is the time"
-   printf with string constant: hello, world
+Example 1: Basic Pointer Array Declaration
+-----------------------------------------
+Array of fruit names:
+  fruits[0] = "apple" (address: 0x1027320b0)
+  fruits[1] = "banana" (address: 0x1027320b8)
+  fruits[2] = "cherry" (address: 0x1027320c0)
+  fruits[3] = "date" (address: 0x1027320c8)
 
-2. Array vs Pointer Declaration:
-   amessage[]: "now is the time"
-  Address: 0x16dc4a4a0
-  Length: 15
-  Characters: 'n'(0x6e) 'o'(0x6f) 'w'(0x77) ' '(0x20) 'i'(0x69) 's'(0x73) ' '(0x20) 't'(0x74) 'h'(0x68) 'e'(0x65) ' '(0x20) 't'(0x74) 'i'(0x69) 'm'(0x6d) 'e'(0x65) '\0'(0x00)
+Example 2: Pointer Arrays with Dynamic Allocation
+-----------------------------------------------
+Dynamically assigned names:
+  names[0] = "Alice" (length: 5)
+  names[1] = "Bob" (length: 3)
+  names[2] = "Charlie" (length: 7)
+  names[3] = "David" (length: 5)
+  names[4] = "Eve" (length: 3)
 
-   *pmessage2: "now is the time"
-  Address: 0x1021b5400
-  Length: 15
-  Characters: 'n'(0x6e) 'o'(0x6f) 'w'(0x77) ' '(0x20) 'i'(0x69) 's'(0x73) ' '(0x20) 't'(0x74) 'h'(0x68) 'e'(0x65) ' '(0x20) 't'(0x74) 'i'(0x69) 'm'(0x6d) 'e'(0x65) '\0'(0x00)
+Example 3: Sorting with Pointer Arrays
+-------------------------------------
+Before sorting:
+  zebra
+  apple
+  orange
+  banana
+  grape
+  kiwi
+  mango
+  pear
+After sorting:
+  apple
+  banana
+  grape
+  kiwi
+  mango
+  orange
+  pear
+  zebra
 
-3. Modifying Array vs Pointer:
-   Modified amessage: "Now is the time"
-   Reassigned pmessage2: "new string"
+Example 4: Pointers to Pointers
+-----------------------------
+Original array:
+  colors[0] = "red"
+  colors[1] = "green"
+  colors[2] = "blue"
 
-4. Testing strcpy Functions:
-   strcpy_array_version: "Hello, C Programming!"
-   strcpy_pointer_version1: "Hello, C Programming!"
-   strcpy_pointer_version2: "Hello, C Programming!"
-   strcpy_pointer_version3: "Hello, C Programming!"
+Using pointer to pointer:
+  *(ptr_to_colors + 0) = "red"
+  *(ptr_to_colors + 1) = "green"
+  *(ptr_to_colors + 2) = "blue"
 
-5. Testing strcmp Functions:
-   Comparing "apple" and "banana":
-     strcmp_array_version: -1
-     strcmp_pointer_version: -1
-   Comparing "apple" and "apple":
-     strcmp_array_version: 0
-     strcmp_pointer_version: 0
-   Comparing "banana" and "apple":
-     strcmp_array_version: 1
-     strcmp_pointer_version: 1
+Dereferencing twice:
+  *(*(ptr_to_colors + 0) + 0) = 'r'
+  *(*(ptr_to_colors + 1) + 0) = 'g'
+  *(*(ptr_to_colors + 2) + 0) = 'b'
 
-6. Multiple String Constants:
-   messages[0]: "First message" (at 0x1021b58c8)
-   messages[1]: "Second message" (at 0x1021b58d8)
-   messages[2]: "Third message" (at 0x1021b58e8)
-   messages[3]: "Last message" (at 0x1021b58f8)
+Example 5: Memory Layout of Pointer Arrays
+------------------------------------------
+Memory layout of pointer array:
+  Element 0:
+    Pointer address: 0x16d6ce3c0
+    Points to: 0x1027322c8
+    String value: "short"
+    String length: 5
+  Element 1:
+    Pointer address: 0x16d6ce3c8
+    Points to: 0x1027322d0
+    String value: "medium_length"
+    String length: 13
+  Element 2:
+    Pointer address: 0x16d6ce3d0
+    Points to: 0x1027322e0
+    String value: "very_long_string_that_takes_more_space"
+    String length: 38
 
-7. String Manipulation with Pointers:
-   Original: "Pointers are powerful"
-   Character by character: Pointers are powerful
+Example 6: Pointer Arithmetic with Pointer Arrays
+-------------------------------------------------
+Pointer arithmetic demonstration:
+  Base address: 0x16d6ce3b8
+  *ptr = "alpha"
+  *(ptr + 1) = "beta"
+  *(ptr + 2) = "gamma"
+  ptr[3] = "delta"
 
-8. Manual String Length Calculation:
-   String: "Calculate my length"
-   Manual length: 19
-   strlen() result: 19
+Incrementing pointer:
+  After ptr++, *ptr = "beta"
+  New address: 0x16d6ce3c0
 
-9. String Concatenation:
-   Result: "Hello, World!"
+Example 7: Two-dimensional Arrays vs Pointer Arrays
+--------------------------------------------------
+2D array:
+  two_d[0] = "first" (size: 20 bytes)
+  two_d[1] = "second" (size: 20 bytes)
+  two_d[2] = "third" (size: 20 bytes)
+Pointer array:
+  ptr_array[0] = "first" (pointer size: 8 bytes)
+  ptr_array[1] = "second" (pointer size: 8 bytes)
+  ptr_array[2] = "third" (pointer size: 8 bytes)
 
-10. Standard Library vs Custom Functions:
-    Standard strcpy: "Testing comparison"
-    Custom strcpy: "Testing comparison"
-    strcmp results: 0 (standard) vs 0 (custom)
+Example 8: Command-line Arguments Simulation
+--------------------------------------------
+Simulated command line: program arg1 arg2 arg3 arg4
+Arguments:
+  argv[1] = "arg1"
+  argv[2] = "arg2"
+  argv[3] = "arg3"
+  argv[4] = "arg4"
+
+Example 9: Array of Function Pointers
+-------------------------------------
+Comparing "Hello" and "hello":
+  Case-sensitive: -32
+
+Example 10: Complete Sorting Program Demonstration
+-------------------------------------------------
+Original lines:
+  This is a demonstration
+  of pointer arrays
+  and how they work
+  for sorting text
+  efficiently
+
+Sorted lines:
+  This is a demonstration
+  and how they work
+  efficiently
+  for sorting text
+  of pointer arrays
 ```

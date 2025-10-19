@@ -4,6 +4,9 @@ get_filename_component(ProjectId ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 string(REPLACE " " "_" ProjectId ${ProjectId})
 project(${ProjectId} LANGUAGES C)
 
+# Enable CTest
+include(CTest)
+
 # Force GCC 15(LinuxOS)
 # set(CMAKE_C_COMPILER "/opt/gcc-15/bin/gcc")
 # Force GCC 15(macOS)
@@ -51,5 +54,21 @@ target_link_options(${ProjectId} PRIVATE -pthread -lm)
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
+)
+
+# Build test executable
+add_executable(test_${ProjectId}
+    tests/test.c
+)
+
+target_link_options(${ProjectId} PRIVATE -pthread -lm)
+
+# Add test to CTest
+add_test(NAME ${ProjectId}_tests COMMAND test_${ProjectId})
+
+# Set test properties
+set_tests_properties(${ProjectId}_tests PROPERTIES
+    TIMEOUT 30
+    PASS_REGULAR_EXPRESSION "All tests completed"
 )
 
