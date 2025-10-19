@@ -1,4 +1,6 @@
 # Result
+- C is sometimes castigated for the syntax of its declarations, particularly ones that involve pointers to functions. The syntax is an attempt to make the declaration and the use agree; it works well for simple cases, but it can be confusing for the harder ones, because declarations cannot be read left to right, and because parentheses are over-used.
+  - C는 때때로 선언의 구문, 특히 다음과 같은 것들로 인해 거세됩니다 함수에 대한 지침. 구문은 선언과 사용자가 일치하도록 하려는 시도입니다 간단한 경우에는 잘 작동하지만, 어려운 경우에는 선언문 때문에 혼란스러울 수 있습니다 왼쪽에서 오른쪽으로 읽을 수 없으며 괄호가 과도하게 사용되기 때문입니다.
 
 ```bash
  ./dcl
