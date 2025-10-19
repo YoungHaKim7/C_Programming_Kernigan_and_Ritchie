@@ -28,7 +28,7 @@ int readlines(char* lineptr[], int maxlines)
 
     nlines = 0;
     while ((len = get_line(line, MAXLEN)) > 0) {
-        if (nlines >= maxlines || storage_pos + len > sizeof(line_storage)) {
+        if (nlines >= maxlines || (long)storage_pos + len > (long)sizeof(line_storage)) {
             return -1;
         }
         line[len - 1] = '\0';
@@ -154,6 +154,7 @@ void swap(void* v[], int i, int j)
     v[j] = temp;
 }
 
+#ifndef SIMPLE_SORT_LIB
 int main(int argc, char* argv[])
 {
     int nlines;
@@ -196,3 +197,4 @@ int main(int argc, char* argv[])
         return 1;
     }
 }
+#endif

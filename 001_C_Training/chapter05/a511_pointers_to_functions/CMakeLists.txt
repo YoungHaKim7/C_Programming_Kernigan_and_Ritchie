@@ -48,12 +48,35 @@ add_executable(${ProjectId}
 
 target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
+# Source files
+add_library(simple_sort_lib OBJECT
+    src/simple_sort.c
+)
+
+target_compile_definitions(simple_sort_lib PRIVATE SIMPLE_SORT_LIB)
+
 # Test executable for pointers and arrays
 add_executable(test_pointers_arrays
     tests/test_pointers_arrays.c
 )
 
 target_link_options(test_pointers_arrays PRIVATE -pthread -lm)
+
+# Test executable for simple tests
+add_executable(test_simple
+    tests/test_simple.c
+    $<TARGET_OBJECTS:simple_sort_lib>
+)
+
+target_link_options(test_simple PRIVATE -pthread -lm)
+
+# Test executable for sort tests
+add_executable(test_sort
+    tests/test_sort.c
+    $<TARGET_OBJECTS:simple_sort_lib>
+)
+
+target_link_options(test_sort PRIVATE -pthread -lm)
 
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
@@ -64,8 +87,18 @@ set_target_properties(test_pointers_arrays PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
 )
 
+set_target_properties(test_simple PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
+)
+
+set_target_properties(test_sort PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
+)
+
 # Enable testing
 enable_testing()
 
-# Add test to CTest
+# Add tests to CTest
 add_test(NAME pointers_arrays_test COMMAND test_pointers_arrays)
+add_test(NAME simple_test COMMAND test_simple)
+add_test(NAME sort_test COMMAND test_sort)

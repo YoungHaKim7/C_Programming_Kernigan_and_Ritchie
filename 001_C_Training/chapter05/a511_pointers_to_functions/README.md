@@ -11,6 +11,62 @@ good
 4
 ```
 
+# `ctest`
+
+```bash
+$ just ctest
+
+rm -rf build
+mkdir -p build
+cmake -D CMAKE_C_COMPILER=/opt/homebrew/opt/gcc@15/bin/gcc-15 -S . -B build
+-- The C compiler identification is GNU 15.1.0
+-- Checking whether C compiler has -isysroot
+-- Checking whether C compiler has -isysroot - yes
+-- Checking whether C compiler supports OSX deployment target flag
+-- Checking whether C compiler supports OSX deployment target flag - yes
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /opt/homebrew/opt/gcc@15/bin/gcc-15 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/001_C_Training/chapter05/a511_pointers_to_functions/build
+cmake --build build
+[ 11%] Building C object CMakeFiles/a511_pointers_to_functions.dir/src/main.c.o
+clang: warning: overriding deployment version from '16.0' to '26.0' [-Woverriding-deployment-version]
+[ 22%] Linking C executable target/a511_pointers_to_functions
+[ 22%] Built target a511_pointers_to_functions
+[ 33%] Building C object CMakeFiles/simple_sort_lib.dir/src/simple_sort.c.o
+clang: warning: overriding deployment version from '16.0' to '26.0' [-Woverriding-deployment-version]
+[ 33%] Built target simple_sort_lib
+[ 44%] Building C object CMakeFiles/test_pointers_arrays.dir/tests/test_pointers_arrays.c.o
+clang: warning: overriding deployment version from '16.0' to '26.0' [-Woverriding-deployment-version]
+[ 55%] Linking C executable target/test_pointers_arrays
+[ 55%] Built target test_pointers_arrays
+[ 66%] Building C object CMakeFiles/test_simple.dir/tests/test_simple.c.o
+clang: warning: overriding deployment version from '16.0' to '26.0' [-Woverriding-deployment-version]
+[ 77%] Linking C executable target/test_simple
+[ 77%] Built target test_simple
+[ 88%] Building C object CMakeFiles/test_sort.dir/tests/test_sort.c.o
+clang: warning: overriding deployment version from '16.0' to '26.0' [-Woverriding-deployment-version]
+[100%] Linking C executable target/test_sort
+[100%] Built target test_sort
+ctest --test-dir ./build
+Test project /Users/gy-gyoung/my_project/Rust_Lang/9999/2222/C_Programming_Kernigan_and_Ritchie/001_C_Training/chapter05/a511_pointers_to_functions/build
+    Start 1: pointers_arrays_test
+1/3 Test #1: pointers_arrays_test .............   Passed    0.40 sec
+    Start 2: simple_test
+2/3 Test #2: simple_test ......................   Passed    0.47 sec
+    Start 3: sort_test
+3/3 Test #3: sort_test ........................   Passed    0.48 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   1.35 sec
+
+```
+
 # Chapter 5.11: Pointers to Functions - Complete Implementation
 
 This directory contains a comprehensive implementation of the sorting program with function pointers as described in Section 5.11 of Kernighan & Ritchie's "The C Programming Language".
@@ -214,3 +270,5 @@ gcc -Wall -Wextra -std=c99 -o program program.c
 - Kernighan & Ritchie, "The C Programming Language", 2nd Edition
 - Section 5.11: Pointers to Functions
 -
+
+
