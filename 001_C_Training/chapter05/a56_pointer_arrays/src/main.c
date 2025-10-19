@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINES 5000   /* max #lines to be sorted */
-#define MAXLEN 1000     /* max length of any input line */
+#define MAXLINES 5000 /* max #lines to be sorted */
+#define MAXLEN 1000 /* max length of any input line */
 #define ALLOCSIZE 10000 /* size of available space */
 
-char *lineptr[MAXLINES]; /* pointers to text lines */
+char* lineptr[MAXLINES]; /* pointers to text lines */
 static char allocbuf[ALLOCSIZE]; /* storage for alloc */
-static char *allocp = allocbuf;   /* next free position */
+static char* allocp = allocbuf; /* next free position */
 
-int readlines(char *lineptr[], int maxlines);
-void writelines(char *lineptr[], int nlines);
-void qsort(char *lineptr[], int left, int right);
-void swap(char *v[], int i, int j);
-int my_getline(char *, int);
-char *alloc(int);
+int readlines(char* lineptr[], int maxlines);
+void writelines(char* lineptr[], int nlines);
+void qsort(char* lineptr[], int left, int right);
+void swap(char* v[], int i, int j);
+int my_getline(char*, int);
+char* alloc(int);
 
 void demonstrate_pointer_arrays();
 void demonstrate_pointers_to_pointers();
@@ -30,7 +30,7 @@ int main()
     /* Example 1: Basic Pointer Array Declaration */
     printf("Example 1: Basic Pointer Array Declaration\n");
     printf("-----------------------------------------\n");
-    char *fruits[] = {"apple", "banana", "cherry", "date"};
+    char* fruits[] = { "apple", "banana", "cherry", "date" };
     printf("Array of fruit names:\n");
     for (int i = 0; i < 4; i++) {
         printf("  fruits[%d] = \"%s\" (address: %p)\n", i, fruits[i], (void*)fruits[i]);
@@ -40,7 +40,7 @@ int main()
     /* Example 2: Pointer Arrays with Dynamic Allocation */
     printf("Example 2: Pointer Arrays with Dynamic Allocation\n");
     printf("-----------------------------------------------\n");
-    char *names[5];
+    char* names[5];
     char name1[] = "Alice";
     char name2[] = "Bob";
     char name3[] = "Charlie";
@@ -83,8 +83,8 @@ int main()
     /* Example 7: Two-dimensional Arrays vs Pointer Arrays */
     printf("Example 7: Two-dimensional Arrays vs Pointer Arrays\n");
     printf("--------------------------------------------------\n");
-    char two_d[][20] = {"first", "second", "third"};
-    char *ptr_array[] = {"first", "second", "third"};
+    char two_d[][20] = { "first", "second", "third" };
+    char* ptr_array[] = { "first", "second", "third" };
 
     printf("2D array:\n");
     for (int i = 0; i < 3; i++) {
@@ -100,7 +100,7 @@ int main()
     /* Example 8: Command-line Arguments Simulation */
     printf("Example 8: Command-line Arguments Simulation\n");
     printf("--------------------------------------------\n");
-    char *argv[] = {"program", "arg1", "arg2", "arg3", "arg4"};
+    char* argv[] = { "program", "arg1", "arg2", "arg3", "arg4" };
     int argc = 5;
 
     printf("Simulated command line: ");
@@ -117,9 +117,9 @@ int main()
     /* Example 9: Array of Function Pointers */
     printf("Example 9: Array of Function Pointers\n");
     printf("-------------------------------------\n");
-    int (*operations[])(const char*, const char*) = {strcmp};
-    char *str1 = "Hello";
-    char *str2 = "hello";
+    int (*operations[])(const char*, const char*) = { strcmp };
+    char* str1 = "Hello";
+    char* str2 = "hello";
 
     printf("Comparing \"%s\" and \"%s\":\n", str1, str2);
     printf("  Case-sensitive: %d\n", operations[0](str1, str2));
@@ -136,7 +136,7 @@ int main()
 
 void demonstrate_sorting()
 {
-    char *test_strings[] = {
+    char* test_strings[] = {
         "zebra",
         "apple",
         "orange",
@@ -154,12 +154,12 @@ void demonstrate_sorting()
     }
 
     /* Simple bubble sort using pointer array */
-    for (int i = 0; i < n-1; i++) {
-        for (int j = 0; j < n-i-1; j++) {
-            if (strcmp(test_strings[j], test_strings[j+1]) > 0) {
-                char *temp = test_strings[j];
-                test_strings[j] = test_strings[j+1];
-                test_strings[j+1] = temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (strcmp(test_strings[j], test_strings[j + 1]) > 0) {
+                char* temp = test_strings[j];
+                test_strings[j] = test_strings[j + 1];
+                test_strings[j + 1] = temp;
             }
         }
     }
@@ -172,8 +172,8 @@ void demonstrate_sorting()
 
 void demonstrate_pointers_to_pointers()
 {
-    char *colors[] = {"red", "green", "blue"};
-    char **ptr_to_colors = colors;
+    char* colors[] = { "red", "green", "blue" };
+    char** ptr_to_colors = colors;
 
     printf("Original array:\n");
     for (int i = 0; i < 3; i++) {
@@ -193,7 +193,7 @@ void demonstrate_pointers_to_pointers()
 
 void demonstrate_memory_layout()
 {
-    char *strings[] = {"short", "medium_length", "very_long_string_that_takes_more_space"};
+    char* strings[] = { "short", "medium_length", "very_long_string_that_takes_more_space" };
 
     printf("Memory layout of pointer array:\n");
     for (int i = 0; i < 3; i++) {
@@ -207,8 +207,8 @@ void demonstrate_memory_layout()
 
 void demonstrate_pointer_arithmetic()
 {
-    char *words[] = {"alpha", "beta", "gamma", "delta"};
-    char **ptr = words;
+    char* words[] = { "alpha", "beta", "gamma", "delta" };
+    char** ptr = words;
 
     printf("Pointer arithmetic demonstration:\n");
     printf("  Base address: %p\n", (void*)ptr);
@@ -243,14 +243,14 @@ void demonstrate_pointer_arrays()
     printf("Original lines:\n");
     writelines(lineptr, nlines);
 
-    qsort(lineptr, 0, nlines-1);
+    qsort(lineptr, 0, nlines - 1);
 
     printf("\nSorted lines:\n");
     writelines(lineptr, nlines);
 }
 
 /* my_getline: read a line into s, return length */
-int my_getline(char *s, int lim)
+int my_getline(char* s, int lim)
 {
     int c, i;
     i = 0;
@@ -263,7 +263,7 @@ int my_getline(char *s, int lim)
 }
 
 /* alloc: return pointer to n characters */
-char *alloc(int n)
+char* alloc(int n)
 {
     if (allocbuf + ALLOCSIZE - allocp >= n) { /* it fits */
         allocp += n;
@@ -274,7 +274,7 @@ char *alloc(int n)
 }
 
 /* readlines: read input lines */
-int readlines(char *lineptr[], int maxlines)
+int readlines(char* lineptr[], int maxlines)
 {
     int len, nlines;
     char *p, line[MAXLEN];
@@ -284,7 +284,7 @@ int readlines(char *lineptr[], int maxlines)
         if (nlines >= maxlines || (p = alloc(len)) == NULL)
             return -1;
         else {
-            line[len-1] = '\0'; /* delete newline */
+            line[len - 1] = '\0'; /* delete newline */
             strcpy(p, line);
             lineptr[nlines++] = p;
         }
@@ -292,7 +292,7 @@ int readlines(char *lineptr[], int maxlines)
 }
 
 /* writelines: write output lines */
-void writelines(char *lineptr[], int nlines)
+void writelines(char* lineptr[], int nlines)
 {
     int i;
     for (i = 0; i < nlines; i++)
@@ -300,26 +300,26 @@ void writelines(char *lineptr[], int nlines)
 }
 
 /* qsort: sort v[left]...v[right] into increasing order */
-void qsort(char *v[], int left, int right)
+void qsort(char* v[], int left, int right)
 {
     int i, last;
 
     if (left >= right) /* do nothing if array contains */
-        return;        /* fewer than two elements */
-    swap(v, left, (left + right)/2);
+        return; /* fewer than two elements */
+    swap(v, left, (left + right) / 2);
     last = left;
-    for (i = left+1; i <= right; i++)
+    for (i = left + 1; i <= right; i++)
         if (strcmp(v[i], v[left]) < 0)
             swap(v, ++last, i);
     swap(v, left, last);
-    qsort(v, left, last-1);
-    qsort(v, last+1, right);
+    qsort(v, left, last - 1);
+    qsort(v, last + 1, right);
 }
 
 /* swap: interchange v[i] and v[j] */
-void swap(char *v[], int i, int j)
+void swap(char* v[], int i, int j)
 {
-    char *temp;
+    char* temp;
     temp = v[i];
     v[i] = v[j];
     v[j] = temp;
