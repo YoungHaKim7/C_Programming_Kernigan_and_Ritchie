@@ -1,0 +1,10 @@
+x * char
+x [] * char
+x () * char
+x [] * () * char
+x () * [] * char
+x [3] * () [5] char
+name * int
+func () * int
+arr [10] int
+ptr * arr [5] * char
