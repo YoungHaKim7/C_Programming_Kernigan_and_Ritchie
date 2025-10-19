@@ -1,11 +1,13 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 #define MAXTOKEN 100
 #define BUFSIZE 100
 
-enum { NAME, PARENS, BRACKETS };
+enum { NAME,
+    PARENS,
+    BRACKETS };
 
 void dcl(void);
 void dirdcl(void);
@@ -13,21 +15,21 @@ int gettoken(void);
 int getch(void);
 void ungetch(int);
 
-int tokentype;           /* type of last token */
-char token[MAXTOKEN];    /* last token string */
-char name[MAXTOKEN];     /* identifier name */
+int tokentype; /* type of last token */
+char token[MAXTOKEN]; /* last token string */
+char name[MAXTOKEN]; /* identifier name */
 char datatype[MAXTOKEN]; /* data type = char, int, etc. */
-char out[1000];          /* output string */
+char out[1000]; /* output string */
 
-char buf[BUFSIZE];       /* buffer for ungetch */
-int bufp = 0;            /* next free position in buf */
+char buf[BUFSIZE]; /* buffer for ungetch */
+int bufp = 0; /* next free position in buf */
 
 /* dcl: parse a declarator */
 void dcl(void)
 {
     int ns;
 
-    for (ns = 0; gettoken() == '*'; ) /* count *'s */
+    for (ns = 0; gettoken() == '*';) /* count *'s */
         ns++;
     dirdcl();
     while (ns-- > 0)
@@ -39,7 +41,7 @@ void dirdcl(void)
 {
     int type;
 
-    if (tokentype == '(') {      /* ( dcl ) */
+    if (tokentype == '(') { /* ( dcl ) */
         dcl();
         if (tokentype != ')')
             printf("error: missing )\n");
@@ -63,7 +65,7 @@ int gettoken(void)
 {
     int c, getch(void);
     void ungetch(int);
-    char *p = token;
+    char* p = token;
 
     while ((c = getch()) == ' ' || c == '\t')
         ;
@@ -77,12 +79,12 @@ int gettoken(void)
             return tokentype = '(';
         }
     } else if (c == '[') {
-        for (*p++ = c; (*p++ = getch()) != ']'; )
+        for (*p++ = c; (*p++ = getch()) != ']';)
             ;
         *p = '\0';
         return tokentype = BRACKETS;
     } else if (isalpha(c)) {
-        for (*p++ = c; isalnum(c = getch()); )
+        for (*p++ = c; isalnum(c = getch());)
             *p++ = c;
         *p = '\0';
         ungetch(c);
@@ -152,7 +154,7 @@ void test_declarations(void)
     int num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
 
     for (int i = 0; i < num_tests; i++) {
-        printf("\nTest %d: %s", i+1, test_cases[i]);
+        printf("\nTest %d: %s", i + 1, test_cases[i]);
 
         /* Reset variables */
         out[0] = '\0';
@@ -173,7 +175,7 @@ void test_declarations(void)
         if (gettoken() != EOF) {
             strcpy(datatype, token); /* 1st token on line is the datatype */
             out[0] = '\0';
-            dcl();                   /* parse rest of line */
+            dcl(); /* parse rest of line */
             if (tokentype != '\n')
                 printf("syntax error\n");
             if (strlen(name) > 0)
@@ -194,22 +196,22 @@ void test_undcl(void)
 
     /* Test cases for undcl - format: name qualifiers... type */
     char test_cases[][100] = {
-        "x * char\n",              /* x: pointer to char */
-        "x [] * char\n",           /* x: array of pointer to char */
-        "x () * char\n",           /* x: function returning pointer to char */
-        "x [] * () * char\n",      /* x: array of pointer to function returning char */
-        "x () * [] * char\n",      /* x: function returning pointer to array of char */
-        "x [3] * () [5] char\n",   /* x: array[3] of pointer to function returning array[5] of char */
-        "name * int\n",            /* name: pointer to int */
-        "func () * int\n",         /* func: function returning pointer to int */
-        "arr [10] int\n",          /* arr: array[10] of int */
-        "ptr * arr [5] * char\n"   /* ptr: pointer to array[5] of pointer to char */
+        "x * char\n", /* x: pointer to char */
+        "x [] * char\n", /* x: array of pointer to char */
+        "x () * char\n", /* x: function returning pointer to char */
+        "x [] * () * char\n", /* x: array of pointer to function returning char */
+        "x () * [] * char\n", /* x: function returning pointer to array of char */
+        "x [3] * () [5] char\n", /* x: array[3] of pointer to function returning array[5] of char */
+        "name * int\n", /* name: pointer to int */
+        "func () * int\n", /* func: function returning pointer to int */
+        "arr [10] int\n", /* arr: array[10] of int */
+        "ptr * arr [5] * char\n" /* ptr: pointer to array[5] of pointer to char */
     };
 
     int num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
 
     for (int i = 0; i < num_tests; i++) {
-        printf("\nTest %d: %s", i+1, test_cases[i]);
+        printf("\nTest %d: %s", i + 1, test_cases[i]);
 
         /* Reset variables */
         out[0] = '\0';
@@ -267,7 +269,7 @@ int main(void)
     while (gettoken() != EOF) {
         strcpy(datatype, token); /* 1st token on line is the datatype */
         out[0] = '\0';
-        dcl();                   /* parse rest of line */
+        dcl(); /* parse rest of line */
         if (tokentype != '\n')
             printf("syntax error\n");
         printf("%s: %s %s\n", name, out, datatype);

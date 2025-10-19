@@ -1,28 +1,30 @@
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAXTOKEN 100
 
-enum { NAME, PARENS, BRACKETS };
+enum { NAME,
+    PARENS,
+    BRACKETS };
 
 void dcl(void);
 void dirdcl(void);
 int gettoken(void);
 
-int tokentype;           /* type of last token */
-char token[MAXTOKEN];    /* last token string */
-char name[MAXTOKEN];     /* identifier name */
+int tokentype; /* type of last token */
+char token[MAXTOKEN]; /* last token string */
+char name[MAXTOKEN]; /* identifier name */
 char datatype[MAXTOKEN]; /* data type = char, int, etc. */
-char out[1000];          /* output string */
+char out[1000]; /* output string */
 
 /* dcl: parse a declarator */
 void dcl(void)
 {
     int ns;
 
-    for (ns = 0; gettoken() == '*'; ) /* count *'s */
+    for (ns = 0; gettoken() == '*';) /* count *'s */
         ns++;
     dirdcl();
     while (ns-- > 0)
@@ -34,7 +36,7 @@ void dirdcl(void)
 {
     int type;
 
-    if (tokentype == '(') {      /* ( dcl ) */
+    if (tokentype == '(') { /* ( dcl ) */
         dcl();
         if (tokentype != ')')
             printf("error: missing )\n");
@@ -57,7 +59,7 @@ void dirdcl(void)
 int gettoken(void)
 {
     int c;
-    char *p = token;
+    char* p = token;
 
     while ((c = getchar()) == ' ' || c == '\t')
         ;
@@ -71,12 +73,12 @@ int gettoken(void)
             return tokentype = '(';
         }
     } else if (c == '[') {
-        for (*p++ = c; (*p++ = getchar()) != ']'; )
+        for (*p++ = c; (*p++ = getchar()) != ']';)
             ;
         *p = '\0';
         return tokentype = BRACKETS;
     } else if (isalpha(c)) {
-        for (*p++ = c; isalnum(c = getchar()); )
+        for (*p++ = c; isalnum(c = getchar());)
             *p++ = c;
         *p = '\0';
         ungetc(c, stdin);
@@ -108,7 +110,7 @@ void undcl(void)
     }
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     if (argc == 2 && strcmp(argv[1], "-undcl") == 0) {
         printf("Word Description to Declaration Converter\n");
@@ -124,7 +126,7 @@ int main(int argc, char *argv[])
         while (gettoken() != EOF) {
             strcpy(datatype, token); /* 1st token on line is the datatype */
             out[0] = '\0';
-            dcl();                   /* parse rest of line */
+            dcl(); /* parse rest of line */
             if (tokentype != '\n')
                 printf("syntax error\n");
             printf("%s: %s %s\n", name, out, datatype);
