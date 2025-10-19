@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 4.0)
 
+set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 get_filename_component(ProjectId ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 string(REPLACE " " "_" ProjectId ${ProjectId})
 project(${ProjectId} LANGUAGES C)
@@ -13,10 +18,6 @@ project(${ProjectId} LANGUAGES C)
 # Force Clang 20(macOS)
 # set(CMAKE_CXX_COMPILER "/opt/homebrew/opt/llvm/bin/clang")
 
-set(CMAKE_C_STANDARD 23)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_C_EXTENSIONS OFF)
-# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 SET (CMAKE_C_FLAGS_INIT                "-Wall -std=c23")
 SET (CMAKE_C_FLAGS_DEBUG_INIT          "-g")
 SET (CMAKE_C_FLAGS_MINSIZEREL_INIT     "-Os -DNDEBUG")
