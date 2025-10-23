@@ -82,3 +82,35 @@ chapter 01 A Tutorial Introduction
 
 # printf, fprintf, sprintf, snprintf, printf_s, fprintf_s, sprintf_s, snprintf_s[|🔝|](#link)
 - https://en.cppreference.com/w/c/io/fprintf.html
+
+# no std
+
+- [Hello World with no libraries Old Man Yells at Code](https://youtu.be/gVaXLlGqQ-c?si=I3OUEcnDBDh3rPns)
+
+
+```c
+int main(void)
+{
+    const char hello[] = "Hello, world!\n";
+
+    // clang-format off
+    asm volatile (
+       "mov $1, %%rax\n\t"  // syscall number for write
+       "mov $1, %%rdi\n\t"  // stdout (fd = 1)
+       "lea %0, %%rsi\n\t"  // address of message
+       "mov $14, %%rdx\n\t" // length
+       "syscall\n\t"
+        :
+        : "m"(hello)
+        : "%rax", "%rdi", "%rsi", "%rdx"
+    );
+    // clang-format on
+
+    return 0;
+}
+
+```
+
+```bash
+Hello, world!
+```
