@@ -7,6 +7,9 @@
 
 - [GlobalYoung방송 다시보기](#globalyoung유튜브-방송-다시보기)
 
+- [Hello World with no libraries | Old Man Yells at Code](https://youtu.be/gVaXLlGqQ-c?si=2aGaSkq644LfPhpN)
+
+
 <hr />
 
 # eBook(C)[|🔝|](#link)
