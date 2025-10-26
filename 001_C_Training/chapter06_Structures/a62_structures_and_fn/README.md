@@ -34,6 +34,33 @@
 === All examples completed successfully! ===
 ```
 
+
+# Test
+
+```bash
+$ make test
+gcc -Wall -Wextra -std=c99 tests/test_structures.c -o test_structures
+./test_structures
+
+=== Testing Section 6.2 Functions ===
+
+Test 1: makepoint function
+  ✓ makepoint works correctly
+Test 2: addpoints function
+  ✓ addpoints works correctly
+Test 3: canonrect function
+  ✓ canonrect works correctly
+Test 4: ptinrect function
+  ✓ ptinrect works correctly
+Test 5: Complex operations
+  ✓ Complex operations work correctly
+Test 6: Pointer operations
+  ✓ Pointer operations work correctly
+
+=== All tests passed! ===
+
+```
+
 # `undefined` 해결-그지 같은 undefined behavior
 
 ```c
