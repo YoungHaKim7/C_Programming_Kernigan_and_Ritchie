@@ -125,7 +125,8 @@ int main(void)
 
     p = &str_struct;
     printf("8. Operator precedence:\n");
-    printf("   ++p->len: %d (was %d)\n", ++(p->len), p->len - 1);
+    int original_len = p->len;
+    printf("   ++p->len: %d (was %d)\n", ++(p->len), original_len);
     printf("   p->len: %d\n", p->len);
 
     // Example 9: More complex pointer operations
