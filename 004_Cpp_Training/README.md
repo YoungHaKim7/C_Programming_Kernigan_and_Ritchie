@@ -15,7 +15,8 @@ https://github.com/petergottschling/discovering_modern_cpp
 # 유튜브 영상
 - [Modern C++ 유명함 Mike Shah](https://youtube.com/playlist?list=PLvv0ScY6vfd8j-tlhYVPYgiIyXduu6m-L&si=q8NcZEOdHd2KvOBr)
 - [(31hr)C++ Programming Course - Beginner to Advanced | freeCodeCamp.org](https://youtu.be/8jLOx1hD3_o?si=5qBWwxb0cPopgjX5)
-- [(251028)Overengineering max(a, b) - Mixed Comparison Functions, Common References, and Rust's Lifetime | CppNow](https://youtu.be/o2pNg7noCeQ?si=4lAGohHVBjeisPQ2)
+- Rust관련 영상
+  - [(251028)Overengineering max(a, b) - Mixed Comparison Functions, Common References, and Rust's Lifetime | CppNow](https://youtu.be/o2pNg7noCeQ?si=4lAGohHVBjeisPQ2)
 
 <hr />
 
