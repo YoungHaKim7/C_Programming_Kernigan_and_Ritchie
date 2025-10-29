@@ -1,6 +1,5 @@
 #include <array>
 #include <iostream>
-#include <string>
 #include <type_traits>
 
 // Example 1: Basic consteval function - MUST be evaluated at compile time
