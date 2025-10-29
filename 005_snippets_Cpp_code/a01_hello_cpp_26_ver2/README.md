@@ -216,7 +216,7 @@ b:
 
 # clangd .cache(c23 LSP build)
 clangd:
-	rm -rf .cache
+	rm -rf build .cache
 	{{cmake_which}} -DCMAKE_BUILD_TYPE:STRING=Debug \
 					-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \
 					-DCMAKE_C_COMPILER:FILEPATH={{clang_which}} \
