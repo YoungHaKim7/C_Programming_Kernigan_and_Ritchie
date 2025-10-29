@@ -94,7 +94,7 @@ int main(void)
     const char hello[] = "Hello, world!\n";
 
     // clang-format off
-    asm volatile (
+    __asm__ volatile (
        "mov $1, %%rax\n\t"  // syscall number for write
        "mov $1, %%rdi\n\t"  // stdout (fd = 1)
        "lea %0, %%rsi\n\t"  // address of message
