@@ -24,12 +24,12 @@
   - https://github.com/YoungHaKim7/Cpp_glfw3_mesion_build_justfile
 
 - Gyoung영상 모아보기
-  - [코딩 - C 개고생하면서 배우는 C 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mauKnkqP6Vah7cgcvfJZg-f&si=5yZeK967zvIWUN03)
-  - [코딩 - C++ 개고생하면서 배우는 C++ 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07maditE825fheEV6EsQAdLdA&si=HQVLmZjtT57IeY92)
-  - [코딩 - Zig_Language 개고생하면서 배우는 zig 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mbgfnYY9YIXo_Ls9FTSvDPx&si=hwNtsFZIohfDzmyz)
-  - [코딩 - Rust_Programming_러스트 개고생하면서 배우는 Rust 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07maeDuKrsf5GYMDB5obTWoWg&si=uKkM5fOxEGVgRCvf)
+  - [(외부링크)코딩 - C 개고생하면서 배우는 C 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mauKnkqP6Vah7cgcvfJZg-f&si=5yZeK967zvIWUN03)
+  - [(외부링크)코딩 - C++ 개고생하면서 배우는 C++ 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07maditE825fheEV6EsQAdLdA&si=HQVLmZjtT57IeY92)
+  - [(외부링크)코딩 - Zig_Language 개고생하면서 배우는 zig 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07mbgfnYY9YIXo_Ls9FTSvDPx&si=hwNtsFZIohfDzmyz)
+  - [(외부링크)코딩 - Rust_Programming_러스트 개고생하면서 배우는 Rust 언어 시리즈 영상 모아보기 | GlobalYoung](https://youtube.com/playlist?list=PLcMveqN_07maeDuKrsf5GYMDB5obTWoWg&si=uKkM5fOxEGVgRCvf)
 
-- [C언어를 러스트 코드로 변환하는 프로젝트,(c2rust)Migrate C code to Rust](https://github.com/immunant/c2rust)
+- [(외부링크)C언어를 러스트 코드로 변환하는 프로젝트,(c2rust)Migrate C code to Rust](https://github.com/immunant/c2rust)
 
 <hr />
 
