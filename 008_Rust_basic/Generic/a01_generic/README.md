@@ -1,6 +1,27 @@
 # Result
 
 ```bash
+The largest number is 100
+The largest char is y
+p3.x = 5, p3.y = c
+Success is ok: true
+Error is ok: false
+Success value: 42
+Comparison result: -1
+Printed twice: Hello, World! Hello, World!
+Comparing 42 and 3.14
+42 is not smaller
+Comparing hello and world
+hello is smaller
+Excerpt: ImportantExcerpt { part: "Call me Ishmael", data: 42 }
+Level: 3
+Even numbers: [2, 4, 6, 8, 10]
+Squared numbers: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+Wrapped is some: true
+Empty is some: false
+Wrapped value: 42
+Empty value: 100
+Tree preorder traversal: [10, 5, 3, 7, 15, 12, 18]
 
 ```
 
@@ -19,3 +40,9 @@
   10. Generic Tree: TreeNode - binary search tree with generic values
 
 - Each example demonstrates different aspects of Rust's generic programming features, including traits, structs, enums, functions, lifetimes, and bounds.
+  1. Line 229: Changed MyResult<T, E> to MyResult<i32, &str> to specify concrete types
+  2. Line 230: Added explicit type annotation MyResult<i32, &str> to the error variable
+
+  The issue was that generic type parameters T and E can only be used within generic function signatures, struct definitions, or enum definitions.
+   In the main function, you need to use concrete types when creating instances. I chose i32 for the success value type and &str for the error
+  type based on the values being stored (42 and "Something went wrong" respectively).

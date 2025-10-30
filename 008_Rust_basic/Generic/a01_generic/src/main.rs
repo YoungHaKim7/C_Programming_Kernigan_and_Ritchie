@@ -226,8 +226,8 @@ fn main() {
     println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
 
     // Example 3: Generic Enum
-    let success: MyResult<_, Err> = MyResult::Ok(42);
-    let error = MyResult::Err("Something went wrong");
+    let success: MyResult<i32, &str> = MyResult::Ok(42);
+    let error: MyResult<i32, &str> = MyResult::Err("Something went wrong");
 
     println!("Success is ok: {}", success.is_ok());
     println!("Error is ok: {}", error.is_ok());
@@ -255,6 +255,15 @@ fn main() {
     };
     println!("Excerpt: {:?}", excerpt);
     println!("Level: {}", excerpt.level());
+
+    // Use the announce_and_return_part method
+    let announcement = "Important excerpt follows!";
+    let returned_part = excerpt.announce_and_return_part(announcement);
+    println!("Returned part: {}", returned_part);
+
+    // Access the part and data fields directly
+    println!("Part field: {}", excerpt.part);
+    println!("Data field: {}", excerpt.data);
 
     // Example 8: Generic Vector Operations
     let numbers = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
