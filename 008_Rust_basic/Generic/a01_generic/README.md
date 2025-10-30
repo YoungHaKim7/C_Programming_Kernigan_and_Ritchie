@@ -9,12 +9,16 @@ Error is ok: false
 Success value: 42
 Comparison result: -1
 Printed twice: Hello, World! Hello, World!
-Comparing 42 and 3.14
+Comparing 42 and 3.141592653589793
 42 is not smaller
 Comparing hello and world
 hello is smaller
 Excerpt: ImportantExcerpt { part: "Call me Ishmael", data: 42 }
 Level: 3
+Attention please: Important excerpt follows!
+Returned part: Call me Ishmael
+Part field: Call me Ishmael
+Data field: 42
 Even numbers: [2, 4, 6, 8, 10]
 Squared numbers: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 Wrapped is some: true
@@ -22,7 +26,6 @@ Empty is some: false
 Wrapped value: 42
 Empty value: 100
 Tree preorder traversal: [10, 5, 3, 7, 15, 12, 18]
-
 ```
 
 

@@ -76,6 +76,7 @@ impl<T: PartialOrd> Comparable for GenericNumber<T> {
 
 // 5. Generic Implementation - Add methods to any type that implements Display
 use std::fmt::Display;
+use std::f64::consts::PI;
 
 trait MyDisplay {
     fn print_twice(&self) -> String;
@@ -188,12 +189,10 @@ impl<T: Ord> TreeNode<T> {
             } else {
                 self.left = Some(Box::new(TreeNode::new(value)));
             }
+        } else if let Some(ref mut right) = self.right {
+            right.insert(value);
         } else {
-            if let Some(ref mut right) = self.right {
-                right.insert(value);
-            } else {
-                self.right = Some(Box::new(TreeNode::new(value)));
-            }
+            self.right = Some(Box::new(TreeNode::new(value)));
         }
     }
 
@@ -243,7 +242,7 @@ fn main() {
     println!("Printed twice: {}", message.print_twice());
 
     // Example 6: Multiple Type Parameters
-    compare_and_print(42, 3.14);
+    compare_and_print(42, PI);
     compare_and_print("hello", "world");
 
     // Example 7: Generic with Lifetime
