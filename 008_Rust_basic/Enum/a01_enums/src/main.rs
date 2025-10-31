@@ -210,7 +210,7 @@ fn print_color(color: &Color) {
 fn check_status(status: &Status) {
     match status {
         Status::Success => println!("  Operation succeeded"),
-        Status::Error(msg) => println!("  Error: {}", msg),
+        Status::Error(msg) => eprintln!("  Error: {}", msg),
         Status::Pending => println!("  Operation is pending"),
         Status::Complete => println!("  Operation is complete"),
     }
@@ -237,7 +237,10 @@ fn process_payment(payment: &PaymentMethod) {
             println!("  Processing PayPal payment for {}", email);
         }
         PaymentMethod::BankTransfer(account, routing) => {
-            println!("  Processing bank transfer from account {} with routing number {}", account, routing);
+            println!(
+                "  Processing bank transfer from account {} with routing number {}",
+                account, routing
+            );
         }
         PaymentMethod::Crypto(wallet) => {
             println!("  Processing crypto payment to wallet {}", wallet);
@@ -267,7 +270,7 @@ fn process_option(opt: Option<i32>) {
 fn process_result(res: Result<&str, &str>) {
     match res {
         Result::Ok(message) => println!("  Success: {}", message),
-        Result::Err(error) => println!("  Error: {}", error),
+        Result::Err(error) => eprintln!("  Error: {}", error),
     }
 }
 
