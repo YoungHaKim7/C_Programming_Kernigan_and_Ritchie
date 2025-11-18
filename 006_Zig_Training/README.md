@@ -7,6 +7,9 @@
 - 단순한 문법 습득을 넘어 **Zig 철학과 개발 사고방식**을 익히는 데 초점을 둠  
 - **인터랙티브 터미…
 
+# zig 메모리 설명
+- https://ziglang.org/documentation/master/#Memory
+
 # An open, technical and introductory book for the Zig programming language 📚📖 
 - https://github.com/pedropark99/zig-book
 - [(251015_소개 유튜브 영상)지그가 내 뇌를 망가뜨렸어 | Melkey](https://youtu.be/-jSxZ2e7yis?si=PPNlBaIO61mqIxdm)
