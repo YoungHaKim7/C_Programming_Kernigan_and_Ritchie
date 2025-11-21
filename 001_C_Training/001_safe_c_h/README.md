@@ -7,3 +7,5 @@
 # (251117)Giving C a superpower: custom header file (safe_c.h) (hwisnu.bearblog.dev) by mithcs
 - https://news.ycombinator.com/item?id=45952428
 
+# C11 has a mutex API (threads.h), so why would it rely on POSIX? Are you sure it's not an runtime detail on one platform? 
+- https://devblogs.microsoft.com/cppblog/c11-threads-in-visual-studio-2022-version-17-8-preview-2/
