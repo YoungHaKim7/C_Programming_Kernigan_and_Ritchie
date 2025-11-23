@@ -31,9 +31,10 @@ gix clone https://github.com/pizlonator/fil-c.git
 ./build_all.sh.
 ```
 
-
+- Dependencies
 ```bash
 sudo apt install patchelf
+sudo apt install ruby-full
 ```
 
 # fil-c설명 영상
