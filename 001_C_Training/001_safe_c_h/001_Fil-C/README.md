@@ -41,3 +41,58 @@ sudo apt install patchelf
 
 # included file: ‘stdlib.h’ file not found
 - https://discourse.llvm.org/t/in-included-file-stdlib-h-file-not-found/1694/2 
+
+# Compile Time
+- https://stackoverflow.com/questions/16710047/usr-bin-ld-cannot-find-lnameofthelibrary 
+
+When g++ says `cannot find -l<nameOfTheLibrary>`, it means that g++ looked for the file `lib{nameOfTheLibrary}.so`, but it couldn't find it in the shared library search path, which by default points to `/usr/lib` and `/usr/local/lib` and somewhere else maybe.
+
+To resolve this problem, you should either provide the library file `(lib{nameOfTheLibrary}.so)` in those search paths or use `-L` command option. `-L{path}` tells the g++ (actually `ld`) to find library files in path `{path}` in addition to default paths.
+
+Example: Assuming you have a library at `/home/taylor/libswift.so`, and you want to link your app to this library. In this case you should supply the g++ with the following options:
+
+```cpp
+
+g++ main.cpp -o main -L/home/taylor -lswift
+```
+
+- Note 1: `-l` option gets the library name without `lib` and `.so` at its beginning and end.
+
+- Note 2: In some cases, the library file name is followed by its version, for instance `libswift.so.1.2`. In these cases, g++ also cannot find the library file. A simple workaround to fix this is creating a symbolic link to `libswift.so.1.2` called `libswift.so`.
+
+# `-I -I` I 2번 쓰면 내가 연결하고 싶은 include 추가된다.
+
+```make
+# 예시
+CC = clang++
+CFLAGS = -I/path/to/include1 -I/path/to/include2
+
+all: main
+
+main: main.o
+	$(CC) $(CFLAGS) main.o -o main
+
+main.o: main.cpp
+	$(CC) $(CFLAGS) -c main.cpp -o main.o
+
+````
+
+# linker 지정
+1. 링커를 직접 지정하는 방법
+
+    명령줄에서 링커 지정: clang 명령어에 -fuse-ld= 옵션을 사용하여 링커를 지정할 수 있습니다.
+        예시 (lld 사용 시): clang -fuse-ld=lld -o my_program main.c
+        예시 (GNU ld 사용 시): clang -fuse-ld=bfd -o my_program main.c
+    링커 옵션 추가: ld의 추가적인 옵션을 전달할 때도 -Wl, 접두사를 사용합니다.
+        예시: clang -o my_program main.c -Wl,-rpath,/usr/local/lib 
+
+2. 빌드 시스템 설정
+
+    CMake: target_link_libraries() 함수와 함께 링커 라이브러리나 옵션을 지정하거나, CMAKE_C_COMPILER_FLAGS, CMAKE_CXX_COMPILER_FLAGS 변수를 통해 링커 옵션을 설정할 수 있습니다.
+    Bazel: cc_toolchain의 linker_flags 속성을 통해 링커를 구성합니다.
+        cc_toolchain의 linker_flags에 ["-Wl,-rpath,/usr/local/lib"]와 같은 옵션을 추가합니다.
+
+3. 기타
+
+    LLVM의 lld 사용: Clang은 기본적으로 lld를 링커로 사용합니다. lld는 LLVM 툴체인과의 통합이 잘 되어 있고 빠릅니다.
+    크로스 컴파일: 다른 아키텍처를 타겟으로 빌드할 경우, LLVM_TARGETS_TO_BUILD와 같은 옵션으로 링커를 지정할 수 있습니다
