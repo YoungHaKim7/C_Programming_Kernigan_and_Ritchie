@@ -30,3 +30,11 @@ gix clone https://github.com/pizlonator/fil-c.git
 
 ./build_all.sh.
 ```
+
+
+```bash
+sudo apt install patchelf
+```
+
+# fil-c설명 영상
+- https://x.com/filpizlo/status/1976831020566798656
