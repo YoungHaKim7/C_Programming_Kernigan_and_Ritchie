@@ -1,3 +1,8 @@
+# 여기에 다시 정리(Fil-C traininning)
+- https://github.com/YoungHaKim7/fil-c_training
+
+<hr />
+
 # Fil-C: completely compatible memory safety for C and C++
 - https://github.com/pizlonator/fil-c/
 
