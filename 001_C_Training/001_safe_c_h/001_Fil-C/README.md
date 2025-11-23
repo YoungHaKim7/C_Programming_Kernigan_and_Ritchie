@@ -35,6 +35,7 @@ gix clone https://github.com/pizlonator/fil-c.git
 ```bash
 sudo apt install patchelf
 sudo apt install ruby-full
+sudo apt-get install texinfo
 ```
 
 # fil-c설명 영상
