@@ -38,3 +38,6 @@ sudo apt install patchelf
 
 # fil-c설명 영상
 - https://x.com/filpizlo/status/1976831020566798656
+
+# included file: ‘stdlib.h’ file not found
+- https://discourse.llvm.org/t/in-included-file-stdlib-h-file-not-found/1694/2 
