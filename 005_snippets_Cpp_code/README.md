@@ -20,3 +20,14 @@ void print_array(const char *msg, int v[], int n) {
 
 # sanitizers Doc(Google에서 만듬)
 - https://github.com/google/sanitizers
+
+
+# (251206)Increasing code performance with LTO | Keifer
+- https://youtu.be/fPGodf5hNoo?si=yXmOUFj54_RxaxCm
+
+- 추가함.
+
+```cmake
+# LTO
+set_property(TARGET ${ProjectId} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+```
