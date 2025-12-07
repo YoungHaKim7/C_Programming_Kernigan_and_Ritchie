@@ -36,6 +36,9 @@ add_executable(${ProjectId}
 
 target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
+# LTO
+set_property(TARGET ${ProjectId} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
