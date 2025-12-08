@@ -140,6 +140,9 @@ ldflags_fsanitize_thread_object := "-g -fsanitize=thread"
 ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
 ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_fsanitize_leak := "-fsanitize=leak -g"
+ldflags_optimize :=  "-std=c++2b -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
+ldflags_optimize03 :=  "-std=c++2b -Wall -O3 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
+ldflags_optimize_lto := "-flto"
 
 # (C)gpp compile(LinuxOS)
 r:
@@ -154,6 +157,20 @@ ro:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
 	{{clang_which}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{target}}
+
+# (C)g++ compile(Optimization03)
+ro3:
+	rm -rf target
+	mkdir -p target
+	g++ {{ldflags_optimize03}} -o {{target}} {{source}}
+	{{target}}
+
+# (C)g++ compile(Optimization03 + LTO)
+rolto:
+	rm -rf target
+	mkdir -p target
+	g++ {{ldflags_optimize03}} {{ldflags_optimize_lto}} -o {{target}} {{source}}
 	{{target}}
 
 # cmake compile(LinuxOS)
