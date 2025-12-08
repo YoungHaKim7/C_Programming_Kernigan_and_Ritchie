@@ -170,7 +170,7 @@ ro3:
 rolto:
 	rm -rf target
 	mkdir -p target
-	g++ {{ldflags_optimize03}} {{ldflags_optimize_lto}} -o {{target}} {{source}}
+	g++ {{ldflags_optimize_lto}} {{ldflags_optimize03}} -o {{target}} {{source}}
 	{{target}}
 
 # cmake compile(LinuxOS)
