@@ -403,7 +403,7 @@ clean:
 # C++ 26 init(int main(void))
 init:
 	mkdir -p src
-	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# BasedOnStyle: LLVM' > .clang-format
 	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
 	echo "" >> .clang-format
 	echo 'BasedOnStyle: LLVM' >> .clang-format
@@ -427,7 +427,7 @@ init2:
 	echo '# BasedOnStyle: WebKit' > .clang-format
 	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
 	echo "" >> .clang-format
-	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'BasedOnStyle: LLVM' >> .clang-format
 	echo 'IndentWidth: 4' >> .clang-format
 	echo 'ContinuationIndentWidth: 4' >> .clang-format
 	echo 'IndentCaseLabels: false' >> .clang-format
@@ -445,10 +445,10 @@ init2:
 # C++ init(int main(int argc, char* argv[]))
 init3:
 	mkdir -p src
-	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# BasedOnStyle: LLVM' > .clang-format
 	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
 	echo "" >> .clang-format
-	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'BasedOnStyle: LLVM' >> .clang-format
 	echo 'IndentWidth: 4' >> .clang-format
 	echo 'ContinuationIndentWidth: 4' >> .clang-format
 	echo 'IndentCaseLabels: false' >> .clang-format
