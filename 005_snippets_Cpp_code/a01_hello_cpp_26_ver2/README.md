@@ -251,7 +251,7 @@ move:
 # .clang-format init(LinuxOS/macOS)
 cl:
 	rm -rf .clang-format
-	{{clang_format}} -style=WebKit -dump-config > .clang-format
+	{{clang_format}} -style=LLVM -dump-config > .clang-format
 
 # .clang-format fmt(LinuxOS/ macOS)
 fmt:
@@ -406,7 +406,7 @@ init:
 	echo '# BasedOnStyle: WebKit' > .clang-format
 	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
 	echo "" >> .clang-format
-	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'BasedOnStyle: LLVM' >> .clang-format
 	echo 'IndentWidth: 4' >> .clang-format
 	echo 'ContinuationIndentWidth: 4' >> .clang-format
 	echo 'IndentCaseLabels: false' >> .clang-format
