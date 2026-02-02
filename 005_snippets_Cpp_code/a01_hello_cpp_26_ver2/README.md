@@ -159,14 +159,14 @@ ro:
 	{{clang_which}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
-# (C)g++ compile(Optimization03)
+# (C)g++ compile(Optimization03) / https://clang.llvm.org/docs/UsersManual.html
 ro3:
 	rm -rf target
 	mkdir -p target
 	g++ {{ldflags_optimize03}} -o {{target}} {{source}}
 	{{target}}
 
-# (C)g++ compile(Optimization03 + LTO)
+# (C)g++ compile(Optimization03 + LTO) / https://clang.llvm.org/docs/UsersManual.html
 rolto:
 	rm -rf target
 	mkdir -p target
@@ -424,7 +424,7 @@ init:
 # C++ 20 init(int main(void))
 init2:
 	mkdir -p src
-	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# BasedOnStyle: LLVM' > .clang-format
 	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
 	echo "" >> .clang-format
 	echo 'BasedOnStyle: LLVM' >> .clang-format
@@ -471,10 +471,10 @@ init3:
 # C++ init(int main(int argc, char** argv))
 init4:
 	mkdir -p src
-	echo '# BasedOnStyle: WebKit' > .clang-format
+	echo '# BasedOnStyle: LLVM' > .clang-format
 	echo '# LLVM, Google, Chromium, Mozilla, WebKit' >> .clang-format
 	echo "" >> .clang-format
-	echo 'BasedOnStyle: WebKit' >> .clang-format
+	echo 'BasedOnStyle: LLVM' >> .clang-format
 	echo 'IndentWidth: 4' >> .clang-format
 	echo 'ContinuationIndentWidth: 4' >> .clang-format
 	echo 'IndentCaseLabels: false' >> .clang-format
