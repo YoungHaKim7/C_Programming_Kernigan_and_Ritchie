@@ -18,23 +18,23 @@ cmake := `which cmake`
 # compiler settings
 # Find best clang version (21+) on Linux, fallback to system clang
 clang_which := if os == "Linux" { \
-  `sh -c 'for v in 21 22 23 24 25 26 27 28 29 30; do if [ -x "/usr/bin/clang-$v" ]; then echo "/usr/bin/clang-$v"; exit 0; fi; done; echo "clang"'` \
+  `sh -c 'for v in {20..30}; do if [ -x "/usr/bin/clang-$v" ]; then echo "/usr/bin/clang-$v"; exit 0; fi; done; echo "clang"'` \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang" \
   } else { \
     clang \
   }
 clangpp_which := if os == "Linux" { \
-  `sh -c 'for v in 21 22 23 24 25 26 27 28 29 30; do if [ -x "/usr/bin/clang++-$v" ]; then echo "/usr/bin/clang++-$v"; exit 0; fi; done; echo "clang++"'` \
+  `sh -c 'for v in {20..30}; do if [ -x "/usr/bin/clang++-$v" ]; then echo "/usr/bin/clang++-$v"; exit 0; fi; done; echo "clang++"'` \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang++" \
   } else { \
     clangpp \
   }
 gcc_which := if os == "Linux" { \
-  `sh -c 'for p in /opt/gcc-15/bin/gcc /usr/bin/gcc-15; do if [ -x "$p" ]; then echo "$p"; exit 0; fi; done; for v in 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30; do if [ -x "/usr/bin/clang-$v" ]; then echo "/usr/bin/clang-$v"; exit 0; fi; done; echo "gcc"'` \
+  `sh -c 'for p in /opt/gcc-15/bin/gcc /usr/bin/gcc-15; do if [ -x "$p" ]; then echo "$p"; exit 0; fi; done; for v in {14..30}; do if [ -x "/usr/bin/clang-$v" ]; then echo "/usr/bin/clang-$v"; exit 0; fi; done; echo "gcc"'` \
   } else if os == "Darwin" { \
-    `sh -c 'if [ -x "/opt/homebrew/opt/gcc@15/bin/gcc-15" ]; then echo "/opt/homebrew/opt/gcc@15/bin/gcc-15"; exit 0; fi; for v in 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30; do if [ -x "/opt/homebrew/opt/llvm@$v/bin/clang" ]; then echo "/opt/homebrew/opt/llvm@$v/bin/clang"; exit 0; fi; done; echo "/opt/homebrew/opt/llvm/bin/clang"'` \
+    `sh -c 'if [ -x "/opt/homebrew/opt/gcc@15/bin/gcc-15" ]; then echo "/opt/homebrew/opt/gcc@15/bin/gcc-15"; exit 0; fi; for v in {14..30}; do if [ -x "/opt/homebrew/opt/llvm@$v/bin/clang" ]; then echo "/opt/homebrew/opt/llvm@$v/bin/clang"; exit 0; fi; done; echo "/opt/homebrew/opt/llvm/bin/clang"'` \
   } else { \
     gcc \
   }
