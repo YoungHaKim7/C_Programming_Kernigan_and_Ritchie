@@ -50,7 +50,7 @@ cmake_which := if os == "Linux" { \
 
 # clang-format - find best version (21+) on Linux
 clang_format := if os == "Linux" { \
-  `sh -c 'for v in 21 22 23 24 25 26 27 28 29 30; do if command -v "clang-format-$v" >/dev/null 2>&1; then echo "clang-format-$v"; exit 0; fi; done; echo "clang-format"'` \
+  `sh -c 'for v in {20..30}; do if command -v "clang-format-$v" >/dev/null 2>&1; then echo "clang-format-$v"; exit 0; fi; done; echo "clang-format"'` \
   } else if os == "Darwin" { \
     "/opt/homebrew/opt/llvm/bin/clang-format" \
   } else { \
