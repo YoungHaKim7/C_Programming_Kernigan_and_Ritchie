@@ -1,4 +1,4 @@
-# justfile(최종+ clangd LSP setting(c23) 추가251004)
+# justfile(최종+ clangd LSP setting(c23) 추가260319) openSUSE스타일
 
 ```justfile
 # Detect OS
