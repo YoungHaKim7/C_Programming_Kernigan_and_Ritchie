@@ -17,6 +17,7 @@
   - [(외부링크) GCC15 & LLVM21 최신버젼 설치방법 정리함](https://github.com/YoungHaKim7/cpp23_26_project?tab=readme-ov-file#link)
     - [`-std=c++2b`같은거_컴파일옵션 정리 버젼별c++20+23+26 & C/C++ Support in Clang](https://github.com/YoungHaKim7/cpp23_26_project#cc-support-in-clang)
       - [`-o -Wextra -Wall` 같은거 정리](https://github.com/YoungHaKim7/cpp23_26_project#gcc--clang) 
+  - https://github.com/YoungHaKim7/cpp23_26_project/tree/main/clang22_fix
 
 - [(영상모아보기) IB Computer Science | Learn Learn Scratch Tutorials](https://youtube.com/playlist?list=PLfd-8l91Lb4VQGio0EiJPh_pdna2wYiv_&si=cptLhESq7BogbYBw)
 
