@@ -1,3 +1,13 @@
+```bash
+for v in {21..30}; do
+  if [ -x "/usr/bin/clang-$v" ]; then
+    echo "/usr/bin/clang-$v"
+    exit 0
+  fi
+done
+echo clang
+```
+
 # justfile(최종+ clangd LSP setting(c23) 추가260319) openSUSE스타일
 
 ```justfile
