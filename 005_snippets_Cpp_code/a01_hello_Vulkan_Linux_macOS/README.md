@@ -3,6 +3,12 @@
 
 ```bash
 sudo zypper install libglfw-devel glm-devel libglfw-devel
+
+# Vulkan Install
+sudo zypper in libvulkan1 libvulkan1-32bit \
+libvulkan_intel libvulkan_intel-32bit \
+libvulkan_radeon libvulkan_radeon-32bit \
+vulkan-tools
 ```
 
 After installing, the build should work. The justfile and CMakeLists.txt have been updated to:
