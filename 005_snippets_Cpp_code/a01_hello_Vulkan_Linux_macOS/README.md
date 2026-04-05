@@ -2,7 +2,7 @@
 - You need to install GLFW development libraries. Run:
 
 ```bash
-sudo zypper install libglfw-devel
+sudo zypper install libglfw-devel glm-devel libglfw-devel
 ```
 
 After installing, the build should work. The justfile and CMakeLists.txt have been updated to:
