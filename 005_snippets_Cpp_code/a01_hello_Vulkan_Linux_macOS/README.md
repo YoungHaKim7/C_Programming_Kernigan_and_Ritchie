@@ -16,7 +16,7 @@ After installing, the build should work. The justfile and CMakeLists.txt have be
 2. Link with Linux-specific libraries (`dl`, `X11`, `pthread`) instead of macOS frameworks
 3. Skip `DYLD_LIBRARY_PATH` on Linux since system libraries are in standard paths
 
-# justfile(macOS)
+# justfile(macOS & LinuxOS)
 
 ```justfile
 # Detect OS
@@ -228,3 +228,23 @@ vscode:
 	echo '}' >> .vscode/tasks.json
 ```
 
+# openGL 설치 잘 되어 있나 확인
+
+```bash
+$ glxinfo | grep OpenGL
+OpenGL vendor string: NVIDIA Corporation
+OpenGL renderer string: NVIDIA GeForce RTX 3060 Ti/PCIe/SSE2
+OpenGL core profile version string: 4.6.0 NVIDIA 580.142
+OpenGL core profile shading language version string: 4.60 NVIDIA
+OpenGL core profile context flags: (none)
+OpenGL core profile profile mask: core profile
+OpenGL core profile extensions:
+OpenGL version string: 4.6.0 NVIDIA 580.142
+OpenGL shading language version string: 4.60 NVIDIA
+OpenGL context flags: (none)
+OpenGL profile mask: (none)
+OpenGL extensions:
+OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 580.142
+OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.20
+OpenGL ES profile extensions:
+```
