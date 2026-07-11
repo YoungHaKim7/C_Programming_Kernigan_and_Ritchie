@@ -2,6 +2,10 @@
 - https://github.com/CoffeeBeforeArch/cpp_from_scratch
 - https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
 
+- TigerBeetle's TigerStyle is an example in Zig and Google's 31,000 word C++ style guide is another. 
+  - https://google.github.io/styleguide/cppguide.html
+    - https://bun.com/blog/bun-in-rust
+
 # 연습용
 - https://github.com/cpp-best-practices/cppbestpractices
 
