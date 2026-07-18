@@ -6,6 +6,9 @@
   - https://google.github.io/styleguide/cppguide.html
     - https://bun.com/blog/bun-in-rust
 
+- The Boost C++ Libraries are open source, peer-reviewed, portable and free
+  - https://www.boost.org/
+
 # 연습용
 - https://github.com/cpp-best-practices/cppbestpractices
 
