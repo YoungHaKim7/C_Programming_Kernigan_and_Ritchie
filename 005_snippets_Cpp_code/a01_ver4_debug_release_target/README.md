@@ -150,55 +150,55 @@ rolto:
 # cmake compile debug(LinuxOS)
 cr:
 	just fm
-	rm -rf build
-	mkdir -p build
+	rm -rf target
+	mkdir -p target
 	export CXX={{gpp_which}}
 	cmake -D CMAKE_BUILD_TYPE=Debug \
 	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build
-	mv debug build
-	./build/debug/{{project_name}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log target
+	mv debug target
+	./target/debug/{{project_name}}
 
 # cmake compile release O3(LinuxOS)
 cr3:
 	just fm
-	rm -rf build
-	mkdir -p build
+	rm -rf target
+	mkdir -p target
 	export CXX={{gpp_which}}
 	cmake -D CMAKE_BUILD_TYPE=Release \
 	      -D CMAKE_CXX_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build
-	mv release build
-	./build/release/{{project_name}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log target
+	mv release target
+	./target/release/{{project_name}}
 
 # cmake compile release O2(LinuxOS)
 cro:
-	rm -rf build
-	mkdir -p build
+	rm -rf target
+	mkdir -p target
 	cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo \
 	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
 	      -D CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build
-	mv relwithdebinfo build
-	./build/relwithdebinfo/{{project_name}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log target
+	mv relwithdebinfo target
+	./target/relwithdebinfo/{{project_name}}
 
 # cmake compile release O3(LinuxOS)
 cro3:
-	rm -rf build
-	mkdir -p build
+	rm -rf target
+	mkdir -p target
 	cmake -D CMAKE_BUILD_TYPE=Release \
 	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
 	      -D CMAKE_CXX_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -G Ninja .
 	ninja
-	./build/release/{{project_name}}
+	./target/release/{{project_name}}
 
 # zig C compile(LinuxOS)
 zr:
@@ -210,14 +210,14 @@ zr:
 	
 # cmake ctest
 ctest:
-	rm -rf build
-	mkdir -p build
+	rm -rf target
+	mkdir -p target
 	cmake -D CMAKE_CXX_COMPILER={{gpp_which}} \
-		  -S . -B build
-	cmake --build build
-	ctest --test-dir ./build
+		  -S . -B target
+	cmake --build target
+	ctest --test-dir ./target
 
-# clang build
+# clang build(target folder)
 b:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
@@ -225,13 +225,13 @@ b:
 
 # clangd .cache(c23 LSP build)
 clangd:
-	rm -rf build .cache
+	rm -rf build target .cache
 	{{cmake_which}} -DCMAKE_BUILD_TYPE:STRING=Debug \
 					-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \
 					-DCMAKE_C_COMPILER:FILEPATH={{clang_which}} \
 					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} --no-warn-unused-cli \
 					-S {{full_project_name}} \
-					-B {{full_project_name}}/build \
+					-B {{full_project_name}}/target \
 					-G Ninja
 
 # move target
@@ -390,7 +390,7 @@ xx:
 # clean files
 clean:
 	rm -rf {{target_dir}} *.out {{src_dir}}/*.out *.bc {{src_dir}}/target/ *.dSYM {{src_dir}}/*.dSYM *.i *.o *.s
-	rm -rf build CMakeCache.txt CMakeFiles .cache build.ninja cmake_install.cmake .ninja_deps .ninja_log
+	rm -rf build CMakeCache.txt CMakeFiles .cache build.ninja cmake_install.cmake .ninja_deps .ninja_log target
 
 # C++ 26 init(int main(void))
 init:
@@ -523,7 +523,7 @@ codelldb:
 	echo '            "type": "lldb",' >> .vscode/launch.json
 	echo '            "request": "launch",' >> .vscode/launch.json
 	echo '            "name": "Launch",' >> .vscode/launch.json
-	echo '            "program": "${workspaceFolder}/build/target/${workspaceFolderBasename}",' >> .vscode/launch.json
+	echo '            "program": "${workspaceFolder}/target/debug/${workspaceFolderBasename}",' >> .vscode/launch.json
 	echo '            "args": [],' >> .vscode/launch.json
 	echo '            "cwd": "${workspaceFolder}"' >> .vscode/launch.json
 	echo '            // "preLaunchTask": "C/C++: clang build active file"' >> .vscode/launch.json
@@ -532,7 +532,7 @@ codelldb:
 	echo '            "name": "g++ - Build and debug active file",' >> .vscode/launch.json
 	echo '            "type": "lldb",' >> .vscode/launch.json
 	echo '            "request": "launch",' >> .vscode/launch.json
-	echo '            "program": "${fileDirname}/build/target/${workspaceFolderBasename}",' >> .vscode/launch.json
+	echo '            "program": "${fileDirname}/target/debug/${workspaceFolderBasename}",' >> .vscode/launch.json
 	echo '            "args": [],' >> .vscode/launch.json
 	echo '            "stopAtEntry": false,' >> .vscode/launch.json
 	echo '            "cwd": "${fileDirname}",' >> .vscode/launch.json
@@ -556,7 +556,7 @@ codelldb:
 	echo '                "-g",' >> .vscode/tasks.json
 	echo '                "${file}",' >> .vscode/tasks.json
 	echo '                "-o",' >> .vscode/tasks.json
-	echo '                "${fileDirname}/build/target/${workspaceFolderBasename}"' >> .vscode/tasks.json
+	echo '                "${fileDirname}/target/debug/${workspaceFolderBasename}"' >> .vscode/tasks.json
 	echo '            ],' >> .vscode/tasks.json
 	echo '            "options": {' >> .vscode/tasks.json
 	echo '                "cwd": "${fileDirname}"' >> .vscode/tasks.json
