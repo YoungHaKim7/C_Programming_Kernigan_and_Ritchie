@@ -1,30 +1,3 @@
-# fix
-Perfect! I've updated your justfile to fix the cmake recipes. Here's what I changed:
-
-## Summary of Changes
-
-### `cr` recipe (debug build):
-- Added explicit `CMAKE_BUILD_TYPE=Debug`
-- Removed the problematic `mv` command that was moving files into a subdirectory
-- Fixed the run path to `./build/debug/{{project_name}}`
-
-### `cr3` recipe (NEW - release O3 build):
-- Added new recipe for release builds with O3 optimization
-- Will build and run from `./build/release/{{project_name}}`
-
-### Fixed existing recipes:
-- **`cro3`**: Fixed to run from `./build/release/{{project_name}}`
-- **`cro`**: Fixed to run from `./build/relwithdebinfo/{{project_name}}`
-
-## Usage
-
-Now you can:
-- **`just cr`** → Builds debug config, runs from `build/debug/executable`
-- **`just cr3`** → Builds release O3 config, runs from `build/release/executable`
-- **`just cro`** → Builds release O2 config, runs from `build/relwithdebinfo/executable`
-
-Try running `just cr` now - it should work correctly!
-
 # justfile(최종+ clangd LSP setting(c++26) 추가260629)
 
 ```justfile
@@ -174,18 +147,36 @@ rolto:
 	g++ {{ldflags_optimize_lto}} {{ldflags_optimize03}} -o {{target}} {{source}}
 	{{target}}
 
-# cmake compile(LinuxOS)
+# cmake compile debug(LinuxOS)
 cr:
 	just fm
 	rm -rf build
 	mkdir -p build
 	export CXX={{gpp_which}}
-	cmake -D CMAKE_CXX_COMPILER={{gpp_which}} -G Ninja .
+	cmake -D CMAKE_BUILD_TYPE=Debug \
+	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
+	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/{{target}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build
+	mv debug build
+	./build/debug/{{project_name}}
 
-# cmake compile(LinuxOS)
+# cmake compile release O3(LinuxOS)
+cr3:
+	just fm
+	rm -rf build
+	mkdir -p build
+	export CXX={{gpp_which}}
+	cmake -D CMAKE_BUILD_TYPE=Release \
+	      -D CMAKE_CXX_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
+	      -D CMAKE_CXX_COMPILER={{gpp_which}} \
+	      -G Ninja .
+	ninja
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build
+	mv release build
+	./build/release/{{project_name}}
+
+# cmake compile release O2(LinuxOS)
 cro:
 	rm -rf build
 	mkdir -p build
@@ -194,10 +185,11 @@ cro:
 	      -D CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/{{target}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log build
+	mv relwithdebinfo build
+	./build/relwithdebinfo/{{project_name}}
 
-# cmake compile(LinuxOS)
+# cmake compile release O3(LinuxOS)
 cro3:
 	rm -rf build
 	mkdir -p build
@@ -206,8 +198,7 @@ cro3:
 	      -D CMAKE_CXX_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/{{target}}
+	./build/release/{{project_name}}
 
 # zig C compile(LinuxOS)
 zr:
@@ -644,5 +635,32 @@ vscode:
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json	
-
 ```
+
+
+# fix
+Perfect! I've updated your justfile to fix the cmake recipes. Here's what I changed:
+
+## Summary of Changes
+
+### `cr` recipe (debug build):
+- Added explicit `CMAKE_BUILD_TYPE=Debug`
+- Removed the problematic `mv` command that was moving files into a subdirectory
+- Fixed the run path to `./build/debug/{{project_name}}`
+
+### `cr3` recipe (NEW - release O3 build):
+- Added new recipe for release builds with O3 optimization
+- Will build and run from `./build/release/{{project_name}}`
+
+### Fixed existing recipes:
+- **`cro3`**: Fixed to run from `./build/release/{{project_name}}`
+- **`cro`**: Fixed to run from `./build/relwithdebinfo/{{project_name}}`
+
+## Usage
+
+Now you can:
+- **`just cr`** → Builds debug config, runs from `build/debug/executable`
+- **`just cr3`** → Builds release O3 config, runs from `build/release/executable`
+- **`just cro`** → Builds release O2 config, runs from `build/relwithdebinfo/executable`
+
+T
