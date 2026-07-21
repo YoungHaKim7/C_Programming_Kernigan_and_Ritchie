@@ -9,6 +9,9 @@
 - The Boost C++ Libraries are open source, peer-reviewed, portable and free
   - https://www.boost.org/
 
+- Recent milestones: C++26 work in progress
+  - https://isocpp.org/std/status
+
 # 연습용
 - https://github.com/cpp-best-practices/cppbestpractices
 
