@@ -9,8 +9,8 @@ project_name := `basename "$(pwd)"`
 full_project_name := `pwd`
 
 # clang & g++ basic & clang-format basic & cmake basic
-clang := `which clang` 
-clangpp := `which clang++` 
+clang := `which clang`
+clangpp := `which clang++`
 gpp := `which g++`
 clang_format_basic := `which clang-format`
 cmake := `which cmake`
@@ -77,7 +77,7 @@ fmt_flags := if os == "Linux" { \
     ". -regex '.*\\.\\(cpp\\|hpp\\|cc\\|cxx\\|c\\|h\\)' -exec " \
     +clang_format+ \
     " -style=file -i {} \\;" \
-  }  
+  }
 
 # fast fmt(LinuxOS / macOS)(Install "cargo install fd-find")
 fm_flags := "-e c \
@@ -198,6 +198,8 @@ cro3:
 	      -D CMAKE_CXX_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -G Ninja .
 	ninja
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log target
+	mv release target
 	./target/release/{{project_name}}
 
 # zig C compile(LinuxOS)
@@ -207,7 +209,7 @@ zr:
 	export CXX={{gpp_which}}
 	zig c++ {{ldflags_common}} -o {{target}} {{source}}
 	{{target}}
-	
+
 # cmake ctest
 ctest:
 	rm -rf target
@@ -279,7 +281,7 @@ san SAN:
 	rm -rf target
 	mkdir -p target
 	{{clang_which}} -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{source}}
-	{{clang_which}} -g -fsanitize={{SAN}} *.o 
+	{{clang_which}} -g -fsanitize={{SAN}} *.o
 	mv a.out *.o {{target_dir}}
 	{{target_dir}}/a.out
 
@@ -288,7 +290,7 @@ asan:
 	rm -rf target
 	mkdir -p target
 	{{clang_which}} {{ldflags_fsanitize_address}} {{source}}
-	{{clang_which}} {{ldflags_fsanitize_object}} *.o 
+	{{clang_which}} {{ldflags_fsanitize_object}} *.o
 	mv a.out *.o {{target_dir}}
 	{{target_dir}}/a.out
 
@@ -304,7 +306,7 @@ tsan:
 	rm -rf target
 	mkdir -p target
 	{{clang_which}} {{ldflags_fsanitize_thread}} {{source}}
-	{{clang_which}} {{ldflags_fsanitize_thread_object}} *.o 
+	{{clang_which}} {{ldflags_fsanitize_thread_object}} *.o
 	mv a.out *.o {{target_dir}}
 	{{target_dir}}/a.out
 
@@ -333,7 +335,7 @@ valgrind:
 	mv {{project_name}} {{target_dir}}
 	valgrind --leak-check=full {{target_dir }}/{{project_name}}
 
-# valgrind --track-origins=yes 
+# valgrind --track-origins=yes
 [linux]
 valgrind_detail:
 	rm -rf target
@@ -350,7 +352,7 @@ valgrind_memcheck:
 	{{clang_which}} -O0 -g {{source}} -o {{project_name}}
 	mv {{project_name}} {{target_dir}}
 	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --tool=memcheck --vgdb=yes --vgdb-error=0 {{target_dir }}/{{project_name}}
- 
+
 # thread check(data race)
 thread:
 	rm -rf target
@@ -634,7 +636,7 @@ vscode:
 	echo '        }' >> .vscode/tasks.json
 	echo '    ],' >> .vscode/tasks.json
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
-	echo '}' >> .vscode/tasks.json	
+	echo '}' >> .vscode/tasks.json
 ```
 
 
