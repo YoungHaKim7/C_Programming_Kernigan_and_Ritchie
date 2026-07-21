@@ -12,8 +12,9 @@
 - Recent milestones: C++26 work in progress
   - https://isocpp.org/std/status
 
-- The purpose of TSs is for developers to test new features and uncover kinks and bugs before the features are included in the main standard. The compiler vendors aren’t required to implement TSs, but they usually do. You can find more information at https://isocpp.org/std/status.
-  - TS의 목적은 개발자들이 새로운 기능을 테스트하고 기능이 주요 표준에 포함되기 전에 문제점과 버그를 발견하도록 하는 것입니다. 컴파일러 공급업체는 TS를 구현하도록 요구되지 않지만, 보통은 구현합니다. 자세한 정보는 https://isocpp.org/std/status에서 확인하실 수 있습니다.
+- The purpose of TSs is for developers to test new features and uncover kinks and bugs before the features are included in the main standard. The compiler vendors aren’t required to implement TSs, but they usually do. You can find more information at 
+  - https://isocpp.org/std/status.
+  - TS의 목적은 개발자들이 새로운 기능을 테스트하고 기능이 주요 표준에 포함되기 전에 문제점과 버그를 발견하도록 하는 것입니다. 컴파일러 공급업체는 TS를 구현하도록 요구되지 않지만, 보통은 구현합니다. 자세한 정보는 https://isocpp.org/std/status 에서 확인하실 수 있습니다.
   - 출처 : Functional Programming in C++ | Iban Cukic
 
 # 연습용
