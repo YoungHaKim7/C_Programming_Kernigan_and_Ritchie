@@ -51,9 +51,20 @@ freeCodeCamp.org
 - I read that I can use C libraries from Rust using FFI https://doc.rust-lang.org/1.9.0/book/ffi.html .
   - My question is are there any performance issues related to calling C code from Rust? (think Java JNI issue). Are there any gotchas around calling C code from Rust? This book chapter does not say much
 
+<hr />
+
 # Moving from Rust to C++
 - Apr 1, 2023
   - https://raphlinus.github.io/rust/2023/04/01/rust-to-cpp.html
+
+# C++ to Rust Migration
+## How do you rewrite C/C++ projects to Rust? | Irina Mihajlovic
+- July 27, 2026
+- C++에서 Rust로의 마이그레이션
+  - C/C++ 프로젝트를 러스트로 어떻게 다시 작성하나요? | 이리나 미하일로비치
+  - https://blog.jetbrains.com/rust/2026/07/27/cpp-to-rust-migration/
+
+<hr />
 
 # c23외국 github배울게 많다.
 - https://github.com/scivision/C23-examples
