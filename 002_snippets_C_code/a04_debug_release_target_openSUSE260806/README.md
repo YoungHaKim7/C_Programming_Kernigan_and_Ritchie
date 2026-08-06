@@ -1,4 +1,4 @@
-# justfile(C23, openSUSE 260704)
+# justfile(C23, openSUSE 260806)
 
 ```justfile
 # Detect OS
@@ -89,8 +89,8 @@ fm_flags := "-e c \
   " -style=file -i {} \\;"
 
 # Source and target directories
-src_dir := "./src"
-target_dir := "./target"
+src_dir := "src"
+target_dir := "target"
 
 # Files
 source := src_dir+"/main.c"
@@ -117,50 +117,50 @@ r:
 	just fm
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	{{gcc_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{gcc_which}} {{ldflags_common}} -o ./{{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
 ro:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	{{clang_which}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{clang_which}} {{ldflags_optimize}} -o ./{{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # cmake compile(LinuxOS)
 cr:
 	just fm
-	rm -rf build
-	mkdir -p build
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	export CC={{gcc_which}}
-	cmake -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
+	cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/{{target}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log debug {{target_dir}}
+	./{{target_dir}}/debug/{{project_name}}
 
 # cmake compile(LinuxOS)
 cro:
-	rm -rf build
-	mkdir -p build
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo \
 	      -D CMAKE_C_COMPILER={{gcc_which}} \
 	      -D CMAKE_C_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/{{target}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log relwithdebinfo {{target_dir}}
+	./{{target_dir}}/relwithdebinfo/{{project_name}}
 
 # cmake compile(LinuxOS)
 cro3:
-	rm -rf build
-	mkdir -p build
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
 	cmake -D CMAKE_BUILD_TYPE=Release \
 	      -D CMAKE_C_COMPILER={{gcc_which}} \
 	      -D CMAKE_C_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -G Ninja .
 	ninja
-	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake target .ninja_deps .ninja_log build
-	./build/{{target}}
+	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log release {{target_dir}}
+	./{{target_dir}}/release/{{project_name}}
 
 # zig C compile(LinuxOS)
 zr:
@@ -594,3 +594,42 @@ The code has been fixed. The main issue was that you were using Windows-specific
 - Added necessary Linux headers: `<termios.h>`, `<unistd.h>`, `<fcntl.h>`
 
 The program now compiles and runs successfully on Linux. The functionality is the same - it waits for keyboard input and echoes characters until 'q' is pressed.
+
+# fix 2
+
+- Fixed. All three cmake recipes now build cleanly (exit 0) and place the binary in the right subdir.
+
+## Root cause of `cr`
+
+`CMakeLists.txt` sets the output dir to a config-named folder:
+
+```cmake
+RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>"
+```
+
+The old `cr` didn't pass `-DCMAKE_BUILD_TYPE`, so `$<CONFIG>` was **empty** → the binary was emitted to the project root, not a `debug/` subdir. Then:
+
+```just
+mv {{project_name}} debug   # renamed the binary to a FILE named "debug"
+mv debug {{target_dir}}     # moved that file into target/  →  target/debug is now a file
+./target/debug/{{project_name}}   # "Not a directory"
+```
+
+## The fix
+
+`cr` now passes `-D CMAKE_BUILD_TYPE=Debug`, so CMake emits the binary to `./debug/<project>` (matching the generator expression), and a single `mv` relocates that whole directory:
+
+```just
+cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
+ninja
+mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log debug {{target_dir}}
+./{{target_dir}}/debug/{{project_name}}
+```
+
+I also fixed the two sibling recipes, which had the **same bug class**:
+- **`cro`** (RelWithDebInfo) referenced `release/`, but that config emits to `relwithdebinfo/` — now matches. It also never created `target/` (it made an unused `build/`), so the multi-source `mv` would have failed.
+- **`cro3`** (Release) had the same missing-`target/` problem — fixed.
+
+Resulting layouts: `target/debug/`, `target/relwithdebinfo/`, `target/release/`.
+
+One thing to note: `main.c` is an interactive `kbhit()` loop that only exits on `q`, so each recipe's final run line launches a program that waits for keypresses (I verified by piping `q` with a timeout). That's inherent to how the recipes are written — let me know if you'd rather drop the auto-run line.
