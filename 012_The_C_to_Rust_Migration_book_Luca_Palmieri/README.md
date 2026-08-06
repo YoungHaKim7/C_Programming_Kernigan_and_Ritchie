@@ -1,5 +1,7 @@
 # The C to Rust Migration Book(만드는중 Luca Palmieri)
 - https://mainmatter.com/c-to-rust-migration-book/course/
+  - github(Learn how to migrate real-world C code to Rust.)
+    - https://github.com/mainmatter/migrating-c-to-rust
 
 # C++ to Rust Migration
 - How do you rewrite C/C++ projects to Rust? | Irina Mihajlovic
