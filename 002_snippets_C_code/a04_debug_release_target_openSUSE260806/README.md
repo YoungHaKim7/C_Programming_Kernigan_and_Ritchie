@@ -133,7 +133,9 @@ cr:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
 	export CC={{gcc_which}}
-	cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER={{gcc_which}} -G Ninja .
+	cmake -D CMAKE_BUILD_TYPE=Debug \
+	      -D CMAKE_C_COMPILER={{gcc_which}} \
+	      -G Ninja .
 	ninja
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log debug {{target_dir}}
 	./{{target_dir}}/debug/{{project_name}}
@@ -187,13 +189,13 @@ b:
 
 # clangd .cache(c23 LSP build)
 clangd:
-	rm -rf .cache build
+	rm -rf .cache {{target_dir}} build
 	{{cmake_which}} -DCMAKE_BUILD_TYPE:STRING=Debug \
 					-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \
 					-DCMAKE_C_COMPILER:FILEPATH={{clang_which}} \
-					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} --no-warn-unused-cli \
+					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} -Wno-unused-cli \
 					-S {{full_project_name}} \
-					-B {{full_project_name}}/build \
+					-B {{full_project_name}}/debug \
 					-G Ninja
 
 # move target
@@ -582,18 +584,27 @@ vscode:
 	echo '}' >> .vscode/tasks.json	
 ```
 
+# fix 1
+The real build is clean on both compilers under the project's strict flags. The LSP diagnostics you may see (`constexpr`/`count` "undeclared") are a clangd artifact — the language server is parsing the file without `-std=c23`, so it doesn't recognize the C23 `constexpr` keyword. The code itself is valid C23 and compiles cleanly (verified above with both `clang` and `gcc` under `-std=c23 -pedantic-errors -Werror`).
 
-# fix
-Perfect! The build succeeded. ✅
+If you want clangd to stop flagging it, regenerate its compile database (the project has a recipe for this):
 
-The code has been fixed. The main issue was that you were using Windows-specific functions `_kbhit()` and `_getch()` on Linux. I've replaced them with Linux-compatible equivalents:
+```
+just clangd
+```
 
-**What changed:**
-- Replaced `_kbhit()` with a custom `kbhit()` function that uses `termios` and non-blocking I/O to check for available input
-- Replaced `_getch()` with a custom `getch()` function that uses `termios` to read characters without waiting for Enter
-- Added necessary Linux headers: `<termios.h>`, `<unistd.h>`, `<fcntl.h>`
+## What changed
 
-The program now compiles and runs successfully on Linux. The functionality is the same - it waits for keyboard input and echoes characters until 'q' is pressed.
+I replaced the interactive `kbhit()` busy-loop (`termios`/`fcntl` non-blocking I/O, only exits on `q`) with a small, self-terminating program built for debugger testing:
+
+- **`sum_range()`** — a small static function, ideal for practicing **step-into**.
+- **`values[]`** — a fixed array to **inspect/watch** in the variables pane.
+- **Two loops** — good places for **breakpoints** and **stepping**.
+- **`constexpr int count`** — a small C23 touch, since the whole project targets C23.
+- **No interactivity** — it runs, prints, and exits cleanly, so every `just` recipe (debug/release/sanitizers/cmake) terminates on its own instead of hanging on keypresses.
+
+Want me to also add a deliberately-steppable second function (e.g. recursion or a small bug to track down), or keep it at this minimal size?
+
 
 # fix 2
 
