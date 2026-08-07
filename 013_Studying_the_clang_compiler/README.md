@@ -1,3 +1,7 @@
+# llvm문서(clang)
+
+- https://clang.llvm.org/get_started.html
+
 # clang
 - https://stackoverflow.com/questions/52029857/what-does-clang-command-option-lm-mean
 
