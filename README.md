@@ -7,6 +7,8 @@
 
 # link
 
+- [한국분이 정리한 커널 공부하기 좋다. 러스트도 정리 잘됨.](https://www.minzkn.com/linuxkernel/index.html) - https://www.minzkn.com/linuxkernel/index.html
+
 - 온라인 디버거C(웹에서 디버깅 가능 C playground)
   - [온라인으로 디버깅 된다. 완전 굿 굿 https://www.onlinegdb.com/online_c++_debugger](https://www.onlinegdb.com/online_c++_debugger)
 - Assembly 분석
