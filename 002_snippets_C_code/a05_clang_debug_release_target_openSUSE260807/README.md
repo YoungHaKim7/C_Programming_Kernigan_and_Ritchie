@@ -213,7 +213,7 @@ clangd:
 					-DCMAKE_C_COMPILER:FILEPATH={{clang_which}} \
 					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} -Wno-unused-cli \
 					-S {{full_project_name}} \
-					-B {{full_project_name}}/debug \
+					-B {{full_project_name}}/target \
 					-G Ninja
 
 # move target
