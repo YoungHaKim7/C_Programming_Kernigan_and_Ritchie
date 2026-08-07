@@ -34,8 +34,8 @@ add_compile_options(
     -pedantic
     -pthread
     -pedantic-errors
-    # math library
-    # -lm
+    # to add some standard numerical functions(-lm)
+    -lm
     -Wall
     -Wextra
     -ggdb
