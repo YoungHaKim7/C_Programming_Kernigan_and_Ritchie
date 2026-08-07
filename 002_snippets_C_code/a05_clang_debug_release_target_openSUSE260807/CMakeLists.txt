@@ -48,8 +48,8 @@ add_executable(${ProjectId}
     # src/mandelbrot.c
 )
 
-# pthread & math library
-# target_link_options(${ProjectId} PRIVATE -pthread -lm)
+# pthread & to add some standard numerical function(-lm)
+target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
