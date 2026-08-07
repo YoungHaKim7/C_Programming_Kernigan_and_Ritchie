@@ -1,3 +1,19 @@
+# debug폴더에 생긴다.(`just clangd`) 하면
+
+- `compile_commands.json`
+
+```json
+[
+{
+  "directory": "/home/gy/my_projects/Rust_Lang/C_Programming_Kernigan_and_Ritchie/001_C_Training/999_C_training/cstdlib_h/itoa/debug",
+  "command": "/usr/bin/clang -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -o CMakeFiles/itoa.dir/src/main.c.o -c /home/gy/my_projects/Rust_Lang/C_Programming_Kernigan_and_Ritchie/001_C_Training/999_C_training/cstdlib_h/itoa/src/main.c",
+  "file": "/home/gy/my_projects/Rust_Lang/C_Programming_Kernigan_and_Ritchie/001_C_Training/999_C_training/cstdlib_h/itoa/src/main.c",
+  "output": "/home/gy/my_projects/Rust_Lang/C_Programming_Kernigan_and_Ritchie/001_C_Training/999_C_training/cstdlib_h/itoa/debug/CMakeFiles/itoa.dir/src/main.c.o"
+}
+]
+```
+
+
 # justfile(C23,(clang ver.) openSUSE 260807)
 
 ```justfile
