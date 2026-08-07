@@ -34,7 +34,8 @@ add_compile_options(
     -pedantic
     -pthread
     -pedantic-errors
-    -lm
+    # math library
+    # -lm
     -Wall
     -Wextra
     -ggdb
@@ -47,7 +48,8 @@ add_executable(${ProjectId}
     # src/mandelbrot.c
 )
 
-target_link_options(${ProjectId} PRIVATE -pthread -lm)
+# pthread & math library
+# target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
