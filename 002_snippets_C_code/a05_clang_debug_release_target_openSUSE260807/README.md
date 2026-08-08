@@ -153,7 +153,9 @@ cr:
 	      -D CMAKE_C_COMPILER={{clang}} \
 	      -G Ninja .
 	ninja
+	mkdir -p debug
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log debug {{target_dir}}
+	mv {{target_dir}}/{{project_name}} {{target_dir}}/debug
 	./{{target_dir}}/debug/{{project_name}}
 
 # cmake compile(LinuxOS)
@@ -166,7 +168,9 @@ cro:
 	      -D CMAKE_C_FLAGS_RELWITHDEBINFO_INIT="-O2 -g" \
 	      -G Ninja .
 	ninja
+	mkdir -p relwithdebinfo
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log relwithdebinfo {{target_dir}}
+	mv {{target_dir}}/{{project_name}} {{target_dir}}/relwithdebinfo
 	./{{target_dir}}/relwithdebinfo/{{project_name}}
 
 # cmake compile(LinuxOS)
@@ -179,7 +183,9 @@ cro3:
 	      -D CMAKE_C_FLAGS_RELEASE_INIT="-O3 -DNDEBUG" \
 	      -G Ninja .
 	ninja
+	mkdir -p release
 	mv build.ninja CMakeCache.txt CMakeFiles cmake_install.cmake .ninja_deps .ninja_log release {{target_dir}}
+	mv {{target_dir}}/{{project_name}} {{target_dir}}/release
 	./{{target_dir}}/release/{{project_name}}
 
 # zig C compile(LinuxOS)
