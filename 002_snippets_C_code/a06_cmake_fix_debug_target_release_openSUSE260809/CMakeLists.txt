@@ -53,5 +53,6 @@ target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
 # Output directory
 set_target_properties(${ProjectId} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target
+    RUNTIME_OUTPUT_DIRECTORY
+        "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>"
 )

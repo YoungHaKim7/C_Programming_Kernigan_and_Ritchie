@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Debug native binary",
+    "build": {
+      "command": "just cr",
+      "cwd": "$ZED_WORKTREE_ROOT"
+    },
+    "program": "$ZED_WORKTREE_ROOT/target/debug/a05_clang_debug_release_target_openSUSE260807",
+    "request": "launch",
+    "adapter": "CodeLLDB"
+  }
+]
