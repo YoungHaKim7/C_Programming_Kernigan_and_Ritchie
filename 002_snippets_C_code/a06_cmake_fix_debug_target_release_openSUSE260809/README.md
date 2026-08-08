@@ -448,7 +448,8 @@ init:
 	echo '' >> CMakeLists.txt
 	echo '# Output directory' >> CMakeLists.txt
 	echo 'set_target_properties(${ProjectId} PROPERTIES' >> CMakeLists.txt
-	echo '    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target' >> CMakeLists.txt
+	echo '    RUNTIME_OUTPUT_DIRECTORY' >> CMakeLists.txt
+	echo '       "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>"' >> CMakeLists.txt
 	echo ')' >> CMakeLists.txt
 
 # C init(int main(int argc, char* argv[]))
