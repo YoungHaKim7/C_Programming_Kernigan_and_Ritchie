@@ -151,8 +151,8 @@ rd2:
 	just fm
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	{{gcc_which}} {{ldflags_gcc_debug}} -o ./{{target_dir}}/{{project_name}} {{source}}
-	{{target}}
+	{{gcc_which}} {{ldflags_gcc_debug}} -o ./{{target_dir}}/{{project_name}} ./{{source}}
+	./{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
 ro:
