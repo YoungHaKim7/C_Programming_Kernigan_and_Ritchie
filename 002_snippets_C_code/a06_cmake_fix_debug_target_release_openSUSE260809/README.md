@@ -14,7 +14,7 @@
 ```
 
 
-# justfile(C23,(clang ver.) openSUSE 260809)
+# justfile(C23,(clang ver.) openSUSE 260811)
 
 ```justfile
 # Detect OS
@@ -118,6 +118,7 @@ ldflags_optimize :=  "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm
 # Common flags
 ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_debug := "-std=c23 -pthread -lm -Wall -Wextra -ggdb"
+ldflags_clang_debug := "--analyze -std=c23 -Xanalyzer -analyzer-output=text"
 ldflags_emit_llvm := "-S -emit-llvm"
 ldflags_assembly := "-Wall -save-temps"
 ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
@@ -128,12 +129,20 @@ ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
 ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_fsanitize_leak := "-fsanitize=leak -g"
 
-# (C)gcc compile(LinuxOS)
+# (C)clang compile(LinuxOS)
 r:
 	just fm
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
 	{{clang}} {{ldflags_common}} -o ./{{target_dir}}/{{project_name}} {{source}}
+	{{target}}
+
+# (C)clang compile(Debug in detail)(LinuxOS)
+rd:
+	just fm
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
+	{{clang}} {{ldflags_clang_debug}} -o ./{{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
