@@ -119,6 +119,7 @@ ldflags_optimize :=  "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm
 ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_debug := "-std=c23 -pthread -lm -Wall -Wextra -ggdb"
 ldflags_clang_debug := "--analyze -std=c23 -Xanalyzer -analyzer-output=text"
+ldflags_gcc_debug := "-std=c23 -Wmaybe-uninitialized -Wall -Wextra -pedantic -Werror -O1 -ggdb"
 ldflags_emit_llvm := "-S -emit-llvm"
 ldflags_assembly := "-Wall -save-temps"
 ldflags_fsanitize_address := "-g -fsanitize=address -fno-omit-frame-pointer -c"
@@ -143,6 +144,14 @@ rd:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
 	{{clang}} {{ldflags_clang_debug}} -o ./{{target_dir}}/{{project_name}} {{source}}
+	{{target}}
+
+# (C)gcc compile(Debug in detail)(LinuxOS)
+rd2:
+	just fm
+	rm -rf {{target_dir}}
+	mkdir -p {{target_dir}}
+	{{gcc_which}} {{ldflags_gcc_debug}} -o ./{{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
