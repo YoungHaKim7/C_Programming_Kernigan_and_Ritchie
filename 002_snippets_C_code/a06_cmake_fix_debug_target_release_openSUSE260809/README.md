@@ -469,7 +469,73 @@ init:
 	echo '    RUNTIME_OUTPUT_DIRECTORY' >> CMakeLists.txt
 	echo '       "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>"' >> CMakeLists.txt
 	echo ')' >> CMakeLists.txt
-
+	echo '# General(macOS)' >> .gitignore
+	echo '.DS_Store' >> .gitignore
+	echo '' >> .gitignore
+	echo '# build files' >> .gitignore
+	echo 'debug' >> .gitignore
+	echo 'justfile' >> .gitignore
+	echo 'target' >> .gitignore
+	echo 'build' >> .gitignore
+	echo '# clangd' >> .gitignore
+	echo '.cache' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Prerequisites' >> .gitignore
+	echo '*.d' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Object files' >> .gitignore
+	echo '*.o' >> .gitignore
+	echo '*.ko' >> .gitignore
+	echo '*.obj' >> .gitignore
+	echo '*.elf' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Linker output' >> .gitignore
+	echo '*.ilk' >> .gitignore
+	echo '*.map' >> .gitignore
+	echo '*.exp' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Precompiled Headers' >> .gitignore
+	echo '*.gch' >> .gitignore
+	echo '*.pch' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Libraries' >> .gitignore
+	echo '*.lib' >> .gitignore
+	echo '*.a' >> .gitignore
+	echo '*.la' >> .gitignore
+	echo '*.lo' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Shared objects (inc. Windows DLLs)' >> .gitignore
+	echo '*.dll' >> .gitignore
+	echo '*.so' >> .gitignore
+	echo '*.so.*' >> .gitignore
+	echo '*.dylib' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Executables' >> .gitignore
+	echo '*.exe' >> .gitignore
+	echo '*.out' >> .gitignore
+	echo '*.app' >> .gitignore
+	echo '*.i*86' >> .gitignore
+	echo '*.x86_64' >> .gitignore
+	echo '*.hex' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Debug files' >> .gitignore
+	echo '*.dSYM/' >> .gitignore
+	echo '*.su' >> .gitignore
+	echo '*.idb' >> .gitignore
+	echo '*.pdb' >> .gitignore
+	echo '' >> .gitignore
+	echo '# Kernel Module Compile Results' >> .gitignore
+	echo '*.mod*' >> .gitignore
+	echo '*.cmd' >> .gitignore
+	echo '.tmp_versions/' >> .gitignore
+	echo 'modules.order' >> .gitignore
+	echo 'Module.symvers' >> .gitignore
+	echo 'Mkfile.old' >> .gitignore
+	echo 'dkms.conf' >> .gitignore
+	echo '' >> .gitignore
+	echo '# debug information files' >> .gitignore
+	echo '*.dwo' >> .gitignore
+ 
 # C init(int main(int argc, char* argv[]))
 init2:
 	mkdir -p src
