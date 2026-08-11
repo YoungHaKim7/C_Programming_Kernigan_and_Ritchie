@@ -113,7 +113,7 @@ source := src_dir+"/main.c"
 target := target_dir+"/"+project_name
 
 # Optimize (O2(RelWithDebInfo), O3(Release))
-ldflags_optimize :=  "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
+ldflags_optimize := "-std=c23 -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
 
 # Common flags
 ldflags_common := "-std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
