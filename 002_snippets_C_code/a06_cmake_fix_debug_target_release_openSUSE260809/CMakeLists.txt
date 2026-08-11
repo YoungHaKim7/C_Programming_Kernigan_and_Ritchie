@@ -35,6 +35,7 @@ add_compile_options(
     -pedantic
     -pthread
     -pedantic-errors
+    # to add some standard numerical functions(-lm)
     -lm
     -Wall
     -Wextra
@@ -47,7 +48,8 @@ add_executable(${ProjectId}
     src/main.c
     # src/mandelbrot.c
 )
-
+ 
+# pthread & to add some standard numerical function(-lm)
 target_link_options(${ProjectId} PRIVATE -pthread -lm)
 
 # Output directory

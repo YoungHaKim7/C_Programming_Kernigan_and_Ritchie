@@ -412,6 +412,8 @@ init:
 	echo 'IndentGotoLabels: true' >> .clang-format
 	echo 'IndentPPDirectives: None' >> .clang-format
 	echo 'IndentExternBlock: NoIndent' >> .clang-format
+	echo "" >> .clang-format
+	echo 'ColumnLimit: 80' >> .clang-format
 	echo 'cmake_minimum_required(VERSION 4.0)' >> CMakeLists.txt
 	echo '' >> CMakeLists.txt
 	echo 'set(CMAKE_C_STANDARD 23)' >> CMakeLists.txt
