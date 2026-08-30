@@ -35,6 +35,9 @@
 - chapter04
   - [(251012방송)04_러스트개발자의 위한 C언어 기초(c23) chapter04 #c #rust](https://youtube.com/live/DEvbvRWN8rU?feature=share)
 
+# C언어는 완전 기초 | c언어->어셈블리로 변환하는 법 기초
+- https://youtube.com/playlist?list=PLu0W_9lII9aiXlHcLx-mDH1Qul38wD3aR
+
 # **[C에 초능력을 부여하기: 사용자 정의 헤더 파일(safe_c.h)](<https://news.hada.io/topic?id=24453&utm_source=discord&utm_medium=bot&utm_campaign=1480>)**[|🔝|](#link)
 - **safe_c.h**는 C 언어에 **C++과 Rust의 안전성과 편의 기능**을 추가하는 600줄짜리 사용자 정의 헤더 파일로, 메모리 누수 없는 **스레드 안전 grep(cgrep)** 구현에 사용됨  
 - **RAII, 스마트 포인터, 자동 정리(cleanup) 속성**을 통해 수동 free() 호출 없이 자원 관리 자동화  
