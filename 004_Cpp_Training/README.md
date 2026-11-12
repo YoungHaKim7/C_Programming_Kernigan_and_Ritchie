@@ -511,3 +511,35 @@ imestamps:
 10:16:54 - Polymorphism
 10:23:15 - Conclusion
 ```
+
+- (4시간짜리) Introduction to the C++ Programming Language | Dave Churchill
+  - https://youtu.be/gSubXB3HUgc?si=pdeXJ2ZcfKf9a4bc
+```
+00:00 - Online Resources
+01:39 - What is C++?
+05:40 - Advantages / Disadvantages
+11:12 - C / C++ Origins
+16:18 - C++ Versions
+20:37 - Hello World, explained
+29:51 - Whitespace / Formatting
+34:27 - STL / Namespaces
+37:45 - C++ Compilation Process
+57:56 - Header / Implementation files
+1:09:09 - Primitive Types / Operators
+1:10:15 - Function / Class Syntax
+1:15:50 - STL Containers
+1:17:30 - Live Coding (Variables, Functions, File Reading, Classes)
+1:59:22 - File Reading Code (for assignments)
+2:08:36 - Memory Overview
+2:13:38 - Stack Memory
+2:22:17 - Heap Memory
+2:33:33 - Pointers / References
+2:50:17 - Pass By Reference / Value
+3:04:51 - RAII / Smart Pointers
+3:17:03 - Inheritance
+3:22:04 - Live Coding (Pointers, References, RAII, Classes)
+```
+Memorial University - Computer Science 4300 - Fall 2024
+Intro to Game Programming
+Professor: David Churchill - http://www.cs.mun.ca/~dchurchill/
+
