@@ -1,3 +1,10 @@
+# link
+
+- [justfile(Metal-cpp version)](#justfilemetal-cpp-version-261120-)
+
+
+<hr />
+
 # `just cr` 성공과 `just r` 차이점 공부하기 좋다.
 - Good news: this is the last piece of the metal-cpp puzzle, and the two recipes disagree for exactly one reason. Look at which symbols are missing: `NS::Private::Selector::s_kalloc`, `s_kinit`, `s_krelease`, `s_kUTF8String`, `NS::Private::Class::s_kNSAutoreleasePool`, `MTL::Private::Selector::s_kname`, and the body of `MTL::CreateSystemDefaultDevice()`. Those are **metal-cpp's private implementation symbols** — and per the metal-cpp README (we read it earlier in this thread):
 
@@ -164,7 +171,7 @@ With the three `-framework` flags added, `just cr` should link cleanly. When you
 
 <hr />
 
-# justfile(Metal-cpp version)
+# justfile(Metal-cpp version)(261120)[|🔝|](#link)
 
 ```justfile
 # Detect OS
