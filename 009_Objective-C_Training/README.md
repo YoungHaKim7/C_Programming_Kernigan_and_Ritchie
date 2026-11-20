@@ -47,5 +47,6 @@ endif()
 - Object-C로 만든 기능을 C++로 연결해서
   - 오버해드 거의 없음
 
-### 유튜브 영상2022년 자료) Metal-cpp를 통해 C++로 Metal 프로그래밍
-- https://youtu.be/h1mOkhFOSPU?si=u9kC4wrRnAyuTEVH
+- [유튜브 영상2022년 자료) Metal-cpp를 통해 C++로 Metal 프로그래밍](https://youtu.be/h1mOkhFOSPU?si=u9kC4wrRnAyuTEVH)
+  - [원본은 2022년 애플 WWDC22에 소개된거임 | Metal-cpp를 통해 C++로 Metal 프로그래밍](https://developer.apple.com/kr/videos/play/wwdc2022/10160)
+  - #wwdc22에서 Metal-cpp를 통해 C++로 Metal 프로그래밍을(를) 확인하십시오.
