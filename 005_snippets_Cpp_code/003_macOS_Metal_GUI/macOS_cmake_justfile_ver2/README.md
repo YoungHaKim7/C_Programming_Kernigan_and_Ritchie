@@ -1,6 +1,6 @@
 # link
 
-- [justfile(Metal-cpp version)](#justfilemetal-cpp-version-261120-)
+- [justfile(macOS_Metal-cpp version)](#justfilemetal-cpp-version261120)
 
 
 <hr />
