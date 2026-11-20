@@ -1,3 +1,53 @@
+# `just cr` 성공과 `just r` 차이점 공부하기 좋다.
+- Good news: this is the last piece of the metal-cpp puzzle, and the two recipes disagree for exactly one reason. Look at which symbols are missing: `NS::Private::Selector::s_kalloc`, `s_kinit`, `s_krelease`, `s_kUTF8String`, `NS::Private::Class::s_kNSAutoreleasePool`, `MTL::Private::Selector::s_kname`, and the body of `MTL::CreateSystemDefaultDevice()`. Those are **metal-cpp's private implementation symbols** — and per the metal-cpp README (we read it earlier in this thread):
+
+> *To ensure that the selector and class symbols are linked, add to one of your cpp files:* `#define NS_PRIVATE_IMPLEMENTATION`, `#define MTL_PRIVATE_IMPLEMENTATION`
+
+metal-cpp is header-only, but its inline definitions (the selector/class constants, the wrappers over `MTLCreateSystemDefaultDevice`) are guarded behind those macros. Declarations are always visible — that's why compiling works — but the *definitions* are only emitted in a TU that defines the macros before including. 
+
+- **`just cr` works** because your CMake build compiles `src/implementation.cpp`, which carries the defines.
+- **`just r` fails** because it compiles only `./src/main.cpp`, which doesn't have them → nothing ever emits those symbols.
+
+**Fix — add the defines at the top of `main.cpp`:**
+
+```cpp
+#define NS_PRIVATE_IMPLEMENTATION
+#define MTL_PRIVATE_IMPLEMENTATION
+
+#include <Metal/Metal.hpp>
+
+#include <cstdio>
+#include <iostream>
+
+int main() {
+    NS::AutoreleasePool *pool = NS::AutoreleasePool::alloc()->init();
+
+    MTL::Device *metalDevice = MTL::CreateSystemDefaultDevice();
+    if (!metalDevice) {
+        std::puts("no Metal device");
+        return 1;
+    }
+
+    std::printf("GPU: %s\n", metalDevice->name()->utf8String());
+    std::cout << "Hello, World from Metal-CPP!\n";
+
+    metalDevice->release();
+    pool->release();
+    return 0;
+}
+```
+
+Two rules to keep in mind:
+
+1. **Exactly one TU defines them.** The moment you re-add `implementation.cpp` (like the a02 project had), the defines move there and must be *removed* from `main.cpp` — defining them in two TUs gives duplicate-symbol errors at link. If `implementation.cpp` is in your ver2 `CMakeLists.txt` and already has the defines, then `just cr` currently works *because* of it — and if you also put the defines in `main.cpp`, `just cr` will break with duplicates. Pick one home for the defines.
+2. When you reach the GUI part and include `QuartzCore/QuartzCore.hpp` for `CA::MetalLayer`, that TU also needs `#define CA_PRIVATE_IMPLEMENTATION`.
+
+If you'd rather keep the scalable layout, the alternative is the a02 pattern: a dedicated `src/implementation.cpp` holding only the defines + includes, and change the `r` recipe's compile line to `{{src_dir}}/*.cpp`. Either way, after this `just r` will print the same as `cr`: `GPU: Apple M4 Max` followed by the hello line.
+
+<hr />
+
+# Cmake 고치니 해결
+
 The compile now succeeds — this is a new, different failure: **linking**. metal-cpp is a header-only C++ wrapper over Apple's Objective-C frameworks, so all those undefined `_MTL*` / `_NS*` / `_objc_*` symbols are framework symbols you never linked. Let me confirm the exact framework list from Apple's README:
 Diagnosis confirmed. The compile errors from before are gone (you commented out the warning flags), and now you're at the **link stage**, which metal-cpp projects always hit: metal-cpp is a header-only C++ wrapper — it only *declares* the Apple frameworks. All those undefined symbols map cleanly to frameworks you never linked:
 
