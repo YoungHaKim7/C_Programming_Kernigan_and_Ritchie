@@ -8,7 +8,9 @@ metal-cpp is header-only, but its inline definitions (the selector/class constan
 - **`just cr` works** because your CMake build compiles `src/implementation.cpp`, which carries the defines.
 - **`just r` fails** because it compiles only `./src/main.cpp`, which doesn't have them → nothing ever emits those symbols.
 
-**Fix — add the defines at the top of `main.cpp`:**
+# `just r`이 성공한 코드
+
+- **Fix — add the defines at the top of `main.cpp`:**
 
 ```cpp
 #define NS_PRIVATE_IMPLEMENTATION
