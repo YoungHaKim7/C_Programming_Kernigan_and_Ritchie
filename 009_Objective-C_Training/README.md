@@ -42,3 +42,10 @@ if(APPLE)
     target_link_libraries(app "-framework Foundation")
 endif()
 ```
+
+# swift언어 필요 없이 러스트로 가능요 ㅋㅋ(Metal-cpp) 
+- Object-C로 만든 기능을 C++로 연결해서
+  - 오버해드 거의 없음
+
+### 유튜브 영상2022년 자료) Metal-cpp를 통해 C++로 Metal 프로그래밍
+- https://youtu.be/h1mOkhFOSPU?si=u9kC4wrRnAyuTEVH
