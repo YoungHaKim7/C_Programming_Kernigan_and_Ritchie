@@ -412,7 +412,7 @@ clangd:
 	{{cmake_which}} -DCMAKE_BUILD_TYPE:STRING=Debug \
 					-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \
 					-DCMAKE_C_COMPILER:FILEPATH={{clang_which}} \
-					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} --no-warn-unused-cli \
+					-DCMAKE_CXX_COMPILER:FILEPATH={{clangpp_which}} -Wno-unused-cli \
 					-S {{full_project_name}} \
 					-B {{full_project_name}}/target \
 					-G Ninja
