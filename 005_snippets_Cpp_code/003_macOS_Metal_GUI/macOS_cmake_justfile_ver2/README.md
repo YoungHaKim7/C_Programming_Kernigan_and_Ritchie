@@ -271,6 +271,10 @@ target_dir := "./target"
 # Files
 source := src_dir+"/main.cpp"
 target := target_dir+"/"+project_name
+link_files := src_dir+"/implementation.cpp"
+
+r_framework := "-framework Metal -framework Foundation -framework QuartzCore -isystem"
+include_metal_cpp := "include/metal-cpp"
 
 # Optimize (O2(RelWithDebInfo), O3(Release))
 ldflags_optimize :=  "-std=c++2c -Wall -O2 -pedantic -pthread -pedantic-errors -lm -Wextra -ggdb"
@@ -295,8 +299,10 @@ ldflags_fsanitize_leak := "-fsanitize=leak -g"
 r:
 	just fm
 	rm -rf {{target_dir}}
-	mkdir -p {{target_dir}}
-	{{gpp_which}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
+	mkdir -p {{target_dir}} include
+	git clone https://github.com/apple/metal-cpp
+	mv metal-cpp include
+	{{clang_which}} {{ldflags_common}} {{r_framework}} {{include_metal_cpp}} -o {{target_dir}}/{{project_name}} {{source}} {{link_files}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
@@ -813,3 +819,4 @@ vscode:
 	echo '    "version": "2.0.0"' >> .vscode/tasks.json
 	echo '}' >> .vscode/tasks.json
 ```
+
