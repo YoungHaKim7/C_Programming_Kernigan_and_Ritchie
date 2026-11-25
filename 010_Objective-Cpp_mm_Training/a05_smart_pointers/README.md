@@ -1,0 +1,6 @@
+# Result
+
+```bash
+Rendering frame...
+```
+
