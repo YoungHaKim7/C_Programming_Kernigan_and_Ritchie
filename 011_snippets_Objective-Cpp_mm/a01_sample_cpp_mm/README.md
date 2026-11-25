@@ -104,7 +104,7 @@ src_dir := "./src"
 target_dir := "./target"
 
 # Files
-source := src_dir+"/main.cpp"
+source := src_dir+"/main.mm"
 target := target_dir+"/"+project_name
 
 # Optimize (O2(RelWithDebInfo), O3(Release))
@@ -125,34 +125,35 @@ ldflags_fsanitize_thread_object := "-g -fsanitize=thread"
 ldflags_fsanitize_valgrind := "-fsanitize=address -g3"
 ldflags_fsanitize_valgrind_O0 := "-O0 -g -std=c23 -pedantic -pthread -pedantic-errors -lm -Wall -Wextra -ggdb -Werror"
 ldflags_fsanitize_leak := "-fsanitize=leak -g"
+r_framework := "-framework Foundation"
 
 # (C)gpp compile(LinuxOS)
 r:
 	just fm
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	{{clangpp}} {{ldflags_common}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{clangpp}} {{ldflags_common}} {{r_framework}} -o {{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)clang compile(Optimization/LinuxOS/ macOS)
 ro:
 	rm -rf {{target_dir}}
 	mkdir -p {{target_dir}}
-	{{clangpp}} {{ldflags_optimize}} -o {{target_dir}}/{{project_name}} {{source}}
+	{{clangpp}} {{ldflags_optimize}} {{r_framework}} -o {{target_dir}}/{{project_name}} {{source}}
 	{{target}}
 
 # (C)g++ compile(Optimization03) / https://clang.llvm.org/docs/UsersManual.html
 ro3:
 	rm -rf target
 	mkdir -p target
-	g++ {{ldflags_optimize03}} -o {{target}} {{source}}
+	{{clangpp}} {{ldflags_optimize03}} {{r_framework}} -o {{target}} {{source}}
 	{{target}}
 
 # (C)g++ compile(Optimization03 + LTO) / https://clang.llvm.org/docs/UsersManual.html
 rolto:
 	rm -rf target
 	mkdir -p target
-	g++ {{ldflags_optimize_lto}} {{ldflags_optimize03}} -o {{target}} {{source}}
+	{{clangpp}} {{ldflags_optimize_lto}} {{ldflags_optimize03}} {{r_framework}} -o {{target}} {{source}}
 	{{target}}
 
 # cmake compile debug(LinuxOS)
