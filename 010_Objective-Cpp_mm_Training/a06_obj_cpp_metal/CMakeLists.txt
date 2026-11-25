@@ -46,7 +46,7 @@ find_package(Threads REQUIRED)
 # macOS frameworks
 if(APPLE)
     target_link_libraries(${ProjectId} PRIVATE
-        "-framework Foundation"
+        "-framework Foundation -framework Metal"
     )
     find_library(METAL_FW      Metal      REQUIRED)
     find_library(FOUNDATION_FW Foundation REQUIRED)
