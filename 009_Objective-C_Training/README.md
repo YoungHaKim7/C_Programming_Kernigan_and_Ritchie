@@ -51,3 +51,7 @@ endif()
 - [유튜브 영상2022년 자료) Metal-cpp를 통해 C++로 Metal 프로그래밍](https://youtu.be/h1mOkhFOSPU?si=u9kC4wrRnAyuTEVH)
   - [원본은 2022년 애플 WWDC22에 소개된거임 | Metal-cpp를 통해 C++로 Metal 프로그래밍](https://developer.apple.com/kr/videos/play/wwdc2022/10160)
   - #wwdc22에서 Metal-cpp를 통해 C++로 Metal 프로그래밍을(를) 확인하십시오.
+
+### 내가 만들고 있는거
+- ABI-faithful Rust conversion of Apple's metal-cpp (macOS 27 / iOS 27 SDK era, Metal 4), implemented concretely against the Objective-C ABI — the same technique metal-cpp itself uses to bridge C++ to the runtime
+  - https://github.com/YoungHaKim7/metal-cpp-rs/
