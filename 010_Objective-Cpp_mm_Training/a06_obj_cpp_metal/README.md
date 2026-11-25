@@ -1,7 +1,7 @@
 # Result
 
 ```bash
-clang++ -std=c++20 main.mm \
+clang++ -std=c++20 src/main.mm \
     -framework Foundation \
     -framework Metal \
     -o metal_test
